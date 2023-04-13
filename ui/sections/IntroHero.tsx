@@ -3,6 +3,7 @@ import React from "react";
 import { useEffect, useState } from "react";
 import Image from "next/image";
 import { motion } from "framer-motion";
+import ContactButton from "../misc/modal";
 
 export default function IntroHero() {
   const [headlineIndex, setHeadlineIndex] = useState(0);
@@ -24,26 +25,26 @@ export default function IntroHero() {
     return () => clearInterval(intervalId);
   }, []);
 
-  const colors = [ 
+  const colors = [
     "text-black dark:text-white",
     "text-yellow-500",
     "text-blue-600",
     "text-red-500",
   ];
-  const bColors = [ 
+  const bColors = [
     "border-black dark:border-white",
     "border-yellow-500",
     "border-blue-600",
     "border-red-500",
   ];
-  const bgColors = [ 
+  const bgColors = [
     "bg-black dark:bg-white",
     "bg-yellow-500",
     "bg-blue-600",
     "bg-red-500",
   ];
 
-  const buttonTextColors = [ 
+  const buttonTextColors = [
     "text-white dark:text-black",
     "text-white",
     "text-white",
@@ -55,21 +56,27 @@ export default function IntroHero() {
   };
 
   return (
-    <div className="mx-auto bg-slate-100 dark:bg-black min-h-screen mb-16">
+    <div className="mx-auto bg-slate-100 dark:bg-black min-h-screen mb-20">
       <div className="flex flex-col-reverse lg:grid lg:grid-cols-12 max-w-screen-5xl min-h-screen place-items-center px-8">
-        <div className="content-center justify-center min-w-full flex-2 lg:col-span-7 mx-auto ml-2 space-y-6 xl:text-8xl text-5xl sm:text-7xl">
+        <div className="content-center justify-center min-w-full h-fit flex-2 lg:col-span-7 mx-auto ml-2 space-y-6 xl:text-8xl text-5xl sm:text-7xl">
           <h1 className=" text-left text-black dark:text-white">Hello,</h1>
           <h1 className="text-left text-black dark:text-white">I'm Randal,</h1>
-          <motion.h1 
-          animate={{  }}
-          className={`text-left ${colors[headlineIndex]}`}>
-
+          <motion.h1
+            animate={{}}
+            className={`text-left ${colors[headlineIndex]}`}
+          >
             {headlines[headlineIndex]}
           </motion.h1>
-          <button className={`rounded-lg p-4 h-fit text-sm ${bgColors[headlineIndex]} ${buttonTextColors[headlineIndex]}`}>Let's Chat!</button>
+          <ContactButton
+            bgColors={bgColors}
+            headlineIndex={headlineIndex}
+            buttonTextColors={buttonTextColors}
+          />{" "}
         </div>
         <div className="flex-1 flex p-12 lg:col-span-5 items-center">
-          <div className={`border-8 rounded-full h-fit text-left ${bColors[headlineIndex]}`}>
+          <div
+            className={`border-8 rounded-full h-fit text-left ${bColors[headlineIndex]}`}
+          >
             <motion.img
               animate={{}}
               transition={{ ease: "easeOut", duration: 2 }}
