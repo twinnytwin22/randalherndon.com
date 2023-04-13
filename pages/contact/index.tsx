@@ -1,8 +1,6 @@
-const sgMail = require('@sendgrid/mail')
 const from = process.env.FROM_EMAIL
 const to = process.env.TO_EMAIL
 const api =process.env.SENDGRID_API_KEY
-sgMail.setApiKey(api)
 
 export default async function (req:any, res: any) {
  const {subject, email, message}= req.body
@@ -15,13 +13,4 @@ export default async function (req:any, res: any) {
       <strong>${email}</strong>
       <strong>${message}</strong>,`,
     }
-await sgMail
-      .send(msg)
-      .then(() => {
-        console.log('Email sent')
-        res.json({ success: true })
-      })
-      .catch((error: any) => {
-        console.error(error)
-      })
-    }
+  }
