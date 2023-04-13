@@ -1,3 +1,4 @@
+import Providers from '@/lib/providers'
 import './globals.css'
 
 export const metadata = {
@@ -12,7 +13,9 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body>{children}</body>
+      <body className='bg-slate-100 dark:bg-black'>
+        <Providers>
+        {children}</Providers></body>
     </html>
   )
 }
