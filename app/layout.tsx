@@ -13,12 +13,12 @@ export const metadata = {
     siteName: "Hi. I'm Randal",
     images: [
       {
-        url: "http://localhost:3000/twinny.jpeg",
+        url: "https://i.imgur.com/0rfoa02.jpeg",
         width: 800,
         height: 800,
       },
       {
-        url: "http://localhost:3000/twinny.jpeg",
+        url: "https://i.imgur.com/0rfoa02.jpeg",
         width: 1800,
         height: 1800,
         alt: "My custom alt",
