@@ -5,10 +5,12 @@
 
 
 h1 {
-  font-family: "owners-xxwide", sans-serif;
+  font-family: "owners-wide", sans-serif;
   font-weight: 700;
   font-style: normal;
 }
+
+
 
 @keyframes slide {
   0% {
@@ -16,5 +18,13 @@ h1 {
   }
   100% {
     background-position: 100% 0%;
+  }
+}
+@layer base {
+  .font-outline-2 {
+    -webkit-text-stroke: 2px black;
+  }
+  .font-outline-4 {
+    -webkit-text-stroke: 4px black;
   }
 }

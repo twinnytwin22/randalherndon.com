@@ -1,8 +1,6 @@
 'use client'
 import { motion, AnimatePresence } from "framer-motion";
-import Download from "@/public/download.png";
-import Logo2 from "@/public/images/logo2.png";
-import Image from "next/image";
+
 // import other logos here
 
 const logos = [...Array(10)].map((_, i) => (

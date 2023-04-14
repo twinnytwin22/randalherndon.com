@@ -1,16 +1,14 @@
 "use client";
 import { useState } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import { m, AnimatePresence } from "framer-motion";
 import ContactForm from "../sections/ContactPageForm";
 
 const Modal = ({ handleClose }: { handleClose: () => void }) => {
-  const handleInputClick = (e: React.MouseEvent<HTMLInputElement>) => {
-    e.stopPropagation();
-  };
+
 
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center">
-    <motion.div
+    <m.div
       className="bg-white rounded-lg shadow-lg p-6 w-full h-sm max-w-3xl dark:bg-black border dark:border-gray-900"
       initial={{ opacity: 0, y: -50 }}
       animate={{ opacity: 1, y: 0 }}
@@ -25,15 +23,15 @@ const Modal = ({ handleClose }: { handleClose: () => void }) => {
       >
         Close
       </button>
-    </motion.div>
-    <motion.div
+    </m.div>
+    <m.div
       className="fixed inset-0  opacity-50"
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}
       transition={{ duration: 0.3 }}
       onClick={handleClose}
-    ></motion.div>
+    ></m.div>
   </div>
   );
 };

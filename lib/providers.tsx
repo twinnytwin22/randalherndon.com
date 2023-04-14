@@ -1,5 +1,6 @@
 'use client'
 import * as React from "react"
+import { LazyMotion, domAnimation } from "framer-motion"
 
 import dynamic from 'next/dynamic';
 
@@ -26,7 +27,10 @@ export const Providers = ({
   return ( 
   <>
          <ThemeProvider enableSystem={true} attribute="class">
+         <LazyMotion features={domAnimation}>
+
           {children}
+          </LazyMotion>
          </ThemeProvider> 
          <ToastContainer/> </>
 

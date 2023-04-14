@@ -1,5 +1,6 @@
 import Providers from "@/lib/providers";
 import "@/styles/globals.css";
+import Head from "next/head";
 
 export const metadata = {
   title: "RandalHerndon.com",
@@ -36,6 +37,11 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
+      <head>
+      <link rel="stylesheet" href="https://use.typekit.net/yka6cyh.css"/>
+
+      </head>
+
       <body className="bg-slate-100 dark:bg-black">
         <Providers>{children}</Providers>
       </body>
