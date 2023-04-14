@@ -52,7 +52,7 @@ const ContactButton = ({ bgColors, buttonTextColors, headlineIndex }: any) => {
   return (
     <div>
       <button
-        className={`rounded-lg p-4 h-fit text-sm ${bgColors[headlineIndex]} ${buttonTextColors[headlineIndex]}`}
+        className={`rounded-lg p-4 h-fit text-sm hover:scale-105 ${bgColors ? bgColors[headlineIndex] : 'bg-black dark:bg-white'} ${buttonTextColors ? buttonTextColors[headlineIndex] : "text-white dark:text-black "}`}
         onClick={handleOpenModal}
       >
         Let's Chat!

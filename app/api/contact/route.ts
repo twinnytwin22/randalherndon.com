@@ -2,7 +2,7 @@ import sgMail from '@sendgrid/mail';
 
 sgMail.setApiKey(process.env.SENDGRID_API_KEY as string);
 
-export default async function (req: any, res: any) {
+export default async function POST (req: any, res: any) {
   const { subject, email, message, name } = req.body;
   if (!email) {
     res.status(400).json({ error: 'Email is required' });
@@ -11,8 +11,8 @@ export default async function (req: any, res: any) {
 
   const msg = {
     to: email,
-    cc: process.env.NEXT_PUBLIC_FROM_EMAIL as string,
-    from: process.env.NEXT_PUBLIC_FROM_EMAIL as string,
+    cc: process.env.FROM_EMAIL as string,
+    from: process.env.FROM_EMAIL as string,
     subject: 'Contact form submission from RandalHerndon.com',
     text: 'New Message from Randal',
     html: `

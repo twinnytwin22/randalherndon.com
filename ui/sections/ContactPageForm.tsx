@@ -1,4 +1,5 @@
 'use client'
+import Link from 'next/link'
 import React from 'react'
 import { useState } from 'react'
 import { toast } from 'react-toastify'
@@ -37,9 +38,9 @@ const ContactForm = ({handleInputClick}: any) => {
   return (
     
 
-  <div className=" px-4 mx-auto max-w-screen-md h-fit z-100">
+  <div className="block px-4 mx-auto max-w-screen-md z-100 h-full space-y-5">
       <h2 className="mb-4 text-4xl tracking-tight font-extrabold text-center text-black dark:text-white">Let's Chat!</h2>
-      <form onSubmit={handleSubmit} className="w-full">
+      <form onSubmit={handleSubmit} className="flex flex-col w-full space-y-8">
       <div>
         <label htmlFor="email" className="block mb-2 text-sm font-medium text-black dark:text-gray-300">Your email</label>
          <input className='shadow-sm bg-gray-50 border border-gray-300  text-black dark:text-white  text-sm rounded-md focus:ring-red-300 focus:border-red-300 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:focus:ring-red-500 dark:focus:border-red-500 dark:shadow-sm-light required'
@@ -50,8 +51,8 @@ const ContactForm = ({handleInputClick}: any) => {
           required
         />
         </div>
-        <br />
-        <div className='flex space-x-3 mx-auto'>
+    
+        <div className='flex space-x-3 mx-auto w-full'>
       <div className='w-full'>
               <label htmlFor="name" className="block mb-2 text-sm font-medium text-black dark:text-gray-100">Your Name</label>
               <input className='shadow-sm bg-gray-50 border border-gray-300  text-black dark:text-white  text-sm rounded-md focus:ring-red-300 focus:border-red-300 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400  dark:focus:ring-red-500 dark:focus:border-red-500 dark:shadow-sm-light required'
@@ -62,7 +63,7 @@ const ContactForm = ({handleInputClick}: any) => {
         
         />
     </div>
-      <br className='hidden md:block'/>
+   
       <div className='w-full'>
               <label htmlFor="subject" className="block mb-2 text-sm font-medium text-black dark:text-gray-100">Subject</label>
               <input className='shadow-sm bg-gray-50 border  border-gray-300 text-black dark:text-white text-sm rounded-md focus:ring-red-300 focus:border-red-300 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400  dark:focus:ring-red-500 dark:focus:border-red-500 dark:shadow-sm-light required'
@@ -73,7 +74,6 @@ const ContactForm = ({handleInputClick}: any) => {
           required
         />
     </div></div>
-      <br />
       <div className="sm:col-span-2">
               <label htmlFor="message" className="block mb-2 text-sm font-medium text-black dark:text-gray-100">Your message</label>
               <textarea className='shadow-sm bg-gray-50 border h-full border-gray-300  text-black dark:text-white text-sm rounded-md focus:ring-red-300 focus:border-red-300 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:focus:ring-red-500 dark:focus:border-red-500 dark:shadow-sm-light required'
@@ -83,10 +83,12 @@ const ContactForm = ({handleInputClick}: any) => {
           required
         />
       </div>
-      <br />
-      <button type="submit" className="py-3 px-5 text-sm font-medium text-center text-white dark:text-black rounded-lg dark:bg-white bg-black sm:w-fit hover:bg-primary-800 focus:ring-4 focus:outline-none focus:ring-primary-300 dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800">Send message</button>
+      <div className='flex'>
+      <button type="submit" className="py-3 px-5 text-sm font-medium  text-center text-white dark:text-black rounded-lg dark:bg-white bg-black sm:w-fit hover:bg-primary-800 focus:ring-4 focus:outline-none focus:ring-primary-300 dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800 hover:scale-105">Send message</button>
       {status === 'success' && <p>Email sent!</p>}
       {status === 'error' && <p>Error sending email, please try again.</p>}
+      <Link href='https://calendly.com/djtwinnytwin/1on1' className="ml-6 py-3 px-5 text-sm font-medium text-center text-white dark:text-black rounded-lg dark:bg-white bg-black sm:w-fit hover:bg-primary-800 focus:ring-4 focus:outline-none focus:ring-primary-300 dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800 hover:scale-105">Schedule a meeting</Link>
+       </div>
       </form>
   </div>  
   )

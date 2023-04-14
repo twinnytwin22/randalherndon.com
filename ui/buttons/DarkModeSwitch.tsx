@@ -19,7 +19,7 @@ const DarkModeSwitch = () => {
   const currentTheme = theme === "system" ? systemTheme : theme;
 
   return (
-    <>
+    <div className="z-999999">
       {currentTheme === "dark" ? (
         <SunIcon
           role="button"
@@ -35,7 +35,7 @@ const DarkModeSwitch = () => {
           onClick={() => setTheme("dark")}
         />
       )}
-    </>
+    </div>
   );
 };
 
