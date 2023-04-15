@@ -28,12 +28,12 @@ const Portfolio = () => {
 
   return (
     <div
-      className="dark:bg-gray-950 bg-slate-200 mx-auto h-screen"
+      className="dark:bg-gray-950 bg-slate-200 mx-auto h-full"
       id="portfolio"
       onWheel={handleScroll}
     >
-      <div className="grid grid-cols-6 xl:grid-cols-12 max-w-screen min-h-full place-items-center px-8 ">
-        <div className="col-span-6 mx-auto ml-2 space-y-6 items-center">
+      <div className="grid grid-cols-6 xl:grid-cols-12 max-w-screen min-h-full place-items-center">
+        <div className="col-span-6 mx-auto ml-2 space-y-6 items-center bg-blue-900 h-full w-full">
           <motion.img
             key={currentProject.imageUrl}
             src={currentProject.imageUrl}
@@ -44,7 +44,7 @@ const Portfolio = () => {
             transition={{ duration: 0.5 }}
           />
         </div>
-        <div className="p-4 md:p-20 col-span-6 items-center w-full">
+        <div className="h-full w-full col-span-6 items-center bg-slate-700">
           <AnimatePresence>
             {showProjectDetails && (
               <motion.div

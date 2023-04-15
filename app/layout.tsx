@@ -1,6 +1,8 @@
 import Providers from "@/lib/providers";
 import "@/styles/globals.css";
+import Navbar from "@/ui/navigation/Navbar";
 import Head from "next/head";
+import DarkModeSwitch from "@/ui/buttons/DarkModeSwitch";
 
 export const metadata = {
   title: "RandalHerndon.com",
@@ -42,8 +44,15 @@ export default function RootLayout({
 
       </head>
 
-      <body className="bg-slate-100 dark:bg-black">
-        <Providers>{children}</Providers>
+      <body className="bg-slate-100 dark:bg-black h-screen overflow-y-hidden">
+        <Providers>
+          <div className="fixed ml-10 mt-10 z-50 hidden lg:block">
+        <DarkModeSwitch />
+      </div>
+          <div className="max-h-screen overflow-y-scroll snap snap-y snap-mandatory relative">
+          <div className="relative isolate z-[999999]"><Navbar/></div>
+
+          {children}</div></Providers>
       </body>
     </html>
   );

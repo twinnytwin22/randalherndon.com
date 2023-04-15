@@ -10,21 +10,44 @@ h1 {
   font-style: normal;
 }
 
+Copy code
+.w-fit {
+  animation: fade-in 1s ease-out forwards;
+}
 
-
-@keyframes slide {
-  0% {
-    background-position: 0% 0%;
+@keyframes fade-in {
+  from {
+    transform: translateY(50%);
+    opacity: 0;
   }
-  100% {
-    background-position: 100% 0%;
+  to {
+    transform: translateY(0);
+    opacity: 1;
   }
 }
+
+
+
 @layer base {
   .font-outline-2 {
     -webkit-text-stroke: 2px black;
   }
   .font-outline-4 {
     -webkit-text-stroke: 4px black;
+  }
+}
+
+@layer utilities {
+  .snap {
+    scroll-snap-type: var(--scroll-snap-direction) var(--scroll-snap-constraint);
+  }
+  .snap-y {
+    --scroll-snap-direction: y;
+  }
+  .snap-mandatory {
+    --scroll-snap-constraint: mandatory;
+  }
+  .snap-start {
+    scroll-snap-align: start;
   }
 }

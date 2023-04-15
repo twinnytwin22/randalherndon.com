@@ -20,7 +20,9 @@ const Services = () => {
   }, [inView]);
 
   return (
-    <div className="dark:bg-black bg-slate-200 mx-auto w-full h-screen" id="services" ref={ref}>
+    <div className="dark:bg-black bg-slate-200 mx-auto w-full h-full" id="services" ref={ref}>
+          <div className="border-t-4 dark:border-white border-black w-full"></div>
+
       <ScrollDown/>
       <div className="grid grid-cols-6 xl:grid-cols-12 max-w-screen-2xl min-h-full place-items-center px-8 mx-auto">
         <div className="w-full col-span-6 mx-auto ml-2 space-y-6 xl:text-8xl text-5xl sm:text-7xl items-center content-center justify-center">

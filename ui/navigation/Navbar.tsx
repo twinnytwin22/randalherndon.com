@@ -1,19 +1,20 @@
 "use client";
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState, useEffect } from "react";
 import { m, AnimatePresence } from "framer-motion";
 import Link from "next/link";
 import DarkModeSwitch from "../buttons/DarkModeSwitch";
+
 const Navbar = () => {
-  const [showNavbar, setShowNavbar] = useState(false);
-  const [showNavContent, setShowNavContent] = useState(false)
-  const navRef = useRef(null);
-  const contentRef = useRef(null);
+  const [showNavbar, setShowNavbar] = useState(true);
+  const [showNavContent, setShowNavContent] = useState(false);
+
+
   useEffect(() => {
     const handleScroll = () => {
-      if (window.pageYOffset > 100) {
+      if (window.scrollY > 100) {
         setShowNavbar(true);
       } else {
-        setShowNavbar(false)
+        setShowNavbar(false);
         setShowNavContent(false);
       }
     };
@@ -21,57 +22,62 @@ const Navbar = () => {
     window.addEventListener("scroll", handleScroll);
 
     return () => {
-      window.removeEventListener("scroll", handleScroll)
+      window.removeEventListener("scroll", handleScroll);
       setShowNavContent(false);
     };
   }, []);
 
   const handleShowContent = () => {
-    setShowNavContent(true)
-    if (showNavContent) {
-        setShowNavContent(false)
-    }
-  }
-
+    setShowNavContent(!showNavContent);
+  };
 
   return (
     <AnimatePresence>
-    <div className="content-center mx-auto justify-center opacity-90">
-      {showNavbar && (
-        <m.nav 
-        
-        initial={{ opacity: 0, scale: 0.5 }}
-        animate={{ opacity: 1, scale: 1 }}
-        transition={{
-          duration: 0.8,
-          delay: 0.5,
-          ease: [0, 0.71, 0.2, 1.01]
-        }}
-        className="fixed flex items-center justify-between top-3 right-0 left-0 w-full max-w-lg md:max-w-5xl mx-auto py-4 px-8 rounded-xl transition-all duration-300 dark:bg-black bg-slate-200 border-slate-300 dark:border-gray-900 shadow-slate-300 dark:shadow-gray-700 shadow-sm border opacity-80">
+      <div className="content-center mx-auto justify-center opacity-90 absolute">
+        {showNavbar && (
+          <m.nav
+            initial={{ opacity: 0, scale: 0.5 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{
+              duration: 0.8,
+              delay: 0.5,
+              ease: [0, 0.71, 0.2, 1.01],
+            }}
+            className="fixed flex items-center justify-between top-3 right-0 left-0 w-full max-w-lg md:max-w-5xl mx-auto py-4 px-8 rounded-xl transition-all duration-300 dark:bg-black bg-slate-200 border-slate-300 dark:border-gray-900 shadow-slate-300 dark:shadow-gray-700 shadow-sm border opacity-80"
+          >
             <h1 className="font-professor text-xl">Randal Herndon</h1>
             <div className="flex items-center">
-            <div className="block lg:hidden mr-3">
-            <DarkModeSwitch/></div>
-            <div onClick={handleShowContent} className={`border-2 dark:border-slate-200 border-gray-900 rounded-full ${showNavContent && 'rotate-90 ease-in-out duration-300'} `}>
-          <svg
-            className="w-10 p-3"
-            fill="none"
-            stroke="currentColor"
-            strokeWidth={3}
-            viewBox="0 0 24 24"
-            xmlns="http://www.w3.org/2000/svg"
-            aria-hidden="true"
-          >
-            <path
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5"
-            />
-          </svg></div></div>
-        </m.nav>
-      )}
-      {showNavContent && showNavbar &&
-      <NavContent showNavbar={showNavbar} setShowNavbar={setShowNavbar}/>}
+              <div className="block lg:hidden mr-3">
+                <DarkModeSwitch />
+              </div>
+              <div
+                onClick={handleShowContent}
+                className={`border-2 dark:border-slate-200 border-gray-900 rounded-full ${
+                  showNavContent && "rotate-90 ease-in-out duration-300"
+                } `}
+              >
+                <svg
+                  className="w-10 p-3"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth={3}
+                  viewBox="0 0 24 24"
+                  xmlns="http://www.w3.org/2000/svg"
+                  aria-hidden="true"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5"
+                  />
+                </svg>
+              </div>
+            </div>
+          </m.nav>
+        )}
+        {showNavContent && showNavbar && (
+
+      <NavContent showNavbar={showNavbar} setShowNavbar={setShowNavbar}/>)}
     </div></AnimatePresence>
   );
 };

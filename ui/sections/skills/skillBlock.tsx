@@ -1,6 +1,8 @@
 "use client";
 import React from "react";
 import { Variants, m } from "framer-motion";
+import { useInView } from "react-intersection-observer";
+
 
 const skillBlockVariants: Variants = {
   hidden: {
@@ -27,7 +29,7 @@ function SkillBlock({ skill, index, delay }: any) {
       transition={{ delay }}
       className={`bg-slate-300 dark:bg-black my-2 p-3 rounded-md max-w-full mx-auto hover:scale-105 px-16 border border-slate-300 dark:border-gray-800`}
     >
-      <h1 className="text-sm md:text-lg text-center">{skill}</h1>
+      <h1 className="text-sm md:text-lg text-center font-owners-wide font-light">{skill}</h1>
     </m.div>
   );
 }
