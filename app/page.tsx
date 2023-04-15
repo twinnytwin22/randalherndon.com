@@ -10,22 +10,23 @@ export default function Home() {
   return (
 
     
-    <div className="mx-auto z-0">
-          <div className="snap-start h-screen w-full">
+    <div className="mx-auto z-0 w-full max-w-screen relative">
+      <main className="max-h-screen overflow-y-scroll snap snap-y snap-mandatory relative">
+          <section className="flex h-screen w-full snap-start">
             <IntroHero />
-          </div>
-          <div className="snap-start h-screen w-full">
+          </section>
+          <section className="flex items-center justify-center h-screen w-full snap-start relative" id="about">
             <AboutMe />
-          </div>
-          <div className="snap-start h-screen w-full">
+          </section>
+          <section className="flex items-center justify-center h-screen w-full snap-start" id="skills">
             <Skills />
-          </div>
-          <div className="snap-start h-screen w-full">
+          </section>
+          <section className="flex items-center justify-center h-screen w-full snap-start" id="services">
             <Services />
-          </div>
-          <div className="snap-start h-screen w-full">
+          </section>
+          <section className="flex items-center justify-center h-screen w-full snap-start" id="portfolio">
             <Portfolio/>
-          </div>
+          </section></main>
   </div>
   );
 }

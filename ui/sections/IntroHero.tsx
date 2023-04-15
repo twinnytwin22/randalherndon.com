@@ -58,12 +58,12 @@ export default function IntroHero() {
   };
 
   return (
-    <div className="mx-auto bg-slate-100 dark:bg-black h-full lg:max-w-7xl xl:max-w-full mb-20 md:mb-0 static isolate">
+    <div className="mx-auto bg-slate-100 dark:bg-black h-full lg:max-w-7xl xl:max-w-full w-full mb-20 md:mb-0 static isolate">
       <div className="">
       <ScrollDown color="black"/></div>
 
-      <div className="flex flex-col-reverse lg:grid lg:grid-cols-12 lg:mx-8 2xl:mx-16 min-h-screen place-items-center px-8">
-        <div className="content-center justify-center min-w-full h-fit flex-2 lg:col-span-7 mx-auto ml-2 space-y-6 xl:text-6xl 2xl:text-7xl  text-4xl sm:text-5xl">
+      <div className="grid lg:grid-cols-12 lg:mx-8 2xl:mx-16 min-h-screen place-items-center px-8 ">
+        <div className="content-center justify-center min-w-full h-fit lg:col-span-7 col-span-12 mx-auto ml-2 space-y-6 xl:text-6xl 2xl:text-7xl  text-4xl sm:text-5xl lg:order-1 order-2">
           <h1 className=" text-left text-black dark:text-white">Hello,</h1>
           <h1 className="text-left text-black dark:text-white">I'm Randal,</h1>
           <m.h1
@@ -108,9 +108,9 @@ export default function IntroHero() {
             </Link>
           </m.div>
         </div>
-        <div className="flex-1 flex lg:col-span-5 items-center mx-8 sm:mx-12 lg:mx-auto">
+        <div className="flex lg:col-span-5 col-span-12 items-center mx-8 sm:mx-12 md:mx-16 content-center justify-center lg:order-2 order-1"  >
           <m.div
-            className={`border-8 rounded-full h-fit text-left ${bColors[headlineIndex]}`}
+            className={`border-8 rounded-full text-left shadow-slate-300 dark:shadow-gray-800 shadow-2xl ${bColors[headlineIndex]}`}
           >
             <m.img
               initial={{ opacity: 0, scale: 0.5 }}
@@ -120,7 +120,7 @@ export default function IntroHero() {
                 delay: 0.5,
                 ease: [0, 0.71, 0.2, 1.01],
               }}
-              className="rounded-full p-6 lg:p-12 min-w-full contrast-100 brightness-90"
+              className="rounded-full p-6 lg:p-12 min-w-full   contrast-100 brightness-90"
               src="/twinny.jpeg"
               alt="Twinny"
             ></m.img>

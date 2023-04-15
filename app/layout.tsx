@@ -40,19 +40,22 @@ export default function RootLayout({
   return (
     <html lang="en">
       <head>
-      <link rel="stylesheet" href="https://use.typekit.net/yka6cyh.css"/>
-
+        <link rel="stylesheet" href="https://use.typekit.net/yka6cyh.css" />
       </head>
 
-      <body className="bg-slate-100 dark:bg-black h-screen overflow-y-hidden">
+      <body className="bg-slate-100 dark:bg-black h-screen mx-auto max-w-screen">
         <Providers>
           <div className="fixed ml-10 mt-10 z-50 hidden lg:block">
-        <DarkModeSwitch />
-      </div>
-          <div className="max-h-screen overflow-y-scroll snap snap-y snap-mandatory relative">
-          <div className="relative isolate z-[999999]"><Navbar/></div>
+            <DarkModeSwitch />
+          </div>
+          <div className="min-h-full relative  w-full mx-auto">
+            <div className="relative  z-[999999]">
+              <Navbar />
+            </div>
 
-          {children}</div></Providers>
+            {children}
+          </div>
+        </Providers>
       </body>
     </html>
   );

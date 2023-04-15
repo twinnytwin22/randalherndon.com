@@ -1,7 +1,6 @@
 "use client";
 import React, { useState, useEffect } from "react";
 import { m, AnimatePresence } from "framer-motion";
-import Link from "next/link";
 import DarkModeSwitch from "../buttons/DarkModeSwitch";
 
 const Navbar = () => {
@@ -43,7 +42,7 @@ const Navbar = () => {
               delay: 0.5,
               ease: [0, 0.71, 0.2, 1.01],
             }}
-            className="fixed flex items-center justify-between top-3 right-0 left-0 w-full max-w-lg md:max-w-5xl mx-auto py-4 px-8 rounded-xl transition-all duration-300 dark:bg-black bg-slate-200 border-slate-300 dark:border-gray-900 shadow-slate-300 dark:shadow-gray-700 shadow-sm border opacity-80"
+            className="fixed flex items-center justify-between top-3 right-0 left-0 w-[90vw] max-w-lg md:max-w-5xl mx-auto py-4 px-8 rounded-xl transition-all duration-300 dark:bg-black bg-slate-200 border-slate-300 dark:border-gray-900 shadow-slate-300 dark:shadow-gray-700 shadow-sm border opacity-80"
           >
             <h1 className="font-professor text-xl">Randal Herndon</h1>
             <div className="flex items-center">
@@ -94,50 +93,50 @@ const NavContent = ({setShowNavbar}:any) => {
       duration: 0.05,
       ease: [0.6, -0.05, 0.01, 0.99]
     }}
-    className="fixed mx-auto top-32 right-0 left-0 bg-slate-200 dark:bg-black h-4/5  w-full max-w-lg md:max-w-5xl justify-center items-center content-center flex rounded-lg border border-slate-300 dark:border-gray-900 shadow-slate-300 dark:shadow-gray-900 shadow-lg opacity-90 ease-in-out duration-500 transition">
+    className="fixed mx-auto top-32 right-0 left-0 bg-slate-200 dark:bg-black h-4/5  w-[90vw] max-w-lg md:max-w-5xl justify-center items-center content-center flex rounded-lg border border-slate-300 dark:border-gray-900 shadow-slate-300 dark:shadow-gray-900 shadow-lg opacity-90 ease-in-out duration-500 transition">
       <div className="max-w-7xl w-full mx-auto px-4">
         <div className="grid grid-cols-1 md:grid-cols-2 justify-center items-center font-extrabold text-4xl md:text-5xl lg:text-6xl text-center gap-y-20 font-owners-wide">
           <div 
           className="mx-4  hover:scale-105">
-            <Link
+            <a
             
               href="#about"
               className=""
             >
               About
-            </Link>
+            </a>
           </div>
           <div className="mx-4  hover:scale-105">
-            <Link
+            <a
               href="#skills"
               className=""
             >
               Experience
-            </Link>
+            </a>
           </div>
           <div className="mx-4  hover:scale-105">
-            <Link
+            <a
               href="#services"
               className=""
             >
               Services
-            </Link>
+            </a>
           </div>
-          <div className="mx-4 hover:scale-105">
-            <Link
+          <div className="mx-4 hover:scale-105" >
+            <a
               href="#portfolio"
               className=""
             >
               Portfolio
-            </Link>
+            </a>
           </div>
           <div className="mx-4  hover:scale-105 md:col-span-2">
-            <Link
+            <a
               href="#"
               className=""
             >
               Contact
-            </Link>
+            </a>
           </div>
         </div>
       </div>

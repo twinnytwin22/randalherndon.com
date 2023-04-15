@@ -28,12 +28,12 @@ const Portfolio = () => {
 
   return (
     <div
-      className="dark:bg-gray-950 bg-slate-200 mx-auto h-full"
+      className="dark:bg-gray-950 bg-slate-200 mx-auto h-full max-w-screen w-full"
       id="portfolio"
       onWheel={handleScroll}
     >
       <div className="grid grid-cols-6 xl:grid-cols-12 max-w-screen min-h-full place-items-center">
-        <div className="col-span-6 mx-auto ml-2 space-y-6 items-center bg-blue-900 h-full w-full">
+        <div className="col-span-6 mx-auto space-y-6 items-center bg-blue-900 h-full w-full">
           <motion.img
             key={currentProject.imageUrl}
             src={currentProject.imageUrl}

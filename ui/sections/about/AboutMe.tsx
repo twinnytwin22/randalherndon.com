@@ -5,6 +5,7 @@ import { GradientText } from "@/ui/misc/GradientText";
 import ContactButton from "@/ui/misc/modal";
 import { useInView } from "react-intersection-observer";
 import { ScrollDown } from "@/ui/misc/ScrollDown";
+import AboutCard from "./AboutCard";
 
 const AboutMe = () => {
   const { ref, inView } = useInView({ threshold: 0.5 });
@@ -14,7 +15,7 @@ const AboutMe = () => {
       className="dark:bg-neutral-950 bg-slate-200 mx-auto h-full"
       id="about"
     >
-       <ScrollDown color='text-blue-800'/>
+       <ScrollDown color='text-blue-800 dark:text-blue-600'/>
       <div className="bg-fixed" style={{backgroundImage:"/phoenix.png"}}/>
       <div className=" grid grid-cols-6 xl:grid-cols-12 max-w-screen min-h-full place-items-center px-8 ">
         <div className="min-w-full h-full col-span-6 mx-auto ml-2 space-y-6 xl:text-8xl text-5xl sm:text-7xl items-center xl:order-2">
@@ -32,18 +33,14 @@ const AboutMe = () => {
                 education.
               </p>
               <div className="flex ml-6 h-fit lg:-mt-6">
-                <ContactButton />
+                <ContactButton color='text-blue-800 dark:text-blue-600'/>
               </div>
             </div>
           </div>
         </div>
-        <div className="p-4 md:p-20 col-span-6 items-center w-full xl:order-1">
-          <div
-            className="w-fits bg-gradient-to-tr from-zinc-950 from-10% via-[#3366cc] via-30% to-[#6699ff] to-70% rounded-full overflow-hidden mx-20 relative"         
-          >
-            <div className="bg-white w-fit"></div>
-            <img className="w-fit contrast-125 relative z-[-0]" src="/twin-transparent.png"></img>
-          </div>
+        <div className="p-4 md:p-20 col-span-6 items-center w-full content-center justify-center xl:order-1">
+         
+        <AboutCard/>
         </div>
       </div>
     </div>
