@@ -34,14 +34,14 @@ function AboutCard(props: any) {
         <div className="flex justify-center mt-3 content-center items-center text-center text-xs md:text-sm font-bold">
           <div
             className=" mt-0.5 text-gray-900 dark:text-white tracking-tight pr-3"
-            key={data.followers}
+            key={data?.followers}
           >
             <p className="font-extrabold">Followers</p>
             {data && data?.followers}
           </div>
           <div
             className=" mt-0.5 text-gray-900 dark:text-white tracking-tight pr-3"
-            key={data.following}
+            key={data?.following}
           >
             <p className="font-extrabold">Following</p>
             {data && data?.following}
