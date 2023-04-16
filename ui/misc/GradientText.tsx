@@ -6,7 +6,7 @@ export const GradientText = ({text}:any) => {
   return (
     <div className="">
     <m.h1
-      className="md:rotate-90 md:absolute md:right-0 md:-mr-20 bg-clip-text text-transparent text-6xl "
+      className=" bg-clip-text text-transparent text-4xl md:ext-6xl "
       style={{ backgroundImage: gradient, backgroundSize: "600% 100%" ,  animation: "slide 10s linear infinite",
     }}
       animate={{ backgroundPosition: "100% 0%" }}

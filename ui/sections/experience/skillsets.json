@@ -1,0 +1,29 @@
+{
+    "skills": [
+      {
+        "name": "JavaScript"
+      },
+      {
+        "name": "Typescript"
+      },
+      {
+        "name": "Solidity"
+      },
+      {
+        "name": "ReactJS"
+      },
+      {
+        "name": "NextJS"
+      },
+      {
+        "name": "Framer Motion"
+      },
+      {
+        "name": "Web3.js"
+      },
+      {
+        "name": "Ethers.js"
+      }
+    ]
+  }
+  

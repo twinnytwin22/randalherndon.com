@@ -7,7 +7,7 @@ const Modal = ({ handleClose }: { handleClose: () => void }) => {
 
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center">
+    <div className="fixed inset-0 z-50 flex items-center justify-center mx-8">
     <m.div
       className="bg-white rounded-lg shadow-lg p-6 w-full h-sm max-w-3xl dark:bg-black border dark:border-gray-900"
       initial={{ opacity: 0, y: -50 }}
@@ -53,7 +53,7 @@ const ContactButton = ({ bgColors, buttonTextColors, headlineIndex }: any) => {
         className={`rounded-lg p-4 h-fit text-sm hover:scale-105 ${bgColors ? bgColors[headlineIndex] : 'bg-black dark:bg-white'} ${buttonTextColors ? buttonTextColors[headlineIndex] : "text-white dark:text-black "}`}
         onClick={handleOpenModal}
       >
-        Let's Chat!
+        <h1 className="font-[owners-wide]">Let's Chat!</h1>
       </button>
       <AnimatePresence>
         {isOpen && <Modal handleClose={handleCloseModal} />}

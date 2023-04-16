@@ -44,7 +44,8 @@ const Portfolio = () => {
             transition={{ duration: 0.5 }}
           />
         </div>
-        <div className="h-full w-full col-span-6 items-center bg-slate-700">
+        <div className="h-full w-full col-span-6 items-center flex content-center justify-center bg-neutral-950">
+          <div className="block">
           <AnimatePresence>
             {showProjectDetails && (
               <motion.div
@@ -65,7 +66,7 @@ const Portfolio = () => {
           <button onClick={() => setShowProjectDetails(!showProjectDetails)}>
             {showProjectDetails ? "Hide Details" : "Show Details"}
           </button>
-        </div>
+        </div></div>
      
        
       </div>

@@ -4,9 +4,15 @@ import AboutMe from "@/ui/sections/about/AboutMe";
 import Portfolio from "@/ui/sections/portfolio/Portfolio";
 import Services from "@/ui/sections/services/Services";
 import Navbar from "@/ui/navigation/Navbar";
-import Skills from "@/ui/sections/skills/Skills";
+import Experience from "@/ui/sections/experience/Experience";
+import { getGithubData, getAllCommits } from "@/lib/fetchGithubData";
 
-export default function Home() {
+export default async function Home() {
+  const data = await getGithubData()
+  const owner = 'getredash';
+  const repo = 'redash';
+  const sha = 'master';
+  const commits = await getAllCommits({owner,repo,sha})
   return (
 
     
@@ -16,10 +22,10 @@ export default function Home() {
             <IntroHero />
           </section>
           <section className="flex items-center justify-center h-screen w-full snap-start relative" id="about">
-            <AboutMe />
+            <AboutMe data={data} commits={commits}/>
           </section>
           <section className="flex items-center justify-center h-screen w-full snap-start" id="skills">
-            <Skills />
+            <Experience />
           </section>
           <section className="flex items-center justify-center h-screen w-full snap-start" id="services">
             <Services />

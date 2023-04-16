@@ -6,6 +6,7 @@ import { m } from "framer-motion";
 import ContactButton from "../misc/modal";
 import { FaLinkedinIn, FaGithub } from "react-icons/fa";
 import Link from "next/link";
+import MyGitHubButton from "../buttons/CustomGitHubButton";
 
 export default function IntroHero() {
   const [headlineIndex, setHeadlineIndex] = useState(0);
@@ -100,15 +101,10 @@ export default function IntroHero() {
             >
               <FaLinkedinIn />
             </Link>
-            <Link
-              href="https://github.com/twinnytwin22"
-              className="rounded-lg p-4 h-fit text-xl hover:scale-105 text-white bg-gray-800"
-            >
-              <FaGithub />
-            </Link>
+            <MyGitHubButton/>
           </m.div>
         </div>
-        <div className="flex lg:col-span-5 col-span-12 items-center mx-8 sm:mx-12 md:mx-16 content-center justify-center lg:order-2 order-1"  >
+        <div className="flex lg:col-span-5 col-span-12 lg:items-center mx-6 sm:mx-auto xl:mx-12 content-center mt-20 lg:mt-0 max-w-md md:min-w-md justify-center lg:order-2 order-1"  >
           <m.div
             className={`border-8 rounded-full text-left shadow-slate-300 dark:shadow-gray-800 shadow-2xl ${bColors[headlineIndex]}`}
           >

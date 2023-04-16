@@ -2,6 +2,7 @@
 import React, { useState, useEffect } from "react";
 import { m, AnimatePresence } from "framer-motion";
 import DarkModeSwitch from "../buttons/DarkModeSwitch";
+import { RHLogo } from "../misc/RHLogo";
 
 const Navbar = () => {
   const [showNavbar, setShowNavbar] = useState(true);
@@ -44,6 +45,7 @@ const Navbar = () => {
             }}
             className="fixed flex items-center justify-between top-3 right-0 left-0 w-[90vw] max-w-lg md:max-w-5xl mx-auto py-4 px-8 rounded-xl transition-all duration-300 dark:bg-black bg-slate-200 border-slate-300 dark:border-gray-900 shadow-slate-300 dark:shadow-gray-700 shadow-sm border opacity-80"
           >
+            <RHLogo/>
             <h1 className="font-professor text-xl">Randal Herndon</h1>
             <div className="flex items-center">
               <div className="block lg:hidden mr-3">

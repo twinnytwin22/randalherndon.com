@@ -1,9 +1,8 @@
 import Providers from "@/lib/providers";
 import "@/styles/globals.css";
 import Navbar from "@/ui/navigation/Navbar";
-import Head from "next/head";
 import DarkModeSwitch from "@/ui/buttons/DarkModeSwitch";
-
+import Script from "next/script";
 export const metadata = {
   title: "RandalHerndon.com",
   description:

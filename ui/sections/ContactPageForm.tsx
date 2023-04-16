@@ -38,9 +38,9 @@ const ContactForm = ({ handleInputClick }: any) => {
 
   return (
     <div className="block px-4 mx-auto max-w-screen-md z-100 h-full space-y-5">
-      <h2 className="mb-4 text-4xl tracking-tight font-extrabold text-center text-black dark:text-white">
+      <h1 className="mb-4 text-4xl tracking-tight font-extrabold text-center text-black dark:text-white">
         Let's Chat!
-      </h2>
+      </h1>
       <form onSubmit={handleSubmit} className="flex flex-col w-full space-y-8">
         <div>
           <label

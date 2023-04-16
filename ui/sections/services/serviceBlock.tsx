@@ -19,9 +19,9 @@ const skillBlockVariants: Variants = {
   },
 };
 
-function SkillBlock({ skill, index, delay }: any) {
+function ServiceBlock({ skill, delay }: any, i: any) {
   return (
-    <div className="hover:scale-105 dark:hover:bg-gray-950 hover:bg-slate-300 bg-slate-200 dark:bg-black ">
+    <div className="hover:scale-105 dark:hover:bg-gray-950 hover:bg-slate-300 bg-slate-200 dark:bg-black  " key={skill}>
     <m.div
       variants={skillBlockVariants}
       initial="hidden"
@@ -30,9 +30,9 @@ function SkillBlock({ skill, index, delay }: any) {
       transition={{ delay }}
       className='my-2 p-3 rounded-md max-w-full  mx-auto px-16 border z-[999999]  border-slate-400 dark:border-gray-800'
     >
-      <h1 className="text-sm md:text-lg text-center font-owners-wide font-light">{skill}</h1>
+      <h1 className="text-sm md:text-lg text-center font-owners-wide font-normal ">{skill}</h1>
     </m.div></div>
   );
 }
 
-export default SkillBlock;
+export default ServiceBlock;
