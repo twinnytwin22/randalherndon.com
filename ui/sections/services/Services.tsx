@@ -23,7 +23,7 @@ const Services = () => {
 
   return (
     <div
-      className="dark:bg-black bg-slate-200 mx-auto w-full h-full border-b-4 dark:border-white border-black items-center  "
+      className="dark:bg-black bg-slate-200 mx-auto w-full h-full border-b-4 dark:border-white border-black items-center max-w-screen "
       id="services"
       ref={ref}
     >
@@ -38,7 +38,7 @@ const Services = () => {
             <ContactButton />
           </div>
         </div>
-        <div className="p-4 md:p-20 col-span-6 items-center w-full -mt-40 lg:-mt-16 xl:-mt-0">
+        <div className="m-4 md:p-20 col-span-6 items-center w-full -mt-24 lg:-mt-16 xl:-mt-0">
           <div className="skill-blocks">
             {showSkillBlocks
               ? primarySkills.map(({ skill, id }: any, index) => (

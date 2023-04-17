@@ -47,7 +47,7 @@ const [ showExp, setShowExp ] = useState(false)
   return (
     <>        
 
-    <div className="flex min-h-screen w-full items-center mx-auto content-center" id="experience" ref={ref}>
+    <div className="flex min-h-screen w-full  max-w-screen items-center mx-auto content-center" id="experience" ref={ref}>
       <div className="flex items-center flex-col lg:grid grid-cols-12 w-full h-full place-items-center mx-auto" >
        
         <div className="col-span-6 flex flex-col lg:mt-24 content-start max-w-xs sm:max-w-sm md:max-w-lg mx-auto h-fit">

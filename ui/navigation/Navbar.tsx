@@ -10,25 +10,7 @@ const Navbar = () => {
   const [ isOpen, setIsOpen ] = useState(false)
 
 
-  useEffect(() => {
-    
-
-    const handleScroll = () => {
-      if (window.scrollY > 100) {
-        setShowNavbar(true);
-      } else {
-        setShowNavbar(false);
-        setShowNavContent(false);
-      }
-    };
-
-    window.addEventListener("scroll", handleScroll);
-
-    return () => {
-      window.removeEventListener("scroll", handleScroll);
-      setShowNavContent(false);
-    };
-  }, []);
+  
 
   const handleShowContent = () => {
     setShowNavContent(!showNavContent);
@@ -37,7 +19,6 @@ const Navbar = () => {
   return (
     <AnimatePresence>
       <div className="content-center mx-auto justify-center opacity-90 absolute">
-        {showNavbar && (
           <m.nav
             initial={{ opacity: 0, scale: 0.5 }}
             animate={{ opacity: 1, scale: 1 }}
@@ -78,7 +59,7 @@ const Navbar = () => {
               </div>
             </div>
           </m.nav>
-        )}
+    
         {showNavContent && showNavbar && (
 
       <NavContent showNavbar={showNavbar} setShowNavbar={setShowNavbar}/>)}

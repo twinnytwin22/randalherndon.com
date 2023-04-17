@@ -42,7 +42,7 @@ const card: Variants = {
   console.log(commits, data)
   return (
     <div
-      className="dark:bg-neutral-950 bg-slate-200 mx-auto h-full"
+      className="dark:bg-neutral-950 bg-slate-200 mx-auto h-full max-w-screen"
       id="about"
       ref={ref}
     >
