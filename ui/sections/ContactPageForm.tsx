@@ -37,7 +37,7 @@ const ContactForm = ({ handleInputClick }: any) => {
   };
 
   return (
-    <div className="block px-4 mx-auto max-w-screen-md z-100 h-full space-y-5">
+    <div className="w-full p-8 mx-auto max-w-screen-md z-100 h-full space-y-5 ">
       <h1 className="mb-4 text-4xl tracking-tight font-extrabold text-center text-black dark:text-white">
         Let's Chat!
       </h1>

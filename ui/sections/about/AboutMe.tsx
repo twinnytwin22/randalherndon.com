@@ -1,31 +1,49 @@
 "use client";
-import React, {useEffect, useState} from "react";
-import { m } from "framer-motion";
+import React, {useEffect, useState, useRef} from "react";
+import { delay, m, Variants } from "framer-motion";
 import { GradientText } from "@/ui/misc/GradientText";
 import ContactButton from "@/ui/misc/modal";
-import { useInView } from "react-intersection-observer";
+import { useInView } from "framer-motion";
 import { ScrollDown } from "@/ui/misc/ScrollDown";
 import AboutCard from "./AboutCard";
 import Marquee from "@/ui/misc/marquee";
 import { InView } from "react-intersection-observer";
 const AboutMe = ({data, commits}: any) => {
-const [aboutCard, showAboutCard ] =useState(false)
-  const { ref, inView } = useInView({
-    threshold: 0.5,
-    triggerOnce: true,
-  });
+const [showAboutCard, setShowAboutCard ] = useState(false)
 
-  useEffect(() => {
-    if (inView) {
-      showAboutCard (true);
-    }
-  }, [inView]);
+const ref = useRef(null)
+const isInView = useInView(ref)
+useEffect(() => {
+  if (isInView) {
+    setShowAboutCard(true);
+  } else {
+    setShowAboutCard(false)
+    console.log('card out of view')
+  }
+}, [isInView]);
+
+const card: Variants = {
+  hidden: {
+    y: -50,
+    opacity: 0,
+  },
+  visible: {
+    y: 0,
+    opacity: 1,
+    transition: {
+      delay: 0.9,
+      type: "spring",
+      stiffness: 500,
+    },
+  },
+};
   
   console.log(commits, data)
   return (
     <div
       className="dark:bg-neutral-950 bg-slate-200 mx-auto h-full"
       id="about"
+      ref={ref}
     >
        <ScrollDown color='text-blue-800 dark:text-blue-600'/>
       <div className="bg-fixed" style={{backgroundImage:"/phoenix.png"}}/>
@@ -35,8 +53,18 @@ const [aboutCard, showAboutCard ] =useState(false)
             <div className="content-start justify-start items-center">
               <GradientText text='About Me'/>
               <div className="md:hidden block mt-4 col-span-6 items-center w-full  content-center justify-center md:order-1" ref={ref}>
-         
-         <AboutCard data={data} commits={commits}/>
+         {showAboutCard && 
+         <m.div
+         variants={card}
+         initial="hidden"
+         animate="visible"
+         transition={{
+           duration: 0.8,
+           delay: 0.5,
+           ease: [0, 0.71, 0.2, 1.01],
+         }}
+>
+         <AboutCard data={data} commits={commits}/> </m.div>}
          </div>
               <p className="w-full text-base md:text-lg lg:text-xl p-4 sm:p-8 md:pr-8 lg:pr-16 items-center min-h-full text-left text-gray-900 dark:text-slate-200 ">
                 I'm Randal. Many people call me 'Twinny' Currently excelling in
@@ -57,7 +85,18 @@ const [aboutCard, showAboutCard ] =useState(false)
         </div>
         <div className="hidden md:block p-0 col-span-6 items-center w-full  content-center justify-center md:order-1">
          
-        <AboutCard data={data} commits={commits}/>
+        {showAboutCard && 
+         <m.div
+         variants={card}
+         initial="hidden"
+         animate="visible"
+         transition={{
+           duration: 0.8,
+           delay: 0.5,
+           ease: [0, 0.71, 0.2, 1.01],
+         }}
+>
+         <AboutCard data={data} commits={commits}/> </m.div>}
         </div>
         
       </div>

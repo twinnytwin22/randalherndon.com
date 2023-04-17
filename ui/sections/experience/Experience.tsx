@@ -1,32 +1,61 @@
 "use client";
-import React from "react";
+import React, {useEffect, useRef, useState} from "react";
 import resume from "./experience.json";
-import skillsets from "./skillsets.json"
-const Experience = () => {
-  const colors = ['bg-red-500', 'bg-blue-500', 'bg-green-500', 'bg-yellow-500', 'bg-purple-500', 'bg-pink-500'];
+import skillsets from "./skillsets.json";
+import ContactButton from "@/ui/misc/modal";
+import { useAnimate, useInView, stagger, m } from "framer-motion";
 
-  console.log(resume);
+function useStaggerAnimation(showExp: boolean) {
+  const [scope, animate] = useAnimate();
+  useEffect(() => {
+    animate("h2", { opacity: 1 }, { delay: stagger(0.1) })
+
+  }, [showExp])
+  return scope
+}
+
+const Experience = () => {
+const [ showExp, setShowExp ] = useState(false)
+  const ref = useRef(null)
+  const isInView = useInView(ref)
+  const colors = ['bg-red-500', 'bg-blue-500', 'bg-green-500', 'bg-yellow-500', 'bg-purple-500', 'bg-pink-500'];
+  const scope = useStaggerAnimation(showExp)
+
+  useEffect(() => {
+    if (isInView) {
+      setShowExp(true)
+
+      console.log('experience in view')
+    } else {
+      setShowExp(false)
+      console.log('exp out of view')
+    }
+  }, [isInView]);
+console.log(isInView, skillsets,'skillsets')
   return (
-    <div className="h-full w-full items-center" id="skills">
-      <div className="flex items-center flex-col-reverse md:grid grid-cols-12 w-full h-full place-items-center">
+    <div className="h-screen w-full items-center" id="experience" ref={ref}>
+      <div className="flex items-center flex-col-reverse md:grid grid-cols-12 w-full h-full place-items-center" >
         <div className="col-span-6 h-full items-center flex">
-        <div className="grid grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 items-center h-fit">
-  {skillsets.skills.map(({ name }: any, index: number) => (
-    <h2
-      key={index}
-      className={`md:h-24 flex items-center justify-center text-white hover:scale-105 text-base p-3 font-normal font-[owners-wide] rounded-lg ${colors[Math.floor(Math.random() * colors.length)]}`}
-    >
-      {name}
-    </h2>
-  ))}
-</div>
+          <div className="grid grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 items-center h-fit" ref={scope} >
+            {skillsets.skills.map(({ name }: any, index: number) => (
+              <m.h2
+                ref={ref}
+                key={index}
+                className={`md:h-24 flex items-center justify-center text-white hover:scale-105 text-base p-3 font-normal font-[owners-wide] rounded-lg ${colors[Math.floor(Math.random() * colors.length)]}`}
+                initial={{ opacity: 0, y: 20 }}
+              >
+                {name}
+              </m.h2>
+            )) }
+            <ContactButton />
+          </div>
         </div>
         <div className="col-span-6 flex flex-col content-start">
           <h1 className="text-3xl">Education</h1>
 
           <div className="md:grid grid-cols-2">
-          {resume.education.map((my: any, i: any) => (
-              <div className="block p-2.5"  key={i}>
+            {resume.education.map((my: any, i: any) => (
+              <div className="block p-2.5" key={i}>
                 <p className="text-base font-semibold">{my.field}</p>
                 <p className="text-base font-semibold">{my.degree}</p>
                 <div className="flex italic">
@@ -35,13 +64,13 @@ const Experience = () => {
                   <p className="text-base ">{my.endDate}</p>
                 </div>
               </div>
-          ))}
-                      </div>
+            ))}
+          </div>
 
           <h1 className="text-3xl">Experience</h1>
           <div className="">
 
-          {resume.experience.slice(0,2).map((job: any, i: any) => (
+            {resume.experience.slice(0, 2).map((job: any, i: any) => (
             <div key={i} className="p-2.5">
               <p className="text-base font-semibold">{job.title}</p>
               <div className="flex">

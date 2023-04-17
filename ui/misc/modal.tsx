@@ -7,9 +7,9 @@ const Modal = ({ handleClose }: { handleClose: () => void }) => {
 
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center mx-8">
+    <div className="fixed inset-0 z-50 flex items-center justify-center mx-8 isolate">
     <m.div
-      className="bg-white rounded-lg shadow-lg p-6 w-full h-sm max-w-3xl dark:bg-black border dark:border-gray-900"
+      className="bg-slate-100 dark:bg-neutral-950 rounded-lg shadow-lg p-6 w-full h-sm max-w-3xl flex flex-col  border dark:border-gray-900"
       initial={{ opacity: 0, y: -50 }}
       animate={{ opacity: 1, y: 0 }}
       exit={{ opacity: 0, y: 50 }}
@@ -18,7 +18,7 @@ const Modal = ({ handleClose }: { handleClose: () => void }) => {
     >
       <ContactForm style={{ zIndex: 10000 }} />{" "}
       <button
-        className="bg-blue-500 text-white px-4 py-2 text-sm rounded-lg shadow-md hover:bg-blue-600 transition-colors duration-300"
+        className="bg-blue-500 text-white px-4 py-2 text-sm w-24 rounded-lg shadow-md hover:bg-blue-600 transition-colors duration-300"
         onClick={handleClose}
       >
         Close
