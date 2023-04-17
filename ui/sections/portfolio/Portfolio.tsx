@@ -73,7 +73,7 @@ const Portfolio = () => {
       <div className="min-w-screen min-h-screen mx-auto w-full">
 
         <div className="flex flex-col h-screen min-w-screen w-full">
-          <div className="h-full min-h-[70vh] p-8 md:p-20">
+          <div className="h-full min-h-[55vh] p-8 md:p-20">
             <div className="flex mx-auto space-y-6 items-center content-center justify-center bg-slate-100 dark:bg-black h-full w-full overflow-clip ">
               <img src={currentProjectImageUrl} alt={projects[currentProjectIndex].title} />
             </div>
@@ -93,7 +93,7 @@ const Portfolio = () => {
                 <div className="portfolio-selector h-full w-full max-w-screen mx-auto items-center content-center snap-x overflow-x-scroll overflow-y-hidden snap-mandatory">
                 <div className="max-w-screen mx-auto content-center justify-center w-full flex ">
                   {projects.map((project, index) => (
-                    <div key={index} className="h-full min-h-[30vh] min-w-full max-w-screen w-full flex items-center mx-auto content-center snap-normal snap-center" ref={ref}>
+                    <div key={index} className="h-full min-h-[45vh] min-w-full max-w-screen w-full flex items-center mx-auto content-center snap-normal snap-center" ref={ref}>
                       <div className="w-full flex flex-col">
                         <h1 className="text-4xl text-center"> {project.title}</h1>
                         <button

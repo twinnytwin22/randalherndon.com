@@ -38,7 +38,7 @@ const Services = () => {
             <ContactButton />
           </div>
         </div>
-        <div className="m-4 md:p-20 col-span-6 items-center w-full -mt-24 lg:-mt-16 xl:-mt-0">
+        <div className="px-10 md:p-20 col-span-6 items-center w-full -mt-24 lg:-mt-16 xl:-mt-0 mx-auto">
           <div className="skill-blocks">
             {showSkillBlocks
               ? primarySkills.map(({ skill, id }: any, index) => (

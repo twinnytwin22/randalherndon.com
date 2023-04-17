@@ -94,7 +94,7 @@ const [ showExp, setShowExp ] = useState(false)
            <ContactButton />
            <DownloadButton/></div>
         </div>
-         <div className="col-span-6 h-full items-center flex">
+         <div className="col-span-6 h-full items-center flex -mt-8 lg:-mt-0">
           <div>
           <div className="grid grid-cols-3 md:grid-cols-3 lg:grid-cols-3 xl:grid-cols-4 gap-4 items-center h-fit  max-w-xs sm:max-w-sm md:max-w-md"  ref={scope} >
             {skillsets.skills.map(({ name }: any, index: number) => (
@@ -109,7 +109,7 @@ const [ showExp, setShowExp ] = useState(false)
             )) }
                   
           </div> 
-           <div className="flex lg:hidden h-fit mt-12 space-x-2">  <ContactButton /> 
+           <div className="flex lg:hidden h-fit mt-12 space-x-5">  <ContactButton /> 
         <DownloadButton/>  
           </div></div>
           

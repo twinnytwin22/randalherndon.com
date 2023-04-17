@@ -23,7 +23,7 @@ function AboutCard(props: any) {
 
   return (
     <div className="flex mx-auto w-fit max-w-xs ">
-      <div className="pb-3 md:pb-0 sm:p-4 bg-white rounded-xl border border-gray-200  max-w-sm shadow-2xl shadow-slate-300 dark:shadow-black dark:bg-black dark:border-gray-800 mx-auto content-center justify-center w-fit ">
+      <div className="pb-3 p-0 md:p-8 sm:p-4 bg-white rounded-xl border border-gray-200  max-w-sm shadow-2xl shadow-slate-300 dark:shadow-black dark:bg-black dark:border-gray-800 mx-auto content-center justify-center w-fit ">
         <Link href="">
           <img
             className="w-48 sm:w-60  lg:w-72  xl:w-96 rounded-sm gap-10 m-5 object-cover scale-100 mx-auto content-center justify-center bg-blue-900"
