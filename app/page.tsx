@@ -16,8 +16,8 @@ export default async function Home() {
   return (
 
     
-    <div className="mx-auto z-0 w-full max-w-screen relative">
-      <main className="max-h-screen overflow-y-scroll snap snap-y snap-mandatory relative">
+    <div className="mx-auto z-0 w-full max-w-screen relative overflow-hidden">
+      <main className="max-h-screen overflow-y-scroll snap snap-y snap-mandatory relative overflow-x-hidden">
           <section className="flex h-screen w-full snap-start">
             <IntroHero />
           </section>
