@@ -81,7 +81,7 @@ const NavContent = ({setShowNavContent}:any) => {
           ease: [0.6, -0.05, 0.01, 0.99],
           scale: { type: "spring", stiffness: 300, damping: 30 }
         }}
-        className="fixed mx-auto top-32 right-0 left-0 bg-slate-200 dark:bg-black h-4/5  w-[90vw] max-w-lg md:max-w-5xl justify-center items-center content-center flex rounded-lg border border-slate-300 dark:border-gray-900 shadow-slate-300 dark:shadow-gray-900 shadow-lg opacity-90 ease-in-out duration-500 transition"
+        className="fixed mx-auto top-20 right-0 left-0 bg-slate-200 dark:bg-black h-4/5  w-[90vw] max-w-lg md:max-w-5xl justify-center items-center content-center flex rounded-lg border border-slate-300 dark:border-gray-900 shadow-slate-300 dark:shadow-gray-900 shadow-lg opacity-90 ease-in-out duration-500 transition"
       >
         <nav className="max-w-7xl w-full mx-auto px-4">
           <div className="grid grid-cols-1 md:grid-cols-2 justify-center items-center font-extrabold text-4xl md:text-5xl lg:text-6xl text-center gap-y-20 font-owners-wide">
