@@ -6,8 +6,9 @@ import ContactButton from "@/ui/misc/modal";
 import { useInView } from "framer-motion";
 import { ScrollDown } from "@/ui/misc/ScrollDown";
 import AboutCard from "./AboutCard";
-import Marquee from "@/ui/misc/marquee";
-import { InView } from "react-intersection-observer";
+import resume from "@/ui/sections/experience/experience.json";
+import { FaMapPin } from "react-icons/fa";
+
 const AboutMe = ({data, commits}: any) => {
 const [showAboutCard, setShowAboutCard ] = useState(false)
 
@@ -66,20 +67,16 @@ const card: Variants = {
 >
          <AboutCard data={data} commits={commits}/> </m.div>}
          </div>
-              <p className="w-full text-base md:text-lg lg:text-xl p-4 sm:p-8 md:pr-8 lg:pr-16 items-center min-h-full text-left text-gray-900 dark:text-slate-200 ">
-                I'm Randal. Many people call me 'Twinny' Currently excelling in
-                Web 3.0 and digital marketing services. As an artist, I am able
-                to integrate my technical skills with my artistry and personal
-                brand. I am known by my peers, personal clients, and supervisors
-                for my leadership, positive & assertive attitude, work ethic and
-                resourcefulness. I'm looking forward to applying my skills,
-                wealth of knowledge, and community to brands and ideas that
-                align with me. I am a creator of platforms, and advocate for
-                education.
-              </p>
+         {[resume].map((my: any, i) => (<div key={i}>
+              <div className="w-full text-base md:text-lg lg:text-xl p-4 sm:p-8 md:pr-8 lg:pr-16 items-center min-h-full text-left text-gray-900 dark:text-slate-200 ">
+              <div className="flex h-10 items-center">
+                <FaMapPin/>
+              <h1 className="text-sm font-semibold text-left">{my.location}</h1></div>
+              {my.summary}
+              </div>
               <div className="flex ml-6 h-fit lg:-mt-6">
                 <ContactButton color='text-blue-800 dark:text-blue-600'/>
-              </div>
+              </div></div>))}
             </div>
           </div>
         </div>
@@ -100,7 +97,6 @@ const card: Variants = {
         </div>
         
       </div>
-   
     </div>
   );
 };

@@ -28,9 +28,9 @@ function ServiceBlock({ skill, delay }: any, i: any) {
       
       animate="visible"
       transition={{ delay }}
-      className='my-2 p-3 rounded-md max-w-full  mx-auto px-16 border z-[999999]  border-slate-400 dark:border-gray-800'
+      className='my-2 p-3 rounded-md max-w-full  mx-auto md:px-16 border z-[999999]  border-slate-400 dark:border-gray-800'
     >
-      <h1 className="text-sm md:text-lg text-center font-owners-wide font-normal ">{skill}</h1>
+      <h1 className="text-xs md:text-sm lg:text-lg text-center font-owners-wide font-normal ">{skill}</h1>
     </m.div></div>
   );
 }

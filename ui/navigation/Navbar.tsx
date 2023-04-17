@@ -114,6 +114,9 @@ const NavContent = ({setShowNavContent}:any) => {
               <a href="#services">Services</a>
             </div>
             <div className="mx-4 hover:scale-105">
+              <a href="#portfolio">Portfolio</a>
+            </div>
+            <div className="mx-4 hover:scale-105">
               <a href="#contact">Contact</a>
             </div>
           </div>

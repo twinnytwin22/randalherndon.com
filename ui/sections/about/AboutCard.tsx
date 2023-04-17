@@ -22,11 +22,11 @@ function AboutCard(props: any) {
   };
 
   return (
-    <div className="flex mx-auto ">
-      <div className="p-4 bg-white rounded-xl border border-gray-200 shadow-2xl shadow-slate-300 dark:shadow-black dark:bg-black dark:border-gray-800 mx-auto content-center justify-center h- ">
+    <div className="flex mx-auto w-fit ">
+      <div className="p-4 bg-white rounded-xl border border-gray-200  max-w-sm shadow-2xl shadow-slate-300 dark:shadow-black dark:bg-black dark:border-gray-800 mx-auto content-center justify-center h- ">
         <Link href="">
           <img
-            className="w-60  lg:w-72  xl:w-96 rounded-sm gap-10 m-5 object-cover scale-100 mx-auto content-center justify-center bg-blue-900"
+            className="w-48 sm:w-60  lg:w-72  xl:w-96 rounded-sm gap-10 m-5 object-cover scale-100 mx-auto content-center justify-center bg-blue-900"
             src="/twin-transparent.png"
             alt="Collection Image"
           />
@@ -57,7 +57,7 @@ function AboutCard(props: any) {
 
         <div className="flex justify-between mx-5 items-center mt-2 h-12">
           <h2
-            className="text-base lg:text-lg font-extrabold tracking-tight text-gray-900 dark:text-white"
+            className="text-sm md:text-base lg:text-lg font-extrabold tracking-tight text-gray-900 dark:text-white"
             key=""
           >
             <Link href="https://github.com/twinnytwin22">@twinnytwin22</Link>
@@ -67,20 +67,20 @@ function AboutCard(props: any) {
               <>
                 <IoIosHeartEmpty
                   onClick={handleLike}
-                  className="text-3xl text-black dark:text-white"
+                  className=" text-2xl md:text-3xl text-black dark:text-white"
                 />
               </>
             ) : (
               <>
                 <IoIosHeart
                   onClick={handleDisLike}
-                  className="text-3xl"
+                  className="text-xl md:text-3xl"
                   fill="red"
                 />
               </>
             )}
           </div>
-          <div className="w-20 mt-2">
+          <div className="">
             <GitHubButton
               href="https://github.com/twinnytwin22"
               aria-label="Follow @twinnytwin22 on GitHub"

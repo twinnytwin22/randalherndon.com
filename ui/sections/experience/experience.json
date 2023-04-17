@@ -1,76 +1,69 @@
 {
-    "contact": {
-      "home": "3144356992",
-      "email": "randal.herndon@gmail.com",
-      "linkedin": "www.linkedin.com/in/randalherndon",
-      "personal_website": "randalherndon.com",
-      "portfolio_website": "twinnytwin.com"
+  "contact": {
+    "home": "3144356992",
+    "email": "randal.herndon@gmail.com",
+    "linkedin": "www.linkedin.com/in/randalherndon",
+    "personal_website": "randalherndon.com",
+    "portfolio_website": "twinnytwin.com"
+  },
+  "top_skills": ["Product Management", "JavaScript", "WordPress"],
+  "publications": ["Webster Journal"],
+  "name": "Randal Herndon",
+  "title": "Digital Marketing Manager | Front-end Developer | Musician",
+  "location": "Phoenix, Arizona",
+  "summary": "As an artist, I am able to integrate my technical skills with my artistry and personal brand. Known by my peers, personal clients, and supervisors for my leadership, positive & assertive attitude, work ethic and resourcefulness. I'm looking forward to applying my skills, wealth of knowledge, and community to brands and ideas that align with me.\nI am a creator of platforms, and advocate for education.",
+  "experience": [
+    {
+      "title": "Frontend Developer / Digital Marketing",
+      "company": "The CRIB Network",
+      "location": "Phoenix, Arizona",
+      "startDate": "January 2020",
+      "endDate": "Present",
+      "duration": "3 years 4 months",
+      "description": "placeholder"
     },
-    "top_skills": [
-      "Product Management",
-      "JavaScript",
-      "WordPress"
-    ],
-    "publications": [
-      "Webster Journal"
-    ],
-    "name": "Randal Herndon",
-    "title": "Digital Marketing Manager | Front-end Developer | Musician",
-    "location": "Greater Phoenix Area",
-    "summary": "Currently excelling in Web 3.0 and digital marketing services. As an artist, I am able to integrate my technical skills with my artistry and personal brand. I am known by my peers, personal clients, and supervisors for my leadership, positive & assertive attitude, work ethic and resourcefulness. I'm looking forward to applying my skills, wealth of knowledge, and community to brands and ideas that align with me.\nI am a creator of platforms, and advocate for education.",
-    "experience": [
-      {
-        "title": "Frontend Developer / Digital Marketing",
-        "company": "The CRIB Network",
-        "location": "Phoenix, Arizona",
-        "startDate": "January 2020",
-        "endDate": "Present",
-        "duration": "3 years 4 months",
-        "description": "placeholder"
-      },
-      {
-        "title": "Digital Marketing Manager",
-        "company": "Ayr Wellness Inc.",
-        "location": "Tempe, Arizona",
-        "startDate": "October 2019",
-        "endDate": "February 2022",
-        "duration": "9 months",
-        "description": "placeholder"
-      },
-      {
-        "title": "Online Business Consultant",
-        "company": "GoDaddy",
-        "location": "Phoenix, Arizona",
-        "startDate": "July 2018",
-        "endDate": "October 2019",
-        "duration": "1 year 4 months",
-        "description": "placeholder"
-      },
-      {
-        "title": "Promotions Specialist",
-        "company": "Second Street",
-        "location": "Saint Louis, Missouri",
-        "startDate": "December 2014",
-        "endDate": "June 2016",
-        "duration": "1 year 7 months",
-        "description": "placeholder"
-      }
-    ],
-    "education": [
-        {
-          "school": "Webster University",
-          "degree": "Bachelor of Arts (BA)",
-          "field": "Communication and Media Studies",
-          "startDate": "2008",
-          "endDate": "2013"
-        },
-        {
-          "school": "Webster University",
-          "degree": "Certificate",
-          "field": "Entrepreneurial and Small Business",
-          "startDate": "2008",
-          "endDate": "2011"
-        }
-      ]
+    {
+      "title": "Digital Marketing Manager",
+      "company": "Ayr Wellness Inc.",
+      "location": "Tempe, Arizona",
+      "startDate": "October 2019",
+      "endDate": "February 2022",
+      "duration": "9 months",
+      "description": "placeholder"
+    },
+    {
+      "title": "Online Business Consultant",
+      "company": "GoDaddy",
+      "location": "Phoenix, Arizona",
+      "startDate": "July 2018",
+      "endDate": "October 2019",
+      "duration": "1 year 4 months",
+      "description": "placeholder"
+    },
+    {
+      "title": "Promotions Specialist",
+      "company": "Second Street",
+      "location": "Saint Louis, Missouri",
+      "startDate": "December 2014",
+      "endDate": "June 2016",
+      "duration": "1 year 7 months",
+      "description": "placeholder"
+    }
+  ],
+  "education": [
+    {
+      "school": "Webster University",
+      "degree": "Bachelor of Arts (BA)",
+      "field": "Communication & Media Studies",
+      "startDate": "2008",
+      "endDate": "2013"
+    },
+    {
+      "school": "Webster University",
+      "degree": "Certificate",
+      "field": "Entrepreneurial & Small Business",
+      "startDate": "2008",
+      "endDate": "2011"
+    }
+  ]
 }
-    

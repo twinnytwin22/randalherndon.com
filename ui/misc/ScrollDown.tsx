@@ -16,7 +16,7 @@ export const ScrollDown = ({color}:any) => {
 
 export const ScrollDown2 = ({color}:any) => {
   return (
-      <div className=" absolute left-0 right-0 bottom-0 text-sm items-center ">
+      <div className="absolute left-0 right-0 bottom-0 text-sm  flex text-center w-full content-center items-center">
       <h1 className="tracking-normal ">Scroll Down</h1>
         <IoIosArrowForward className="text-2xl animate-pulse" />
         <IoIosArrowForward className="text-2xl animate-pulse" style={{animationDelay: '0.5s'}} />

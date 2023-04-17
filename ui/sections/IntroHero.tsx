@@ -64,7 +64,7 @@ export default function IntroHero() {
       <ScrollDown color="black"/></div>
 
       <div className="grid lg:grid-cols-12 lg:mx-8 2xl:mx-16 min-h-screen place-items-center px-8 ">
-        <div className="content-center justify-center min-w-full h-fit lg:col-span-7 col-span-12 mx-auto ml-2 space-y-6 xl:text-6xl 2xl:text-7xl  text-4xl sm:text-5xl lg:order-1 order-2">
+        <div className="content-center justify-center min-w-full h-full md:h-fit lg:col-span-7 col-span-12 mx-auto ml-2 space-y-2 md:space-y-6 xl:text-6xl 2xl:text-7xl  text-4xl sm:text-5xl lg:order-1 order-2">
           <h1 className=" text-left text-black dark:text-white">Hello,</h1>
           <h1 className="text-left text-black dark:text-white">I'm Randal,</h1>
           <m.h1

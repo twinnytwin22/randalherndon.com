@@ -111,14 +111,14 @@ const ContactForm = ({ handleInputClick }: any) => {
         <div className="flex">
           <button
             type="submit"
-            className="py-3 px-5 text-sm font-medium  text-center text-white dark:text-black rounded-lg dark:bg-white bg-black sm:w-fit hover:bg-primary-800 focus:ring-4 focus:outline-none focus:ring-primary-300 dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800 hover:scale-105"
+            className="py-3 px-5 text-xs md:text-sm font-medium  text-center text-white dark:text-black rounded-lg dark:bg-white bg-black sm:w-fit hover:bg-primary-800 focus:ring-4 focus:outline-none focus:ring-primary-300 dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800 hover:scale-105"
           >
             Send message
           </button>
 
           <Link
             href="https://calendly.com/djtwinnytwin/1on1"
-            className="ml-6 py-3 px-5 text-sm font-medium text-center text-white dark:text-black rounded-lg dark:bg-white bg-black sm:w-fit hover:bg-primary-800 focus:ring-4 focus:outline-none focus:ring-primary-300 dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800 hover:scale-105"
+            className="ml-6 py-3 px-5 text-xs md:text-sm font-medium text-center text-white dark:text-black rounded-lg dark:bg-white bg-black sm:w-fit hover:bg-primary-800 focus:ring-4 focus:outline-none focus:ring-primary-300 dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800 hover:scale-105"
           >
             Schedule a meeting
           </Link>
