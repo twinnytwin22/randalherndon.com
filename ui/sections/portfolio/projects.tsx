@@ -1,20 +1,27 @@
 export const projects = [
-    {
-      title: "Project 1",
-      description: "This is project 1",
-      imageUrl: "https://i.imgur.com/3S89OFw.png",
-      url: "https://example.com/project1",
-    },
-    {
-      title: "Project 2",
-      description: "This is project 2",
-      imageUrl: "https://i.imgur.com/p6YCJdG.jpeg",
-      url: "https://example.com/project2",
-    },
-    {
-      title: "Project 3",
-      description: "This is project 3",
-      imageUrl: "https://i.imgur.com/5D8dPZO.jpeg",
-      url: "https://example.com/project3",
-    },
-  ];
+  {
+    title: "Web 3 Creator Manager",
+    description:
+      "Portfolio, web 3 commerce, and engagement manager for creators, providing discoverability to previous drops that would often get lost with new releases.",
+    images: [
+      
+         "/images/portfolio/web3-manager/manager-screen-mobile.png",
+        "/images/portfolio/web3-manager/manager-screen-desktop.png",
+        "https://i.imgur.com/3S89OFw.png",
+      
+    ],
+    repo: '',
+
+    url: "https://thecrib.space",
+    stack: [
+      {
+        name: "React",
+        logo: null,
+      },
+      {
+        name: "NextJs",
+        logo: null,
+      },
+    ],
+  },
+];

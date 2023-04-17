@@ -3,127 +3,171 @@ import { useState, useRef } from "react";
 import { GradientText } from "@/ui/misc/GradientText";
 import { projects } from "./projects";
 import { ScrollBoth, ScrollDown } from "@/ui/misc/ScrollDown";
-import { useInView } from "framer-motion"
-
+import { useInView } from "framer-motion";
+import Slider from "react-slick";
 
 const Portfolio = () => {
   const [currentProjectIndex, setCurrentProjectIndex] = useState(0);
   const [showProjectDetails, setShowProjectDetails] = useState(false);
-  const [currentProjectImageUrl, setCurrentProjectImageUrl] = useState(projects[0].imageUrl);
-  const ref = useRef(null)
-  const isInView = useInView(ref)
+  console.log(projects);
+  const [currentProjectImages, setCurrentProjectImages] = useState(
+    projects[0].images
+  );
+  const ref = useRef(null);
+  const isInView = useInView(ref);
 
   var settings = {
     dots: true,
     infinite: true,
     speed: 500,
     slidesToShow: 1,
-    slidesToScroll: 1
+    slidesToScroll: 1,
   };
 
   const renderLarge = () => {
     return (
-
-      <div className="dark:bg-neutral-950 bg-slate-200 mx-auto h-screen w-full border-t-4 dark:border-white border-black " id='portfolio'>
+      <div
+        className="dark:bg-neutral-950 bg-slate-200 mx-auto h-screen w-full border-t-4 dark:border-white border-black "
+        id="portfolio"
+      >
         <div className="w-full columns-1 lg:columns-2 max-w-screen min-h-screen h-full flex  lg:flex-row overflow-x-hidden">
           <div className="flex mx-auto space-y-6 items-center content-center justify-center bg-slate-100 dark:bg-black h-full w-full overflow-clip ">
-            <img src={currentProjectImageUrl} alt={projects[currentProjectIndex].title} />
-          </div>
-          <div id="portfolio-details" className="h-full w-full items-center flex content-center justify-center">
-            <div className="flex">
-              <div className={`portfolio-details ${showProjectDetails ? "" : "hidden"}`}>
-                <GradientText>{projects[currentProjectIndex].title}</GradientText>
-                <p>{projects[currentProjectIndex].description}</p>
-                <a href={projects[currentProjectIndex].url} target="_blank" rel="noopener noreferrer">
-                  View Project
-                </a>
-              </div>
-              <div className="portfolio-selector h-screen w-full mx-auto items-center content-center snap-y overflow-y-scroll overflow-x-hidden snap-mandatory">
-                <div className="">
-                  <ScrollBoth /></div>
+            <div className="max-w-sm">
+              <Slider {...settings}>
+                {currentProjectImages.map((image, index) => (
+                  <img
+                    key={index}
+                    className="max-h-72"
+                    src={image}
+                    alt={`${projects[currentProjectIndex].title} - Image ${index}`}
+                  />
+                ))}</Slider>
 
-                <div className="min-w-[50vw] mx-auto content-center justify-center w-full flex flex-col ">
+
+            </div>
+          </div>
+
+          <div className="portfolio-selector h-screen w-full mx-auto items-center content-center snap-y overflow-y-scroll overflow-x-hidden snap-mandatory">
+            <ScrollBoth />
+
+            <div className="min-w-[50vw] mx-auto content-center justify-center w-full flex flex-col ">
+              {projects.map((project, index) => (
+                <div
+                  key={index}
+                  className="h-screen min-w-full flex items-center mx-auto content-center snap-normal snap-center"
+                  ref={ref}
+                >
+                  <div className="w-full flex flex-col items-center">
+                    <h1 className="text-4xl text-center p-4"> {project.title}</h1>
+                    <p className="max-w-sm p-2.5 text-center">{project.description}</p>
+                    <div className="grid grid-cols-4 space-x-2 p-4">
+                      {project.stack.map((stack: any, i) => (
+                        <div className="" key={i}>
+                          <span className="bg-gray-100 text-gray-800 text-sm font-medium mr-2 px-2.5 py-0.5 rounded dark:bg-gray-700 dark:text-gray-300">{stack.name}</span>
+                        </div>
+                      ))}</div>
+                    <button
+                      key={index}
+                      className={`portfolio-selector-item p-4 w-36 bg-black dark:bg-white text-white items-center dark:text-black rounded-lg mx-auto ${index === currentProjectIndex ? "active" : ""
+                        }`}
+                      onClick={() => {
+                        setCurrentProjectIndex(index);
+                        setCurrentProjectImages(project?.images);
+                        setShowProjectDetails(false);
+                      }}
+                    >
+                      View Live
+                    </button>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+      </div>
+    );
+  };
+
+  const renderSmall = () => {
+    return (
+      <div className="min-w-screen min-h-screen mx-auto w-full static">
+        <div className="flex flex-col h-screen min-w-screen w-full">
+          <div className="h-full min-h-[55vh] p-8 md:p-20">
+            <div className="flex mx-auto space-y-6 items-center content-center justify-center bg-slate-100 dark:bg-black h-full w-full overflow-clip ">
+            <div className="max-w-sm px-4">
+              <Slider {...settings}>
+                {currentProjectImages.map((image, index) => (
+                  <img
+                    key={index}
+                    className="max-h-72"
+                    src={image}
+                    alt={`${projects[currentProjectIndex].title} - Image ${index}`}
+                  />
+                ))}</Slider>
+
+
+            </div>
+            </div>
+          </div>
+          <div className="bg-slate-200 dark:bg-neutral-950 h-full">
+            <div
+              id="portfolio-details"
+              className="h-full w-full items-center flex content-center justify-center"
+            >
+              <div className="portfolio-selector h-full w-full max-w-screen mx-auto items-center content-center snap-x overflow-x-scroll overflow-y-hidden snap-mandatory">
+                <div className="max-w-screen mx-auto content-center justify-center w-full flex ">
                   {projects.map((project, index) => (
-                    <div key={index} className="h-screen min-w-full flex items-center mx-auto content-center snap-normal snap-center" ref={ref}>
+                    <div
+                      key={index}
+                      className="h-full min-h-[45vh] min-w-full max-w-screen w-full flex items-center mx-auto content-center snap-normal snap-center"
+                      ref={ref}
+                    >
                       <div className="w-full flex flex-col">
-                        <h1 className="text-4xl text-center"> {project.title}</h1>
+                        <h1 className="text-3xl md:text-4xl text-center">
+                          {project.title}
+                        </h1>
+                        <p className="max-w-sm p-2.5 text-center mx-auto">{project.description}</p>
+
+                        <div className="grid grid-cols-4 space-x-2 p-4 mx-auto">
+                      {project.stack.map((stack: any, i) => (
+                        <div className="" key={i}>
+                          <span className="bg-gray-100 text-gray-800 text-sm font-medium mr-2 px-2.5 py-0.5 rounded dark:bg-gray-700 dark:text-gray-300">{stack.name}</span>
+                        </div>
+                      ))}</div>
                         <button
                           key={index}
-                          className={`portfolio-selector-item p-4 w-36 bg-black dark:bg-white text-white items-center dark:text-black rounded-lg mx-auto ${index === currentProjectIndex ? "active" : ""}`}
+                          className={`portfolio-selector-item p-4 w-36 bg-black dark:bg-white text-white items-center dark:text-black rounded-lg mx-auto ${index === currentProjectIndex ? "active" : ""
+                            }`}
                           onClick={() => {
                             setCurrentProjectIndex(index);
-                            setCurrentProjectImageUrl(project.imageUrl);
+                            setCurrentProjectImages(project.images);
                             setShowProjectDetails(false);
                           }}
                         >
                           View Live
                         </button>
-                      </div></div>
-                  ))}</div>
+                      </div>
+                    </div>
+                  ))}
+                </div>
               </div>
             </div>
           </div>
         </div>
       </div>
     );
-  }
+  };
 
-  const renderSmall = () => {
-    return (
-      <div className="min-w-screen min-h-screen mx-auto w-full">
-
-        <div className="flex flex-col h-screen min-w-screen w-full">
-          <div className="h-full min-h-[55vh] p-8 md:p-20">
-            <div className="flex mx-auto space-y-6 items-center content-center justify-center bg-slate-100 dark:bg-black h-full w-full overflow-clip ">
-              <img src={currentProjectImageUrl} alt={projects[currentProjectIndex].title} />
-            </div>
-
-          </div>
-          <div className="bg-slate-200 dark:bg-neutral-950 h-full">
-
-            <div id="portfolio-details" className="h-full w-full items-center flex content-center justify-center">
-              <div className="flex">
-                <div className={`portfolio-details ${showProjectDetails ? "" : "hidden"}`}>
-                  <GradientText>{projects[currentProjectIndex].title}</GradientText>
-                  <p>{projects[currentProjectIndex].description}</p>
-                  <a href={projects[currentProjectIndex].url} target="_blank" rel="noopener noreferrer">
-                    View Project
-                  </a>
-                </div>
-                <div className="portfolio-selector h-full w-full max-w-screen mx-auto items-center content-center snap-x overflow-x-scroll overflow-y-hidden snap-mandatory">
-                <div className="max-w-screen mx-auto content-center justify-center w-full flex ">
-                  {projects.map((project, index) => (
-                    <div key={index} className="h-full min-h-[45vh] min-w-full max-w-screen w-full flex items-center mx-auto content-center snap-normal snap-center" ref={ref}>
-                      <div className="w-full flex flex-col">
-                        <h1 className="text-4xl text-center"> {project.title}</h1>
-                        <button
-                          key={index}
-                          className={`portfolio-selector-item p-4 w-36 bg-black dark:bg-white text-white items-center dark:text-black rounded-lg mx-auto ${index === currentProjectIndex ? "active" : ""}`}
-                          onClick={() => {
-                            setCurrentProjectIndex(index);
-                            setCurrentProjectImageUrl(project.imageUrl);
-                            setShowProjectDetails(false);
-                          }}
-                        >
-                          View Live
-                        </button>
-                      </div></div>
-                  ))}</div>
-                </div>
-              </div>
-            </div>
-
-          </div>
-
-        </div>
+  return (
+    <>
+      <div className="hidden lg:block w-full mx-auto min-h-screen">
+        {renderLarge()}
       </div>
-    )
-  }
-
-  return (<>
-    <div className="hidden lg:block w-full mx-auto min-h-screen">{renderLarge()}</div>
-    <div className="block lg:hidden w-full mx-auto min-h-screen">{renderSmall()}</div></>
-  )
+      <div className="block lg:hidden w-full mx-auto min-h-screen">
+        {renderSmall()}
+      </div>
+    </>
+  );
 };
 
 export default Portfolio;
