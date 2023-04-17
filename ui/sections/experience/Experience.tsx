@@ -4,7 +4,8 @@ import resume from "./experience.json";
 import skillsets from "./skillsets.json";
 import ContactButton from "@/ui/misc/modal";
 import { useAnimate, useInView, stagger, m } from "framer-motion";
-
+import Slider from "react-slick";
+import { ScrollDown, ScrollDown2 } from "@/ui/misc/ScrollDown";
 function useStaggerAnimation(showExp: boolean) {
   const [scope, animate] = useAnimate();
   useEffect(() => {
@@ -20,6 +21,13 @@ const [ showExp, setShowExp ] = useState(false)
   const isInView = useInView(ref)
   const colors = ['bg-red-500', 'bg-blue-500', 'bg-green-500', 'bg-yellow-500', 'bg-purple-500', 'bg-pink-500'];
   const scope = useStaggerAnimation(showExp)
+  var settings = {
+    dots: true,
+    infinite: true,
+    speed: 500,
+    slidesToShow: 1,
+    slidesToScroll: 1,
+  };
 
   useEffect(() => {
     if (isInView) {
@@ -33,24 +41,13 @@ const [ showExp, setShowExp ] = useState(false)
   }, [isInView]);
 console.log(isInView, skillsets,'skillsets')
   return (
-    <div className="h-screen w-full items-center" id="experience" ref={ref}>
-      <div className="flex items-center flex-col-reverse md:grid grid-cols-12 w-full h-full place-items-center" >
-        <div className="col-span-6 h-full items-center flex">
-          <div className="grid grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 items-center h-fit" ref={scope} >
-            {skillsets.skills.map(({ name }: any, index: number) => (
-              <m.h2
-                ref={ref}
-                key={index}
-                className={`md:h-24 flex items-center justify-center text-white hover:scale-105 text-base p-3 font-normal font-[owners-wide] rounded-lg ${colors[Math.floor(Math.random() * colors.length)]}`}
-                initial={{ opacity: 0, y: 20 }}
-              >
-                {name}
-              </m.h2>
-            )) }
-            <ContactButton />
-          </div>
-        </div>
-        <div className="col-span-6 flex flex-col content-start">
+    <>
+    <div className="flex min-h-screen w-full items-center mx-auto content-center" id="experience" ref={ref}>
+      <div className="flex items-center flex-col lg:grid grid-cols-12 w-full h-full place-items-center mx-auto" >
+       
+        <div className="col-span-6 flex flex-col lg:mt-24 content-start max-w-xs sm:max-w-sm md:max-w-md mx-auto h-fit">
+        <Slider {...settings} className="mb-8 p-4 rounded-lg bg-slate-200 dark:bg-neutral-950 ">
+          <>
           <h1 className="text-3xl">Education</h1>
 
           <div className="md:grid grid-cols-2">
@@ -66,9 +63,11 @@ console.log(isInView, skillsets,'skillsets')
               </div>
             ))}
           </div>
-
-          <h1 className="text-3xl">Experience</h1>
+          </>
+          <>
           <div className="">
+          <h1 className="text-3xl">Experience</h1>
+         
 
             {resume.experience.slice(0, 2).map((job: any, i: any) => (
             <div key={i} className="p-2.5">
@@ -85,10 +84,36 @@ console.log(isInView, skillsets,'skillsets')
 </div>
             </div>
           ))}
+        </div></></Slider>
+        <div className="hidden lg:block">         
+           <ContactButton /></div>
         </div>
+         <div className="col-span-6 h-full items-center flex">
+          <div>
+          <div className="grid grid-cols-3 md:grid-cols-3 lg:grid-cols-3 xl:grid-cols-4 gap-4 items-center h-fit  max-w-xs sm:max-w-sm md:max-w-md"  ref={scope} >
+            {skillsets.skills.map(({ name }: any, index: number) => (
+              <m.h2
+                ref={ref}
+                key={index}
+                className={`lg:h-20 flex items-center justify-center text-white hover:scale-105 text-sm md:text-base p-3 font-normal font-[owners-wide] rounded-lg ${colors[Math.floor(Math.random() * colors.length)]}`}
+                initial={{ opacity: 0, y: 20 }}
+              >
+                {name}
+              </m.h2>
+            )) }
+                  
+          </div> 
+           <div className="block lg:hidden mt-12">  <ContactButton />
+          </div></div>
+          
         </div>
       </div>
+     
+      
+        <ScrollDown2/>
     </div>
+    
+    </>
   );
 };
 

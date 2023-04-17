@@ -7,7 +7,10 @@ module.exports = {
     './ui/**/*.{js,ts,jsx,tsx}',
     './app/**/*.{js,ts,jsx,tsx}',
   ],
-  theme: {
+  theme: { 
+    extend: {
+  
+  },
     
     extend: {
       backgroundImage: {
