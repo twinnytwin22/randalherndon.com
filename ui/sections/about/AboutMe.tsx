@@ -76,7 +76,7 @@ const card: Variants = {
               <p className="text-base lg:text-xl text-ellipsis">
               {my.summary}</p></div>
               </div>
-              <div className="flex ml-6 h-fit lg:-mt-6">
+              <div className="flex ml-6 h-fit -mt-3 lg:-mt-6">
                 <ContactButton color='text-blue-800 dark:text-blue-600'/>
               </div></div>))}
             </div>

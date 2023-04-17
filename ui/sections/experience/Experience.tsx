@@ -51,7 +51,7 @@ const [ showExp, setShowExp ] = useState(false)
       <div className="flex items-center flex-col lg:grid grid-cols-12 w-full h-full place-items-center mx-auto" >
        
         <div className="col-span-6 flex flex-col lg:mt-24 content-start max-w-xs sm:max-w-sm md:max-w-lg mx-auto h-fit">
-        <Slider {...settings} className="mb-8 p-8 sm:p-12 rounded-lg bg-slate-200 dark:bg-neutral-950 shadow-lg  shadow-slate-300 dark:shadow-gray-900 border border-slate-300 dark:border-gray-800">
+        <Slider {...settings} className="mb-8 p-8 sm:p-12 h-fit rounded-lg bg-slate-200 dark:bg-neutral-950 shadow-lg  shadow-slate-300 dark:shadow-gray-900 border border-slate-300 dark:border-gray-800">
           <>
           <h1 className="text-xl md:text-3xl">Education</h1>
 
