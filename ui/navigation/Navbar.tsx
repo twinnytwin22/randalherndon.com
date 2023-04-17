@@ -27,7 +27,7 @@ const Navbar = () => {
               delay: 0.5,
               ease: [0, 0.71, 0.2, 1.01],
             }}
-            className="fixed flex items-center justify-between top-3 right-0 left-0 w-[90vw] max-w-lg md:max-w-5xl mx-auto py-4 px-8 rounded-xl transition-all duration-300 dark:bg-black bg-slate-200 border-slate-300 dark:border-gray-900 shadow-slate-300 dark:shadow-gray-700 shadow-sm border opacity-80"
+            className="fixed flex items-center justify-between top-3 right-0 left-0 w-[90vw] max-w-lg md:max-w-5xl mx-auto py-2.5 px-8 rounded-xl transition-all duration-300 dark:bg-black bg-slate-200 border-slate-300 dark:border-gray-900 shadow-slate-300 dark:shadow-gray-700 shadow-sm border opacity-80"
           >
             <RHLogo/>
             <h1 className="font-professor text-xl">Randal Herndon</h1>
@@ -37,12 +37,12 @@ const Navbar = () => {
               </div>
               <div
                 onClick={handleShowContent}
-                className={`border-2 dark:border-slate-200 border-gray-900 rounded-full ${
+                className={`border-2  dark:border-slate-200 border-gray-900 rounded-full ${
                   showNavContent && "rotate-90 ease-in-out duration-300"
                 } `}
               >
                 <svg
-                  className="w-10 p-3"
+                  className="w-8 p-1"
                   fill="none"
                   stroke="currentColor"
                   strokeWidth={3}
