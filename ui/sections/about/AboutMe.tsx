@@ -71,8 +71,10 @@ const card: Variants = {
               <div className="w-full text-base md:text-lg lg:text-xl p-4 sm:p-8 md:pr-8 lg:pr-16 items-center min-h-full text-left text-gray-900 dark:text-slate-200 ">
               <div className="flex h-10 items-center">
                 <FaMapPin/>
-              <h1 className="text-sm font-semibold text-left">{my.location}</h1></div>
-              {my.summary}
+              <h1 className="text-sm  h-fit font-semibold text-left">{my.location}</h1></div>
+              <div className="overflow-auto h-36 md:h-full p-4">
+              <p className="text-base lg:text-xl text-ellipsis">
+              {my.summary}</p></div>
               </div>
               <div className="flex ml-6 h-fit lg:-mt-6">
                 <ContactButton color='text-blue-800 dark:text-blue-600'/>

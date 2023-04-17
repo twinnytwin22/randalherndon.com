@@ -45,7 +45,7 @@ const [ showExp, setShowExp ] = useState(false)
 
 
   return (
-    <>        <ScrollDown2/>
+    <>        
 
     <div className="flex min-h-screen w-full items-center mx-auto content-center" id="experience" ref={ref}>
       <div className="flex items-center flex-col lg:grid grid-cols-12 w-full h-full place-items-center mx-auto" >

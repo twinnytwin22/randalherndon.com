@@ -12,7 +12,7 @@ export default async function Home() {
   const owner = 'getredash';
   const repo = 'redash';
   const sha = 'master';
-  const commits = await getAllCommits({owner,repo,sha})
+  const commits = '1771'
   return (
 
     
