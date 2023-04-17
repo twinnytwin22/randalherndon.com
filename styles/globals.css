@@ -4,6 +4,13 @@
 @import url("https://use.typekit.net/yka6cyh.css");
 
 
+html, body {
+  overflow-x: hidden;
+}
+body {
+  position: relative
+}
+
 h1 {
   font-family: "owners-wide", sans-serif;
   font-weight: 700;
