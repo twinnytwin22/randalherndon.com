@@ -29,10 +29,10 @@ const Services = () => {
     >
       <ScrollDown />
       <div className="grid grid-cols-6 xl:grid-cols-12 max-w-screen-2xl min-h-full place-items-center px-8 mx-auto">
-        <div className="w-full col-span-6 mx-auto ml-2 space-y-6 xl:text-8xl text-5xl nd:text-7xl items-center content-center justify-center mt-20 lg:mt-28 xl:mt-0">
+        <div className="w-full col-span-6 mx-auto ml-2 space-y-6 xl:text-8xl text-5xl nd:text-7xl items-center content-center justify-center mt-12 lg:mt-28 xl:mt-0">
           <h1 className="text-center">Services</h1>
           <p className="text-xs sm:text-base md:text-lg text-center max-w-md mx-auto">
-            {primarySkills[0].description}
+            {!primarySkills[0].description}
           </p>
           <div className="flex content-center justify-center">
             <ContactButton />
