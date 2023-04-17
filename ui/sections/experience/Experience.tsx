@@ -109,7 +109,7 @@ const [ showExp, setShowExp ] = useState(false)
             )) }
                   
           </div> 
-           <div className="flex lg:hidden h-fit mt-12 space-x-5">  <ContactButton /> 
+           <div className="flex lg:hidden h-fit mt-8 space-x-5">  <ContactButton /> 
         <DownloadButton/>  
           </div></div>
           
