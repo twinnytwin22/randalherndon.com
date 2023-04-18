@@ -203,10 +203,10 @@ const Portfolio = () => {
 
   return (
     <>
-      <div className="hidden lg:block w-full mx-auto min-h-screen">
+      <div className="hidden lg:block w-full mx-auto min-h-screen relative">
         {renderLarge()}
       </div>
-      <div className="block lg:hidden w-full mx-auto min-h-screen">
+      <div className="block lg:hidden w-full mx-auto min-h-screen relative">
         {renderSmall()}
       </div>
     </>
