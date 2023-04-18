@@ -21,7 +21,7 @@ export async function POST(req: Request) {
     <html>
       <head>
         <meta charset="utf-8">
-        <title>The CRIB Contact Form</title>
+        <title>Submission for RandalHerndon.com</title>
         <style>
         /* Reset styles to ensure consistent rendering across email clients */
         body,
@@ -84,11 +84,9 @@ export async function POST(req: Request) {
       </style>
       </head>
       <body>
-        <div class="header">
-          <img src="https://i.imgur.com/zSDBgrb.png" alt="Logo" width="300" height="150" />
-        </div>
+    
         <div class="content">
-          <h1>New Message from the TheCrib.Network Contact Form</h1>
+          <h1>New Message for Randal Herndon</h1>
           <p><strong>Name:</strong> ${name}</p>
           <p><strong>Email:</strong>${email}</p>
           <p><strong>Subject:</strong> ${subject}</p>
@@ -96,7 +94,7 @@ export async function POST(req: Request) {
         </div>
         <div class="footer">
           <p>&copy; 2023 The CRIB. All rights reserved.</p>
-          <p><a href="https://thecrib.network/">thecrib.network</a></p>
+          <p><a href="https://randalherndon.com/">Randal Herndon</a></p>
         </div>
       </body>
     </html>

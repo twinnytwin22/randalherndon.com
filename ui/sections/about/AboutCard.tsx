@@ -8,7 +8,6 @@ import MyGitHubButton from "@/ui/buttons/CustomGitHubButton";
 import { m } from "framer-motion";
 import { FollowButton } from "@/lib/followOnGitbhub";
 function AboutCard(props: any) {
-  console.log(props);
   const commits = props?.commits;
   const data = props?.data;
   const [like, setLike] = useState(false);

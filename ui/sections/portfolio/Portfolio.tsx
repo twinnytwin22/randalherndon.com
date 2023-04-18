@@ -2,34 +2,42 @@
 import { useState, useRef, useEffect } from "react";
 import { projects } from "./projects";
 import { ScrollBoth, ScrollDown } from "@/ui/misc/ScrollDown";
-import { InView, useInView } from "react-intersection-observer";
+import { useInView } from "react-cool-inview";
 import Slider from "react-slick";
 import ContactButton from "@/ui/misc/modal";
-import { useMotionValue } from "framer-motion";
 import { FaArrowLeft, FaArrowRight } from "react-icons/fa";
 
 const Portfolio = () => {
   const [currentProjectIndex, setCurrentProjectIndex] = useState(0);
-  console.log(projects);
   const [currentProjectImages, setCurrentProjectImages] = useState(
     projects[0].images
   );
-  const {
-    ref: myRef,
-    inView: myElementIsVisible,
-    entry,
-  } = useInView({
-    threshold: 0,
-    onChange: (inView) => {
-      if (inView) {
-        console.log(inView, "hoe");
-      }
+  const { inView,observe,entry } = useInView<HTMLDivElement>({
+    root: null,
+    // Track the actual visibility of the target
+    // Set a minimum delay between notifications, it must be set to 100 (ms) or greater
+    // For performance perspective, use the largest tolerable value as much as possible
+    delay: 100,
+    onEnter: () => {
+      console.log('here')
+      // Triggered when the target is visible and enters the viewport
     },
-  });
-  const { ref: projectRef, inView: newProjectVisible } = useInView({
-    threshold: 0,
-  });
-  console.log("visible", myElementIsVisible, "entry", entry);
+    onLeave: () => {
+    
+      console.log('gone')
+      // Triggered when the target is visible and leaves the viewport
+    },
+    onChange: () => {
+      console.log('change')
+    }
+  } );
+
+
+  if (inView) {
+    console.log('in view' ,entry?.target.children)
+  } else{
+    console.log('out of view')
+  }
 
   var settings = {
     dots: true,
@@ -42,11 +50,11 @@ const Portfolio = () => {
   const renderLarge = () => {
     return (
       <div
-        className="dark:bg-neutral-950 bg-slate-200 mx-auto h-screen w-full border-t-4 dark:border-white border-black "
+        className="dark:bg-neutral-950 bg-slate-200 mx-auto h-screen w-full border-t-4 dark:border-white border-black relative overflow-hidden"
         id="portfolio"
       >
-        <div className="w-full columns-1 lg:columns-2 max-w-screen min-h-screen h-full flex  lg:flex-row overflow-x-hidden">
-          <div className="flex mx-auto space-y-6 items-center content-center justify-center bg-slate-100 dark:bg-black h-full w-full overflow-clip ">
+        <div className="w-full columns-1 lg:columns-2 max-w-screen min-h-screen h-full flex  lg:flex-row overflow-hidden relative">
+          <div className="flex mx-auto space-y-6 items-center content-center justify-center bg-slate-100 dark:bg-black h-full w-full overflow-hidden " ref={observe}>
             <div className="max-w-lg w-full content-center mx-auto relative">
               <Slider {...settings}>
                 {currentProjectImages?.map((images, index) => (
@@ -61,23 +69,24 @@ const Portfolio = () => {
             </div>
           </div>
 
-          <div className="portfolio-selector h-screen w-full mx-auto items-center content-center snap-y overflow-y-scroll overflow-x-hidden snap-mandatory">
-            <ScrollBoth />
+          <div className="portfolio-selector h-screen w-full mx-auto items-center content-center snap-y overflow-y-scroll overflow-x-hidden snap-mandatory relative">
+            
+            <div className="fixed"><ScrollBoth /></div>
 
-            <div
-              className="min-w-[50vw] mx-auto content-center justify-center w-full flex flex-col"
-              ref={myRef as any}
+            <div 
+              className="min-w-[50vw] mx-auto content-center justify-center w-full flex flex-col" 
+            
             >
               {projects?.map((project, index) => (
-                <InView
+                <div
                   key={index}
-                  className="h-full min-h-screen min-w-full flex items-center mx-auto content-center snap-normal snap-center"
+                  className={`h-full min-h-screen min-w-full flex items-center mx-auto content-center snap-normal snap-center relative ${project.title}`}
                 >
                   <div
-                    className="w-full flex flex-col items-center"
-                    ref={projectRef as any}
+                    className="w-full flex flex-col items-center"                   
+              
                   >
-                    <h1 className="text-4xl text-center p-4">
+                    <h1 className="text-4xl text-center p-4" id={project.title} >
                       {" "}
                       {project?.title}
                     </h1>
@@ -110,7 +119,7 @@ const Portfolio = () => {
                       <ContactButton />
                     </div>
                   </div>
-                </InView>
+                </div>
               ))}
             </div>
           </div>
@@ -148,8 +157,9 @@ const Portfolio = () => {
                 <div className="max-w-screen mx-auto content-center justify-center w-full flex ">
                   {projects.map((project, index) => (
                     <div
+
                       key={index}
-                      className="h-full min-h-[45vh] min-w-full max-w-screen w-full flex items-center mx-auto content-center snap-normal snap-center"
+                      className={`h-full min-h-[45vh] min-w-full max-w-screen w-full flex items-center mx-auto content-center snap-normal snap-center `}
                     >
                       <div className="w-full flex flex-col">
                         <h1 className="text-3xl md:text-4xl text-center">
@@ -203,10 +213,10 @@ const Portfolio = () => {
 
   return (
     <>
-      <div className="hidden lg:block w-full mx-auto min-h-screen relative">
+      <div className="hidden lg:block w-full mx-auto min-h-screen max-h-screen relative">
         {renderLarge()}
       </div>
-      <div className="block lg:hidden w-full mx-auto min-h-screen relative">
+      <div className="block lg:hidden w-full mx-auto min-h-screen max-h-screen relative">
         {renderSmall()}
       </div>
     </>

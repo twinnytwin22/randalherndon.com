@@ -1,7 +1,7 @@
 "use client";
 import React, { useState, useEffect, useRef } from "react";
 import { useInView } from "framer-motion"
-import { primarySkills } from "@/lib/skill";
+import { primarySkills } from "@/ui/sections/services/skill";
 import ServiceBlock from "./serviceBlock";
 import { ScrollDown } from "@/ui/misc/ScrollDown";
 import ContactButton from "@/ui/misc/modal";
@@ -17,7 +17,6 @@ const Services = () => {
       setShowSkillBlocks(true);
     } else {
       setShowSkillBlocks(false)
-      console.log('out of view')
     }
   }, [isInView]);
 

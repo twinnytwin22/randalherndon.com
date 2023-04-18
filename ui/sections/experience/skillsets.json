@@ -4,6 +4,9 @@
         "name": "JavaScript"
       },
       {
+        "name": "GraphQl"
+      },
+      {
         "name": "Typescript"
       },
       {
@@ -16,14 +19,24 @@
         "name": "NextJS"
       },
       {
-        "name": "Framer Motion"
+        "name": "TailwindCSS"
       },
       {
-        "name": "Web3.js"
+        "name": "Wordpress"
       },
       {
         "name": "Ethers.js"
+      },
+      {
+        "name": "Redux"
+      },
+      {
+        "name": "API"
+      },
+      {
+        "name": "Adobe Suite"
       }
+      
     ]
   }
   

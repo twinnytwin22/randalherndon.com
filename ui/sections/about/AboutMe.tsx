@@ -19,7 +19,6 @@ useEffect(() => {
     setShowAboutCard(true);
   } else {
     setShowAboutCard(false)
-    console.log('card out of view')
   }
 }, [isInView]);
 
@@ -39,7 +38,6 @@ const card: Variants = {
   },
 };
   
-  console.log(commits, data)
   return (
     <> <div className="absolute top-0 left-0 w-full h-full bg-slate-100 dark:bg-black  opacity-10 bg-cover bg-[url(https://i.imgur.com/XqbXLxL.png)]" />
     <div
