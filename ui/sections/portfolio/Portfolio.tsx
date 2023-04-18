@@ -1,27 +1,36 @@
 "use client";
 import { useState, useRef, useEffect } from "react";
 import { projects } from "./projects";
-import { ScrollBoth, ScrollDown,  } from "@/ui/misc/ScrollDown";
-import { InView, useInView } from 'react-intersection-observer';
+import { ScrollBoth, ScrollDown } from "@/ui/misc/ScrollDown";
+import { InView, useInView } from "react-intersection-observer";
 import Slider from "react-slick";
 import ContactButton from "@/ui/misc/modal";
 import { useMotionValue } from "framer-motion";
+import { FaArrowLeft, FaArrowRight } from "react-icons/fa";
 
 const Portfolio = () => {
   const [currentProjectIndex, setCurrentProjectIndex] = useState(0);
-  const [showProjectDetails, setShowProjectDetails] = useState(false);
   console.log(projects);
   const [currentProjectImages, setCurrentProjectImages] = useState(
     projects[0].images
   );
-  const { ref, inView, entry } = useInView({
-    /* Optional options */
+  const {
+    ref: myRef,
+    inView: myElementIsVisible,
+    entry,
+  } = useInView({
+    threshold: 0,
+    onChange: (inView) => {
+      if (inView) {
+        console.log(inView, "hoe");
+      }
+    },
+  });
+  const { ref: projectRef, inView: newProjectVisible } = useInView({
     threshold: 0,
   });
-  useEffect(() => {
-    console.log("Element is in view: ", inView)
-  }, [inView])
-  
+  console.log("visible", myElementIsVisible, "entry", entry);
+
   var settings = {
     dots: true,
     infinite: true,
@@ -30,9 +39,6 @@ const Portfolio = () => {
     slidesToScroll: 1,
   };
 
-
-
-
   const renderLarge = () => {
     return (
       <div
@@ -40,57 +46,71 @@ const Portfolio = () => {
         id="portfolio"
       >
         <div className="w-full columns-1 lg:columns-2 max-w-screen min-h-screen h-full flex  lg:flex-row overflow-x-hidden">
-          <div className="flex mx-auto space-y-6 items-center content-center justify-center bg-slate-100 dark:bg-black h-full w-full overflow-clip " >
-            <div className="max-w-lg w-full content-center mx-auto relative" >
+          <div className="flex mx-auto space-y-6 items-center content-center justify-center bg-slate-100 dark:bg-black h-full w-full overflow-clip ">
+            <div className="max-w-lg w-full content-center mx-auto relative">
               <Slider {...settings}>
                 {currentProjectImages?.map((images, index) => (
                   <img
                     key={index}
-                    className="justify-center max-w-lg mx-auto" 
+                    className="justify-center max-w-lg mx-auto"
                     src={images}
                     alt={`${projects[currentProjectIndex]?.title} - Image ${index}`}
                   />
-                ))}</Slider>
-
-
+                ))}
+              </Slider>
             </div>
           </div>
 
           <div className="portfolio-selector h-screen w-full mx-auto items-center content-center snap-y overflow-y-scroll overflow-x-hidden snap-mandatory">
             <ScrollBoth />
 
-            <div className="min-w-[50vw] mx-auto content-center justify-center w-full flex flex-col " >
+            <div
+              className="min-w-[50vw] mx-auto content-center justify-center w-full flex flex-col"
+              ref={myRef as any}
+            >
               {projects?.map((project, index) => (
-                <div
-
-                  key={index} 
+                <InView
+                  key={index}
                   className="h-full min-h-screen min-w-full flex items-center mx-auto content-center snap-normal snap-center"
                 >
-                  <div className="w-full flex flex-col items-center">
-                    <h1 className="text-4xl text-center p-4"> {project?.title}</h1>
-                    <p className="max-w-sm p-2.5 text-center">{project?.description}</p>
-                    <div className="grid grid-cols-4 space-x-2 p-6 mb-4">
+                  <div
+                    className="w-full flex flex-col items-center"
+                    ref={projectRef as any}
+                  >
+                    <h1 className="text-4xl text-center p-4">
+                      {" "}
+                      {project?.title}
+                    </h1>
+                    <p className="max-w-sm p-2.5 text-center">
+                      {project?.description}
+                    </p>
+                    <div className="flex space-x-2 p-6 mb-4">
                       {project?.stack.map((stack: any, i) => (
                         <div className="" key={i}>
-                          
-                          <span className="bg-gray-100 text-gray-800 text-sm font-medium mr-2 px-2.5 py-0.5 rounded dark:bg-gray-700 dark:text-gray-300">{stack.name}</span>
+                          <span className="bg-gray-100 text-gray-800 text-xs md:text-sm font-medium mr-2 px-2.5 py-0.5 rounded dark:bg-gray-700 dark:text-gray-300">
+                            {stack.name}
+                          </span>
                         </div>
-                      ))}</div>
-                      <div className="flex space-x-2">
-                    <button
-                      key={index}
-                      className={`portfolio-selector-item p-4 h-fit text-sm bg-black hover:scale-105 dark:bg-white text-white items-center dark:text-black rounded-lg mx-auto ${index === currentProjectIndex ? "active" : ""
+                      ))}
+                    </div>
+                    <div className="flex space-x-2">
+                      <button
+                        key={index}
+                        className={`portfolio-selector-item p-4 h-fit text-sm bg-black hover:scale-105 dark:bg-white text-white items-center dark:text-black rounded-lg mx-auto ${
+                          index === currentProjectIndex ? "active" : ""
                         }`}
-                      onClick={() => {
-                        setCurrentProjectIndex(index);
-                        setCurrentProjectImages(project?.images);
-                      }}
-                    >  <h1 className="font-[owners-wide]">
-                      View Live</h1>
-                    </button>
-                    <ContactButton/></div>
+                        onClick={() => {
+                          setCurrentProjectIndex(index);
+                          setCurrentProjectImages(project?.images);
+                        }}
+                      >
+                        {" "}
+                        <h1 className="font-[owners-wide]">View</h1>
+                      </button>
+                      <ContactButton />
+                    </div>
                   </div>
-                </div>
+                </InView>
               ))}
             </div>
           </div>
@@ -101,23 +121,22 @@ const Portfolio = () => {
 
   const renderSmall = () => {
     return (
-      <div className="min-w-screen min-h-screen mx-auto w-full static">
+      <div className="min-w-screen min-h-screen mx-auto w-full relative">
         <div className="flex flex-col h-screen min-w-screen w-full">
           <div className="h-full min-h-[55vh] p-8 md:p-20">
             <div className="flex mx-auto space-y-6 items-center content-center justify-center bg-slate-100 dark:bg-black h-full w-full overflow-clip ">
-            <div className="max-w-sm px-4">
-              <Slider {...settings}>
-                {currentProjectImages?.map((image, index) => (
-                  <img
-                    key={index}
-                    className="max-h-72"
-                    src={image}
-                    alt={`${projects[currentProjectIndex]?.title} - Image ${index}`}
-                  />
-                ))}</Slider>
-
-
-            </div>
+              <div className="max-w-sm px-6 w-full">
+                <Slider {...settings}>
+                  {currentProjectImages?.map((image, index) => (
+                    <img
+                      key={index}
+                      className="max-h-68 w-full"
+                      src={image}
+                      alt={`${projects[currentProjectIndex]?.title} - Image ${index}`}
+                    />
+                  ))}
+                </Slider>
+              </div>
             </div>
           </div>
           <div className="bg-slate-200 dark:bg-neutral-950 h-full">
@@ -131,37 +150,49 @@ const Portfolio = () => {
                     <div
                       key={index}
                       className="h-full min-h-[45vh] min-w-full max-w-screen w-full flex items-center mx-auto content-center snap-normal snap-center"
-                      ref={ref}
                     >
                       <div className="w-full flex flex-col">
                         <h1 className="text-3xl md:text-4xl text-center">
                           {project.title}
                         </h1>
-                        <p className="max-w-sm p-2.5 text-center mx-auto">{project?.description}</p>
+                        <p className="max-w-sm p-2.5 text-center mx-auto">
+                          {project?.description}
+                        </p>
 
-                        <div className="max-w-md grid grid-cols-4 space-x-1 p-4 mx-auto">
-                      {project?.stack.map((stack: any, i) => (
-                        <div className="" key={i}>
-                          <span className="bg-gray-100 text-gray-800 text-sm font-medium mr-2 px-2.5 py-0.5 rounded dark:bg-gray-700 dark:text-gray-300">{stack.name}</span>
+                        <div className="max-w-md flex space-x-1 p-4 mx-auto">
+                          {project?.stack.map((stack: any, i) => (
+                            <div className="" key={i}>
+                              <span className="bg-gray-100 text-gray-800 text-xs md:text-sm font-medium mr-2 px-2.5 py-0.5 rounded dark:bg-gray-700 dark:text-gray-300">
+                                {stack.name}
+                              </span>
+                            </div>
+                          ))}
                         </div>
-                      ))}</div>
+                        <div className="flex space-x-2 m-auto">
                         <button
-                          
                           key={index}
-                          className={`portfolio-selector-item p-4 w-36 bg-black dark:bg-white text-white items-center dark:text-black rounded-lg mx-auto ${index === currentProjectIndex ? "active" : ""
-                            }`}
+                          className={`portfolio-selector-item p-2.5 bg-black dark:bg-white text-white items-center dark:text-black rounded-lg mx-auto ${
+                            index === currentProjectIndex ? "active" : ""
+                          }`}
                           onClick={() => {
                             setCurrentProjectIndex(index);
                             setCurrentProjectImages(project?.images);
-                            setShowProjectDetails(false);
                           }}
                         >
-                          View Live
-                        </button>
+                         <h1 className="font-[owners-wide]">View</h1>
+                      </button>
+                      <ContactButton />
+                      </div>
                       </div>
                     </div>
                   ))}
                 </div>
+                <div className="flex justify-center w-full text-center absolute bottom-5 right-0 left-0 isolate mt-12 items-center space-x-2">
+                <FaArrowLeft/>
+                <h1 className="">
+                  Swipe
+                </h1>
+                <FaArrowRight/></div>
               </div>
             </div>
           </div>

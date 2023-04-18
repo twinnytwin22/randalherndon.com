@@ -31,7 +31,7 @@ export const projects = [
   {
     title: "thecrib.network",
     description:
-      "Portfolio, web 3 commerce, and engagement manager for creators, providing discoverability to previous drops that would often get lost with new releases.",
+    "Landing page for company The Crib Network ",
     images: [  
          "/images/portfolio/crib-network/crib-1-mock.png",
          "/images/portfolio/crib-network/crib-2-mock.png",
@@ -52,20 +52,12 @@ export const projects = [
         name: "NextJs",
         logo: null,
       },
-      {
-        name: "SanityCMS",
-        logo: null,
-      },
-      {
-        name: "AlchemySDK",
-        logo: null,
-      },
     ],
   },
   {
     title: "subport",
     description:
-      "Portfolio, web 3 commerce, and engagement manager for creators, providing discoverability to previous drops that would often get lost with new releases.",
+      "Full stack development project for The Crib Network. Digital collectibles for music fans from artist they discover, support or actively listen too",
     images: [  
          "/images/portfolio/subport/subport-1_1-mock.png",
          "/images/portfolio/subport/subport-2_1-mock.png",
@@ -82,11 +74,12 @@ export const projects = [
         logo: null,
       },
       {
-        name: "SanityCMS",
+        name: "Supabase",
         logo: null,
       },
+      
       {
-        name: "AlchemySDK",
+        name: "Ethers",
         logo: null,
       },
     ],
