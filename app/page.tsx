@@ -18,19 +18,19 @@ export default async function Home() {
     
     <div className="mx-auto z-0 w-full max-w-screen relative overflow-hidden">
       <main className="max-h-screen overflow-y-scroll snap snap-y snap-mandatory relative overflow-x-hidden">
-          <section className="flex h-screen w-full snap-start">
+          <section className="flex h-screen w-full snap-center snap-always">
             <IntroHero />
           </section>
-          <section className="flex items-center justify-center h-screen w-full snap-start relative" id="about">
+          <section className="flex items-center justify-center h-screen w-full snap-center snap-always relative" id="about">
             <AboutMe data={data} commits={commits}/>
           </section>
-          <section className="flex items-center justify-center h-screen w-full snap-start" id="skills">
+          <section className="flex items-center justify-center h-screen w-full snap-center snap-always" id="skills">
             <Experience />
           </section>
-          <section className="flex items-center justify-center h-screen w-full snap-start" id="services">
+          <section className="flex items-center justify-center h-screen w-full snap-center snap-always" id="services">
             <Services />
           </section>
-          <section className="flex items-center justify-center h-screen w-full snap-start" id="portfolio">
+          <section className="flex items-center justify-center h-screen w-full snap-center snap-always" id="portfolio">
             <Portfolio/>
           </section></main>
   </div>
