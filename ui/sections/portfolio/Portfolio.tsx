@@ -69,9 +69,9 @@ const Portfolio = () => {
             </div>
           </div>
 
-          <div className="portfolio-selector h-screen w-full mx-auto items-center content-center snap-y overflow-y-scroll overflow-x-hidden snap-mandatory relative">
+          <div className="portfolio-selector h-screen w-full mx-auto items-center content-center snap-y overflow-y-scroll overflow-x-hidden snap-mandatory ">
             
-            <div className="fixed"><ScrollBoth /></div>
+            <div className=""><ScrollBoth /></div>
 
             <div 
               className="min-w-[50vw] mx-auto content-center justify-center w-full flex flex-col" 
