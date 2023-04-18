@@ -47,10 +47,10 @@ function AboutCard(props: any) {
           </div>
           <div
             className="mt-0.5 text-gray-900 dark:text-white tracking-tight pr-3"
-            key={commits}
+            key={data?.repos}
           >
-            <p className="font-extrabold">{commits ? 'Total Commits' : ""}</p>
-            {commits}
+            <p className="font-extrabold">{data ? 'Repos' : ""}</p>
+            {data?.repos}
           </div>
         </div>
 
