@@ -3,10 +3,12 @@ import "@/styles/globals.css";
 import Navbar from "@/ui/navigation/Navbar";
 import DarkModeSwitch from "@/ui/buttons/DarkModeSwitch";
 import Script from "next/script";
+import { metaDataKeywords } from "@/lib/keywords";
 export const metadata = {
   title: "RandalHerndon.com",
   description:
     "Randal Herndon | Interdisciplinary, Creative, Developer, Musician.",
+  keywords: metaDataKeywords,
   openGraph: {
     title: "RandalHerndon.com",
     description:
@@ -28,6 +30,7 @@ export const metadata = {
     ],
     locale: "en-US",
     type: "website",
+    
   },
 };
 
