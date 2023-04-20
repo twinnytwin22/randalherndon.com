@@ -1,11 +1,10 @@
 "use client";
-import { useState, useRef, useEffect } from "react";
+import { useState } from "react";
 import { projects } from "./projects";
-import { ScrollBoth, ScrollDown, SwipeSides } from "@/ui/misc/ScrollDown";
+import { ScrollBoth, SwipeSides } from "@/ui/misc/ScrollDown";
 import { useInView } from "react-cool-inview";
 import Slider from "react-slick";
 import ContactButton from "@/ui/misc/modal";
-import { FaArrowLeft, FaArrowRight } from "react-icons/fa";
 import Link from "next/link";
 const Portfolio = () => {
   const [showTooltip, setShowTooltip] = useState(false);
@@ -15,18 +14,12 @@ const Portfolio = () => {
   );
   const { inView,observe,entry } = useInView<HTMLDivElement>({
     root: null,
-    // Track the actual visibility of the target
-    // Set a minimum delay between notifications, it must be set to 100 (ms) or greater
-    // For performance perspective, use the largest tolerable value as much as possible
     delay: 100,
     onEnter: () => {
       console.log('here')
-      // Triggered when the target is visible and enters the viewport
     },
     onLeave: () => {
-    
       console.log('gone')
-      // Triggered when the target is visible and leaves the viewport
     },
     onChange: () => {
       console.log('change')
