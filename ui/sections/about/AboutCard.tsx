@@ -11,7 +11,7 @@ function AboutCard(props: any) {
   const commits = props?.commits;
   const data = props?.data;
   const [like, setLike] = useState(false);
-
+console.log(data)
   const handleLike = () => {
     setLike(true);
   };
@@ -50,7 +50,7 @@ function AboutCard(props: any) {
             key={data?.repos}
           >
             <p className="font-extrabold">{data ? 'Repos' : ""}</p>
-            {data?.repos}
+            {data?.public_repos}
           </div>
         </div>
 

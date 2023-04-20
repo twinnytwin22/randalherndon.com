@@ -16,7 +16,7 @@ export default async function Home() {
   return (
 
     
-    <div className="mx-auto z-0 w-full max-w-screen relative overflow-hidden">
+    <div className="mx-auto z-0 w-full max-w-screen relative overflow-hidden isolate">
       <main className="max-h-screen overflow-y-scroll snap snap-y snap-mandatory relative overflow-x-hidden">
           <section className="flex h-screen w-full snap-center snap-always" id="intro">
             <IntroHero />
@@ -30,7 +30,7 @@ export default async function Home() {
           <section className="flex items-center justify-center h-screen w-full snap-center snap-always" id="services">
             <Services />
           </section>
-          <section className="flex items-center justify-center h-screen w-full snap-center snap-always" id="portfolio">
+          <section className="flex items-center justify-center h-screen w-full snap-center snap-always isolate" id="portfolio">
             <Portfolio/>
           </section></main>
   </div>

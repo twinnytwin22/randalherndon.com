@@ -11,7 +11,7 @@
   "name": "Randal Herndon",
   "title": "Digital Marketing Manager | Front-end Developer | Musician",
   "location": "Phoenix, Arizona",
-  "summary": "As an artist, I am able to integrate my technical skills with my artistry and personal brand. Known by my peers, personal clients, and supervisors for my leadership, positive & assertive attitude, work ethic and resourcefulness. I'm looking forward to applying my skills, wealth of knowledge, and community to brands and ideas that align with me.\nI am a creator of platforms, and advocate for education.",
+  "descriptions": [ "As an artist, I am able to integrate my technical skills with my artistry and personal brand. Known by my peers, personal clients, and supervisors for my leadership, positive & assertive attitude, work ethic and resourcefulness. I'm looking forward to applying my skills, wealth of knowledge, and community to brands and ideas that align with me.\nI am a creator of platforms, and advocate for education.", "", ""],
   "experience": [
     {
       "title": "Frontend Developer / Digital Marketing",

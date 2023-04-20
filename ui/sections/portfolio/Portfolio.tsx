@@ -1,12 +1,12 @@
 "use client";
 import { useState, useRef, useEffect } from "react";
 import { projects } from "./projects";
-import { ScrollBoth, ScrollDown } from "@/ui/misc/ScrollDown";
+import { ScrollBoth, ScrollDown, SwipeSides } from "@/ui/misc/ScrollDown";
 import { useInView } from "react-cool-inview";
 import Slider from "react-slick";
 import ContactButton from "@/ui/misc/modal";
 import { FaArrowLeft, FaArrowRight } from "react-icons/fa";
-
+import Link from "next/link";
 const Portfolio = () => {
   const [currentProjectIndex, setCurrentProjectIndex] = useState(0);
   const [currentProjectImages, setCurrentProjectImages] = useState(
@@ -117,7 +117,13 @@ const Portfolio = () => {
                         <h1 className="font-[owners-wide]">View</h1>
                       </button>
                       <ContactButton />
+                      
                     </div>
+                    {project?.url !== "" ? 
+                    <Link href={project.url}>
+                    <div className="p-4 w-48 bg-blue-700 text-center font-[owners-wide] rounded-lg text-white font-bold mt-2 hover:scale-105">See Live</div> </Link>:
+                    ''}
+
                   </div>
                 </div>
               ))}
@@ -193,16 +199,15 @@ const Portfolio = () => {
                       </button>
                       <ContactButton />
                       </div>
+                      {project?.url !== "" ? 
+                    <Link href={project.url}>
+                    <div className="p-4 w-48 bg-blue-700 text-center font-[owners-wide] rounded-lg text-white font-bold mt-2 hover:scale-105 mx-auto">See Live</div> </Link>:
+                    ''}
                       </div>
                     </div>
                   ))}
                 </div>
-                <div className="flex justify-center w-full text-center absolute bottom-5 right-0 left-0 isolate mt-12 items-center space-x-2">
-                <FaArrowLeft/>
-                <h1 className="">
-                  Swipe
-                </h1>
-                <FaArrowRight/></div>
+              <SwipeSides/>
               </div>
             </div>
           </div>

@@ -1,4 +1,5 @@
 
+import { FaArrowDown, FaArrowLeft, FaArrowRight } from 'react-icons/fa';
 import { IoIosArrowBack, IoIosArrowForward } from 'react-icons/io';
 
 export const ScrollDown = ({color}:any) => {
@@ -39,3 +40,27 @@ export const ScrollBoth = ({color}:any) => {
     </div>
   );
 };
+
+
+export const SwipeSides = ({color}: any) => { 
+  return ( 
+    <div className="flex justify-center w-full text-center absolute bottom-5 right-0 left-0 isolate mt-12 items-center space-x-2">
+    <FaArrowLeft/>
+    <h1 className="">
+      Swipe
+    </h1>
+    <FaArrowRight/></div>
+  )
+}
+
+export const ScrollDown3 = ({color}: any) => { 
+  return ( 
+    <div className="flex justify-center w-full text-center absolute bottom-5 right-0 left-0 isolate mt-12 items-center space-x-2">
+    <FaArrowDown/>
+    <h1 className="">
+      Scroll Down
+    </h1>
+    <FaArrowDown/>
+  </div>
+  )
+}

@@ -7,7 +7,7 @@ import ContactButton from "@/ui/misc/modal";
 import { useAnimate, stagger, m } from "framer-motion";
 import { useInView } from "react-intersection-observer";
 import Slider from "react-slick";
-import { ScrollDown, ScrollDown2 } from "@/ui/misc/ScrollDown";
+import { ScrollDown, ScrollDown2, ScrollDown3, SwipeSides } from "@/ui/misc/ScrollDown";
 import WelcomeMarquee from "@/ui/misc/WelcomeMarquee";
 function useStaggerAnimation(showExp: boolean) {
   const [scope, animate] = useAnimate();
@@ -31,7 +31,7 @@ const Experience = () => {
     "bg-pink-500",
   ];
   const scope = useStaggerAnimation(showExp);
-  var settings = {
+  let settings = {
     dots: false,
     infinite: true,
     speed: 500,
@@ -52,11 +52,13 @@ const Experience = () => {
   return (
     <>
       <div
-        className="flex min-h-screen w-full  max-w-screen items-center mx-auto content-center"
+        className="flex min-h-screen w-full  max-w-screen items-center mx-auto content-center relative"
         id="experience"
         ref={expRef}
       >
+        
         <div className="flex items-center flex-col lg:grid grid-cols-12 w-full h-full place-items-center mx-auto">
+          
           <div className="col-span-6 flex flex-col lg:mt-24 content-start max-w-xs sm:max-w-sm md:max-w-lg mx-auto h-fit">
             <Slider
               {...settings}
@@ -131,8 +133,9 @@ const Experience = () => {
               </div>
             </div>
           </div>
-        </div>
+        </div>  <ScrollDown3/>
       </div>
+    
     </>
   );
 };
