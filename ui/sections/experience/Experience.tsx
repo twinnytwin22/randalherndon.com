@@ -9,6 +9,7 @@ import { useInView } from "react-intersection-observer";
 import Slider from "react-slick";
 import { ScrollDown, ScrollDown2, ScrollDown3, SwipeSides } from "@/ui/misc/ScrollDown";
 import WelcomeMarquee from "@/ui/misc/WelcomeMarquee";
+import LinkedInButton from "@/ui/buttons/LinkedIn";
 function useStaggerAnimation(showExp: boolean) {
   const [scope, animate] = useAnimate();
   useEffect(() => {
@@ -52,7 +53,7 @@ const Experience = () => {
   return (
     <>
       <div
-        className="flex min-h-screen w-full  max-w-screen items-center mx-auto content-center relative"
+        className="flex min-h-screen w-full  min-w-screen items-center mx-auto content-center relative"
         id="experience"
         ref={expRef}
       >
@@ -105,6 +106,7 @@ const Experience = () => {
             </Slider>
             <div className="hidden lg:flex space-x-2">
               <ContactButton />
+              <LinkedInButton/>
               <DownloadButton />
             </div>
           </div>
@@ -129,6 +131,7 @@ const Experience = () => {
               <div className="flex lg:hidden h-fit mt-8 space-x-5">
                 {" "}
                 <ContactButton />
+                <LinkedInButton/>
                 <DownloadButton />
               </div>
             </div>

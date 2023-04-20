@@ -1,5 +1,5 @@
 "use client";
-import React, { useEffect, useState, useRef } from "react";
+import React, {useEffect, useState, useRef} from "react";
 import { delay, m, Variants } from "framer-motion";
 import { GradientText } from "@/ui/misc/GradientText";
 import ContactButton from "@/ui/misc/modal";
@@ -7,133 +7,120 @@ import { useInView } from "framer-motion";
 import { ScrollDown } from "@/ui/misc/ScrollDown";
 import AboutCard from "./AboutCard";
 import resume from "@/ui/sections/experience/experience.json";
-import { FaMapPin } from "react-icons/fa";
-import Slider from "react-slick";
+import { FaCheckCircle, FaMapPin } from "react-icons/fa";
+import LinkedInButton from "@/ui/buttons/LinkedIn";
+import { DownloadButton } from "@/ui/buttons/DownloadButton";
 
-const AboutMe = ({ data, commits }: any) => {
-  const [showAboutCard, setShowAboutCard] = useState(false)
+const AboutMe = ({data, commits}: any) => {
+const [showAboutCard, setShowAboutCard ] = useState(false)
 
-  const ref = useRef(null)
-  const isInView = useInView(ref)
-  useEffect(() => {
-    if (isInView) {
-      setShowAboutCard(true);
-    } else {
-      setShowAboutCard(false)
-    }
-  }, [isInView]);
+const ref = useRef(null)
+const isInView = useInView(ref)
+useEffect(() => {
+  if (isInView) {
+    setShowAboutCard(true);
+  } else {
+    setShowAboutCard(false)
+  }
+}, [isInView]);
 
-  const card: Variants = {
-    hidden: {
-      y: -50,
-      opacity: 0,
+const card: Variants = {
+  hidden: {
+    y: -50,
+    opacity: 0,
+  },
+  visible: {
+    y: 0,
+    opacity: 1,
+    transition: {
+      delay: 0.9,
+      type: "spring",
+      stiffness: 500,
     },
-    visible: {
-      y: 0,
-      opacity: 1,
-      transition: {
-        delay: 0.9,
-        type: "spring",
-        stiffness: 500,
-      },
-    },
-  };
-
-  var settings = {
-    dots: false,
-    infinite: true,
-    speed: 500,
-    slidesToShow: 1,
-    slidesToScroll: 1,
-  };
-
-
+  },
+};
+  
   return (
-    <> <div className="absolute mx-auto top-0 left-0 w-screen h-full bg-slate-100 dark:bg-black  opacity-10 bg-cover bg-[url(https://i.imgur.com/XqbXLxL.png)]" />
-    
-      <div
-        className=" mx-auto h-full w-full max-w-screen relative flex flex-col isolate"
-        id="about"
-        ref={ref}
-      >
-                <ScrollDown color="text-blue-800 dark:text-blue-600" />
+    <> <div className="absolute top-0 left-0 w-full h-full bg-slate-100 dark:bg-black  opacity-10 bg-cover bg-[url(https://i.imgur.com/XqbXLxL.png)]" />
+    <div
+    className=" mx-auto h-full max-w-screen relative "
+    id="about"
+    ref={ref}
+  >      
 
-
-
-        <div className=" grid grid-cols-6 md:grid-cols-12 max-w-screen min-h-full place-items-center px-8 mx-auto content-centers">
-          <div className="min-w-full h-full col-span-6 mx-auto ml-2 space-y-6 xl:text-8xl text-5xl sm:text-7xl items-center md:order-2 place-items-center content-center">
-            <div className="flex text-center p-4 items-center min-h-full mx-auto">
-              <div className=" content-start justify-start items-center">
-                <GradientText text="About Me" />
-                <div
-                  className="md:hidden block mt-4 col-span-6 items-center w-full mx-auto content-center justify-center md:order-1"
-                  ref={ref}
+    <ScrollDown color="text-blue-800 dark:text-blue-600" />
+ 
+    <div className=" grid grid-cols-1 md:grid-cols-12 max-w-screen min-h-full place-items-center px-8 ">
+      <div className="min-w-full h-full col-span-7  mx-auto ml-2 space-y-6 xl:text-8xl text-5xl sm:text-7xl items-center md:order-2 place-items-center">
+        <div className="flex text-center p-4 items-center min-h-full">
+          <div className="content-start justify-start items-center">
+            <GradientText text="About Me" />
+            <div
+              className="md:hidden block mt-4  items-center w-full  content-center justify-center md:order-1"
+              ref={ref}
+            >
+              {showAboutCard && (
+                <m.div
+                  variants={card}
+                  initial="hidden"
+                  animate="visible"
+                  transition={{
+                    duration: 0.8,
+                    delay: 0.5,
+                    ease: [0, 0.71, 0.2, 1.01],
+                  }}
                 >
-                  {showAboutCard && (
-                    <m.div
-                      variants={card}
-                      initial="hidden"
-                      animate="visible"
-                      transition={{
-                        duration: 0.8,
-                        delay: 0.5,
-                        ease: [0, 0.71, 0.2, 1.01],
-                      }}
-                    >
-                      <AboutCard data={data} commits={commits} />{" "}
-                    </m.div>
-                  )}
-                </div>
-                {[resume].map((my: any, i) => (
-                  <div key={i}>
-                    <div className="flex flex-col content-start items-start w-full text-base md:text-lg lg:text-xl m-4 sm:m-8 md:mr-8 lg:mr-16  min-h-full text-left text-gray-900 dark:text-slate-200 col-span-5">
-                      <div className="flex h-10 items-center">
-                        <FaMapPin />
-                        <h1 className="text-sm  h-fit font-semibold text-left">
-                          {my.location}
-                        </h1>
-                      </div>
-                      <div className=" max-w-xs sm:max-w-sm md:max-w-sm lg:max-w-md xl:max-w-lg">
-                        <div className="mx-auto max-w-1/3">
-                        <Slider {...settings} className="flex">
-                          {my.descriptions.map((slide: any) => (
-                          <div className="h-36 md:h-full w-full m-2 content-center overflow-y-auto">
-                            <p className="text-base lg:text-xl text-ellipsis">
-                              {slide}
-                            </p>
-                          </div>))}
-                        </Slider></div>
-                      </div>
-
-                    </div>
-                    <div className="flex ml-6 h-fit -mt-3 lg:-mt-6">
-                      <ContactButton color="text-blue-800 dark:text-blue-600" />
-                    </div>
-                  </div>
-                ))}
-              </div>
+                  <AboutCard data={data} commits={commits} />{" "}
+                </m.div>
+              )}
             </div>
+            {[resume].map((my: any, i) => (
+              <div key={i}>
+                <div className="w-full text-base md:text-lg lg:text-xl p-4 sm:p-8 md:pr-8 lg:pr-16 items-center min-h-full text-left text-gray-900 dark:text-slate-200 ">
+                  <div className="flex h-10 items-center">
+                    <FaMapPin />
+                    <h1 className="text-sm  h-fit font-semibold text-left">
+                      {my.location}
+                    </h1>
+                  </div>
+                  <div className="overflow-auto h-56  overflow-y-auto p-4 bg-slate-200 rounded-lg">
+                    
+                    {my.descriptions.map((item: any, i: any)=> (
+                    <div className="text-base lg:text-xl text-ellipsis flex border-b border-slate-400 p-2 text-slate-950 items-center -ml-3" key={i}>
+                      <div className="p-3"><FaCheckCircle/></div>
+                     <p> {item}</p>
+                    </div>))}
+                  </div>
+                </div>
+                <div className="flex ml-6 h-fit -mt-3 lg:-mt-6 space-x-2">
+                  <ContactButton color="text-blue-800 dark:text-blue-600" />
+                  <LinkedInButton/>
+                  <DownloadButton/>
+                </div>
+              </div>
+            ))}
           </div>
-          <div className="hidden md:block p-0 col-span-6 items-center w-full mx-auto content-center justify-center md:order-1">
-            {showAboutCard && (
-              <m.div
-                variants={card}
-                initial="hidden"
-                animate="visible"
-                transition={{
-                  duration: 0.8,
-                  delay: 0.5,
-                  ease: [0, 0.71, 0.2, 1.01],
-                }}
-              >
-                <AboutCard data={data} commits={commits} />{" "}
-              </m.div>
-            )}
-          </div>
-          
         </div>
       </div>
-    </>
+      <div className="hidden md:block p-0 col-span-5 items-center w-full  content-center justify-center md:order-1">
+        {showAboutCard && (
+          <m.div
+            variants={card}
+            initial="hidden"
+            animate="visible"
+            transition={{
+              duration: 0.8,
+              delay: 0.5,
+              ease: [0, 0.71, 0.2, 1.01],
+            }}
+          >
+            <AboutCard data={data} commits={commits} />{" "}
+          </m.div>
+        )}
+      </div>
+    </div>
+  </div>
+  </>
   );
 };
 

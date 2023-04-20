@@ -5,6 +5,7 @@ import { primarySkills } from "@/ui/sections/services/skill";
 import ServiceBlock from "./serviceBlock";
 import { ScrollDown } from "@/ui/misc/ScrollDown";
 import ContactButton from "@/ui/misc/modal";
+import LinkedInButton from "@/ui/buttons/LinkedIn";
 
 const Services = () => {
   const [showSkillBlocks, setShowSkillBlocks] = useState(false);
@@ -33,8 +34,9 @@ const Services = () => {
           <p className="text-xs sm:text-base md:text-lg text-center max-w-md mx-auto">
             {!primarySkills[0].description}
           </p>
-          <div className="flex content-center justify-center">
+          <div className="flex content-center justify-center space-x-2">
             <ContactButton />
+            <LinkedInButton/>
           </div>
         </div>
         <div className="px-10 md:p-20 col-span-6 items-center w-full -mt-32 lg:-mt-16 xl:-mt-0 mx-auto">

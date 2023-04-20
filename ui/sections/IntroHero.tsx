@@ -7,6 +7,8 @@ import ContactButton from "../misc/modal";
 import { FaLinkedinIn, FaGithub } from "react-icons/fa";
 import Link from "next/link";
 import MyGitHubButton from "../buttons/CustomGitHubButton";
+import LinkedInButton from "../buttons/LinkedIn";
+import { DownloadButton } from "../buttons/DownloadButton";
 
 export default function IntroHero() {
   const [headlineIndex, setHeadlineIndex] = useState(0);
@@ -64,7 +66,7 @@ export default function IntroHero() {
       <ScrollDown color="black"/></div>
 
       <div className="grid lg:grid-cols-12 lg:mx-8 2xl:mx-16 min-h-screen place-items-center px-8 ">
-        <div className="content-center justify-center min-w-full h-full md:h-fit lg:col-span-7 col-span-12 mx-auto ml-2 space-y-2 md:space-y-6 xl:text-6xl 2xl:text-7xl  text-4xl sm:text-5xl lg:order-1 order-2">
+        <div className="content-center justify-center min-w-full h-full md:h-fit lg:col-span-7 col-span-12 mx-auto ml-2 space-y-2 md:space-y-4 xl:text-6xl 2xl:text-7xl  text-4xl sm:text-5xl lg:order-1 order-2">
           <h1 className=" text-left text-black dark:text-white">Hello,</h1>
           <h1 className="text-left text-black dark:text-white">I'm Randal,</h1>
           <m.h1
@@ -79,6 +81,7 @@ export default function IntroHero() {
           >
             {headlines[headlineIndex]}
           </m.h1>
+
           <m.div
             initial={{ opacity: 0, scale: 0.5 }}
             animate={{ opacity: 1, scale: 1 }}
@@ -87,7 +90,7 @@ export default function IntroHero() {
               delay: 0.5,
               ease: [0, 0.71, 0.2, 1.01],
             }}
-            className="flex space-x-10 items-end h-fit"
+            className="flex space-x-2 items-end h-fit"
           >
             <ContactButton
               bgColors={bgColors}
@@ -95,13 +98,9 @@ export default function IntroHero() {
               buttonTextColors={buttonTextColors}
             />
 
-            <Link
-              href="https://www.linkedin.com/in/randalherndon/"
-              className="rounded-lg p-4 h-fit text-xl hover:scale-105 text-white bg-blue-700"
-            >
-              <FaLinkedinIn />
-            </Link>
+           <LinkedInButton/>
             <MyGitHubButton/>
+            <DownloadButton/>
           </m.div>
         </div>
         <div className="flex lg:col-span-5 col-span-12 lg:items-center mx-6 sm:mx-auto xl:mx-12 content-center mt-20 lg:mt-0 max-w-md md:min-w-md justify-center lg:order-2 order-1"  >

@@ -8,6 +8,7 @@ import ContactButton from "@/ui/misc/modal";
 import { FaArrowLeft, FaArrowRight } from "react-icons/fa";
 import Link from "next/link";
 const Portfolio = () => {
+  const [showTooltip, setShowTooltip] = useState(false);
   const [currentProjectIndex, setCurrentProjectIndex] = useState(0);
   const [currentProjectImages, setCurrentProjectImages] = useState(
     projects[0].images
@@ -104,6 +105,8 @@ const Portfolio = () => {
                     </div>
                     <div className="flex space-x-2">
                       <button
+                            onMouseOver={() => setShowTooltip(true)}
+                            onMouseOut={() => setShowTooltip(false)}
                         key={index}
                         className={`portfolio-selector-item p-4 h-fit text-sm bg-black hover:scale-105 dark:bg-white text-white items-center dark:text-black rounded-lg mx-auto ${
                           index === currentProjectIndex ? "active" : ""
@@ -115,6 +118,10 @@ const Portfolio = () => {
                       >
                         {" "}
                         <h1 className="font-[owners-wide]">View</h1>
+                        {showTooltip && (
+            <span className="absolute top-full left-1/2 transform -translate-x-1/2 py-2 px-4 bg-black text-white text-xs rounded-md whitespace-nowrap">
+Click me to the preview            </span>
+          )}
                       </button>
                       <ContactButton />
                       
@@ -186,16 +193,23 @@ const Portfolio = () => {
                         </div>
                         <div className="flex space-x-2 m-auto">
                         <button
-                          key={index}
-                          className={`portfolio-selector-item p-2.5 bg-black dark:bg-white text-white items-center dark:text-black rounded-lg mx-auto ${
-                            index === currentProjectIndex ? "active" : ""
-                          }`}
-                          onClick={() => {
-                            setCurrentProjectIndex(index);
-                            setCurrentProjectImages(project?.images);
-                          }}
-                        >
-                         <h1 className="font-[owners-wide]">View</h1>
+                            onMouseOver={() => setShowTooltip(true)}
+                            onMouseOut={() => setShowTooltip(false)}
+                        key={index}
+                        className={`portfolio-selector-item p-4 h-fit text-sm bg-black hover:scale-105 dark:bg-white text-white items-center dark:text-black rounded-lg mx-auto ${
+                          index === currentProjectIndex ? "active" : ""
+                        }`}
+                        onClick={() => {
+                          setCurrentProjectIndex(index);
+                          setCurrentProjectImages(project?.images);
+                        }}
+                      >
+                        {" "}
+                        <h1 className="font-[owners-wide]">View</h1>
+                        {showTooltip && (
+            <span className="absolute top-full left-1/2 transform -translate-x-1/2 py-2 px-4 bg-black text-white text-xs rounded-md whitespace-nowrap">
+Click me to the preview            </span>
+          )}
                       </button>
                       <ContactButton />
                       </div>
