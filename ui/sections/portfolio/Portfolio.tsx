@@ -107,7 +107,7 @@ const Portfolio = () => {
                       <button
                             onMouseOver={() => setShowTooltip(true)}
                             onMouseOut={() => setShowTooltip(false)}
-                        key={index}
+                        key={project.title}
                         className={`portfolio-selector-item p-4 h-fit text-sm bg-black hover:scale-105 dark:bg-white text-white items-center dark:text-black rounded-lg mx-auto ${
                           index === currentProjectIndex ? "active" : ""
                         }`}

@@ -54,7 +54,7 @@ export const projects = [
   {
     title: "subport",
     description:
-      "Full stack development project for The Crib Network. Digital collectibles for music fans from artist they discover, support or actively listen too",
+      "Full stack development project for The Crib Network. Digital collectibles for music fans from artist they discover, support or actively listen too. In testing. Check it out!",
     images: [
       "/images/portfolio/subport/subport-1_1-mock.png",
       "/images/portfolio/subport/subport-2_1-mock.png",
@@ -134,6 +134,72 @@ export const projects = [
       },
       {
         name: "CSS",
+        logo: null,
+      },
+      {
+        name: "Adobe Suite",
+        logo: null,
+      },
+     
+    ],
+  },
+  {
+    title: "RandalHerndon.com",
+    description:
+      "This website! My portfolio. It's about time I actually made one! Thanks for viewing. ",
+    images: [
+      "/images/portfolio/rh/rh_1_mock.png",
+      "/images/portfolio/rh/rh_2_mock.png",
+      "/images/portfolio/rh/rh_3_mock.png",
+
+    ],
+    repo: "",
+    url: "",
+    stack: [
+      {
+        name: "TailwindCSS",
+        logo: null,
+      },
+      {
+        name: "NextJs",
+        logo: null,
+      },
+      {
+        name: "Framer Motion",
+        logo: null,
+      },
+     
+    ],
+  },
+  {
+    title: "Twinnytwin.io",
+    description:
+      "Over the year I've fully customized my template and have been able to use this same template for dozens of clients. E-commerce included",
+    images: [
+      "/images/portfolio/twinny/twinny_1_mock.png",
+      "/images/portfolio/twinny/twinny_2_mock.png",
+      "/images/portfolio/twinny/twinny_3_mock.png",
+      "/images/portfolio/twinny/twinny_4_mock.png",
+      "/images/portfolio/twinny/twinny_5_mock.png",
+
+    ],
+    repo: "",
+    url: "http://twinnytwin.io",
+    stack: [
+      {
+        name: "Wordpress",
+        logo: null,
+      },
+      {
+        name: "HTML",
+        logo: null,
+      },
+      {
+        name: "CSS",
+        logo: null,
+      },
+      {
+        name: "Javascript",
         logo: null,
       },
       {
