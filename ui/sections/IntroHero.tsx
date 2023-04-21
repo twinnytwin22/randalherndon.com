@@ -116,7 +116,7 @@ export default function IntroHero() {
                 ease: [0, 0.71, 0.2, 1.01],
               }}
               className="rounded-full p-6 lg:p-12 min-w-full   contrast-100 brightness-90"
-              src="/twinny.jpeg"
+              src="/IMG_2763.JPG"
               alt="Twinny"
             ></m.img>
           </m.div>
