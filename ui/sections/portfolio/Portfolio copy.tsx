@@ -4,7 +4,7 @@ import { projects } from "./projects";
 import { ScrollBoth, ScrollDown,  } from "@/ui/misc/ScrollDown";
 import { InView, useInView } from 'react-intersection-observer';
 import Slider from "react-slick";
-import ContactButton from "@/ui/misc/modal";
+import ContactButton from "@/ui/buttons/modal";
 import { useMotionValue } from "framer-motion";
 
 const Portfolio = () => {

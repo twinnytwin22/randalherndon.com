@@ -3,13 +3,20 @@ import React, { useEffect, useRef, useState } from "react";
 import resume from "./experience.json";
 import { DownloadButton } from "@/ui/buttons/DownloadButton";
 import skillsets from "./skillsets.json";
-import ContactButton from "@/ui/misc/modal";
+import ContactButton from "@/ui/buttons/modal";
 import { useAnimate, stagger, m } from "framer-motion";
 import { useInView } from "react-intersection-observer";
 import Slider from "react-slick";
-import { ScrollDown, ScrollDown2, ScrollDown3, SwipeSides } from "@/ui/misc/ScrollDown";
+import { primarySkills } from "./skill";
+import {
+  ScrollDown,
+  ScrollDown2,
+  ScrollDown3,
+  SwipeSides,
+} from "@/ui/misc/ScrollDown";
 import WelcomeMarquee from "@/ui/misc/WelcomeMarquee";
 import LinkedInButton from "@/ui/buttons/LinkedIn";
+import Badges from "./Badges";
 function useStaggerAnimation(showExp: boolean) {
   const [scope, animate] = useAnimate();
   useEffect(() => {
@@ -57,56 +64,14 @@ const Experience = () => {
         id="experience"
         ref={expRef}
       >
-        
         <div className="flex items-center flex-col lg:grid grid-cols-12 w-full h-full place-items-center mx-auto">
-          
           <div className="col-span-6 flex flex-col lg:mt-24 content-start max-w-xs sm:max-w-sm md:max-w-lg mx-auto h-fit">
-            <Slider
-              {...settings}
-              className="mb-8 p-8 sm:p-12 h-fit rounded-lg bg-slate-200 dark:bg-neutral-950 shadow-lg  shadow-slate-300 dark:shadow-gray-900 border border-slate-300 dark:border-gray-800"
-            >
-              <>
-                <h1 className="text-xl md:text-3xl">Education</h1>
-                <div className="md:grid grid-cols-2">
-                  {resume.education.map((my: any, i: any) => (
-                    <div className="block p-2.5" key={i}>
-                      <p className="text-base font-semibold">{my.field}</p>
-                      <p className="text-base font-semibold italic">
-                        {my.degree}
-                      </p>
-                      <div className="flex italic">
-                        <p className="text-sm">{my.school}</p>,&nbsp;
-                        <p className="text-sm">{my.startDate}</p>-
-                        <p className="text-sm ">{my.endDate}</p>
-                      </div>
-                    </div>
-                  ))}
-                </div>
-              </>
-              <>
-                <div className="">
-                  <h1 className=" text-xl md:text-3xl">Experience</h1>
-
-                  {resume.experience.slice(0, 2).map((job: any, i: any) => (
-                    <div key={i} className="p-2.5">
-                      <p className="text-base font-semibold">{job.title}</p>
-                      <div className="flex">
-                        <p className="text-base">{job.company}</p>&nbsp;-&nbsp;
-                        <p className="text-base">{job.location}</p>
-                      </div>
-                      <div className="flex italic">
-                        <p className="text-base">{job.startDate}</p>
-                        &nbsp;-&nbsp;
-                        <p className="text-base">{job.endDate}</p>
-                      </div>
-                    </div>
-                  ))}
-                </div>
-              </>
-            </Slider>
+            <div className="top-0 left-0 right-0 mx-auto mt-36 w-full inline-flex absolute">
+              <Badges />
+            </div>
             <div className="hidden lg:flex space-x-2">
               <ContactButton />
-              <LinkedInButton/>
+              <LinkedInButton />
               <DownloadButton />
             </div>
           </div>
@@ -119,9 +84,8 @@ const Experience = () => {
                 {skillsets.skills.map(({ name }: any, index: number) => (
                   <m.h2
                     key={index}
-                    className={`lg:h-20 flex whitespace-nowrap items-center justify-center text-white hover:scale-105 text-xs md:text-sm p-3 font-normal font-[owners-wide] rounded-lg ${
-                      colors[Math.floor(Math.random() * colors.length)]
-                    }`}
+                    className={`lg:h-20 flex whitespace-nowrap items-center justify-center text-white hover:scale-105 text-xs md:text-sm p-3 font-normal font-[owners-wide] rounded-lg ${colors[Math.floor(Math.random() * colors.length)]
+                      }`}
                     initial={{ opacity: 0, y: 20 }}
                   >
                     {name}
@@ -131,14 +95,14 @@ const Experience = () => {
               <div className="flex lg:hidden h-fit mt-8 space-x-5">
                 {" "}
                 <ContactButton />
-                <LinkedInButton/>
+                <LinkedInButton />
                 <DownloadButton />
               </div>
             </div>
           </div>
-        </div>  <ScrollDown3/>
+        </div>{" "}
+        <ScrollDown3 />
       </div>
-    
     </>
   );
 };

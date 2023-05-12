@@ -27,9 +27,7 @@ export default async function Home() {
           <section className="flex items-center justify-center h-screen w-full snap-center snap-always" id="skills">
             <Experience />
           </section>
-          <section className="flex items-center justify-center h-screen w-full snap-center snap-always" id="services">
-            <Services />
-          </section>
+    
           <section className="flex items-center justify-center h-screen w-full snap-center snap-always isolate" id="portfolio">
             <Portfolio/>
           </section></main>

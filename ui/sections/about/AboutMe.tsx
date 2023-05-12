@@ -1,126 +1,134 @@
 "use client";
-import React, {useEffect, useState, useRef} from "react";
-import { delay, m, Variants } from "framer-motion";
+import React, { useEffect, useState, useRef } from "react";
+import { Variants } from "framer-motion";
 import { GradientText } from "@/ui/misc/GradientText";
-import ContactButton from "@/ui/misc/modal";
+import ContactButton from "@/ui/buttons/modal";
 import { useInView } from "framer-motion";
 import { ScrollDown } from "@/ui/misc/ScrollDown";
-import AboutCard from "./AboutCard";
 import resume from "@/ui/sections/experience/experience.json";
 import { FaCheckCircle, FaMapPin } from "react-icons/fa";
 import LinkedInButton from "@/ui/buttons/LinkedIn";
 import { DownloadButton } from "@/ui/buttons/DownloadButton";
+import Slider from "react-slick";
+const AboutMe = ({ data, commits }: any) => {
 
-const AboutMe = ({data, commits}: any) => {
-const [showAboutCard, setShowAboutCard ] = useState(false)
+  let settings = {
+    dots: false,
+    infinite: true,
+    speed: 500,
+    slidesToShow: 1,
+    slidesToScroll: 1,
+  };
 
-const ref = useRef(null)
-const isInView = useInView(ref)
-useEffect(() => {
-  if (isInView) {
-    setShowAboutCard(true);
-  } else {
-    setShowAboutCard(false)
-  }
-}, [isInView]);
-
-const card: Variants = {
-  hidden: {
-    y: -50,
-    opacity: 0,
-  },
-  visible: {
-    y: 0,
-    opacity: 1,
-    transition: {
-      delay: 0.9,
-      type: "spring",
-      stiffness: 500,
+  const card: Variants = {
+    hidden: {
+      y: -50,
+      opacity: 0,
     },
-  },
-};
-  
+    visible: {
+      y: 0,
+      opacity: 1,
+      transition: {
+        delay: 0.9,
+        type: "spring",
+        stiffness: 500,
+      },
+    },
+  };
+
   return (
     <> <div className="absolute top-0 left-0 w-full h-full bg-slate-100 dark:bg-black  opacity-10 bg-cover bg-[url(https://i.imgur.com/XqbXLxL.png)]" />
-    <div
-    className=" mx-auto h-full max-w-screen relative "
-    id="about"
-    ref={ref}
-  >      
+      <div
+        className=" mx-auto h-full max-w-screen relative "
+        id="about"
 
-    <ScrollDown color="text-blue-800 dark:text-blue-600" />
- 
-    <div className=" grid grid-cols-1 md:grid-cols-12 max-w-screen min-h-full place-items-center px-8 ">
-      <div className="min-w-full h-full col-span-7  mx-auto ml-2 space-y-6 xl:text-8xl text-5xl sm:text-7xl items-center md:order-2 place-items-center">
-        <div className="flex text-center p-4 items-center min-h-full">
-          <div className="content-start justify-start items-center">
-            <GradientText text="About Me" />
-            <div
-              className="md:hidden block mt-4  items-center w-full  content-center justify-center md:order-1"
-              ref={ref}
-            >
-              {showAboutCard && (
-                <m.div
-                  variants={card}
-                  initial="hidden"
-                  animate="visible"
-                  transition={{
-                    duration: 0.8,
-                    delay: 0.5,
-                    ease: [0, 0.71, 0.2, 1.01],
-                  }}
-                >
-                  <AboutCard data={data} commits={commits} />{" "}
-                </m.div>
-              )}
-            </div>
-            {[resume].map((my: any, i) => (
-              <div key={i}>
-                <div className="w-full text-base md:text-lg lg:text-xl p-4 sm:p-8 md:pr-8 lg:pr-16 items-center min-h-full text-left text-gray-900 dark:text-slate-200 ">
-                  <div className="flex h-10 items-center">
-                    <FaMapPin />
-                    <h1 className="text-sm  h-fit font-semibold text-left">
-                      {my.location}
-                    </h1>
-                  </div>
-                  <div className="overflow-auto h-56  overflow-y-auto p-4 bg-slate-200 rounded-lg">
-                    
-                    {my.descriptions.map((item: any, i: any)=> (
-                    <div className="text-base lg:text-xl text-ellipsis flex border-b border-slate-400 p-2 text-slate-950 items-center -ml-3" key={i}>
-                      <div className="p-3"><FaCheckCircle/></div>
-                     <p> {item}</p>
-                    </div>))}
-                  </div>
-                </div>
-                <div className="flex ml-6 h-fit -mt-3 lg:-mt-6 space-x-2">
-                  <ContactButton color="text-blue-800 dark:text-blue-600" />
-                  <LinkedInButton/>
-                  <DownloadButton/>
+      >
+        <div className="w-screen mx-auto items-center h-full ">
+          <ScrollDown />
+          <div className=" grid grid-cols-1 lg:grid-cols-12 min-h-full mx-auto max-w-screen-2xl place-items-center px-8 lg:gap-24 ">
+
+            <div className="min-w-full h-full col-span-6  mx-auto ml-2 space-y-6 xl:text-8xl text-5xl sm:text-7xl items-center place-items-center">
+              <div className="flex text-center p-4 items-center min-h-full ">
+                <div className="content-start justify-start md:justify-center md:content-center items-center mx-auto">
+                  <GradientText text="About Me" />
+
+                  {[resume].map((my: any, i) => (
+                    <div key={i}>
+                      <div className="w-full text-base md:text-lg lg:text-xl p-4 sm:p-8 md:pr-8 lg:pr-16 items-center min-h-full text-left text-gray-900 dark:text-slate-200 ">
+                        <div className="flex h-10 items-center">
+                          <FaMapPin />
+                          <h1 className="text-sm  h-fit font-semibold text-left">
+                            {my.location}
+                          </h1>
+                        </div>
+                        <div className="overflow-auto h-56 lg:h-full mx-auto p-4 bg-slate-200 dark:bg-black rounded-lg  shadow-lg  shadow-slate-300 dark:shadow-gray-900">
+
+                          {my.descriptions.map((item: any, i: any) => (
+                            <div className=" lg:text-base text-sm text-ellipsis flex border-b border-slate-400 p-2 text-slate-950 dark:text-white dark:border-slate-900 items-center -ml-3" key={i}>
+                              <div className="p-3"><FaCheckCircle /></div>
+                              <p> {item}</p>
+                            </div>))}
+                        </div>
+                      </div>
+
+                    </div>
+                  ))}
                 </div>
               </div>
-            ))}
+            </div>
+            <div className="block p-0 col-span-6 items-center w-full max-w-2xl  content-center justify-center lg:mt-8 px-4 xl:mr-16 lg:mr-12">
+              <Slider
+                {...settings}
+                className="mb-8 p-8 sm:p-12 h-fit rounded-lg bg-slate-200 dark:bg-black shadow-lg  shadow-slate-300 dark:shadow-gray-900 "
+              >
+                <>
+                  <h1 className="text-xl md:text-3xl">Education</h1>
+                  <div className="md:grid grid-cols-2 ">
+                    {resume.education.map((my: any, i: any) => (
+                      <div className="block p-2.5 lg:text-base text-sm" key={i}>
+                        <p className="font-semibold">{my.field}</p>
+                        <p className="font-semibold italic">
+                          {my.degree}
+                        </p>
+                        <div className="flex italic">
+                          <p className="">{my.school}</p>,&nbsp;
+                          <p className="">{my.startDate}</p>-
+                          <p className="">{my.endDate}</p>
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                </>
+                <>
+                  <div className="">
+                    <h1 className=" text-xl md:text-3xl">Experience</h1>
+
+                    {resume.experience.slice(0, 2).map((job: any, i: any) => (
+                      <div key={i} className="p-2.5">
+                        <p className="text-base font-semibold">{job.title}</p>
+                        <div className="flex">
+                          <p className="text-base">{job.company}</p>&nbsp;-&nbsp;
+                          <p className="text-base">{job.location}</p>
+                        </div>
+                        <div className="flex italic">
+                          <p className="text-base">{job.startDate}</p>
+                          &nbsp;-&nbsp;
+                          <p className="text-base">{job.endDate}</p>
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                </>
+              </Slider>
+              <div className="flex h-fit space-x-2">
+                <ContactButton color="text-blue-800 dark:text-blue-600" />
+                <LinkedInButton />
+                <DownloadButton />
+              </div>
+            </div>
           </div>
-        </div>
-      </div>
-      <div className="hidden md:block p-0 col-span-5 items-center w-full  content-center justify-center md:order-1">
-        {showAboutCard && (
-          <m.div
-            variants={card}
-            initial="hidden"
-            animate="visible"
-            transition={{
-              duration: 0.8,
-              delay: 0.5,
-              ease: [0, 0.71, 0.2, 1.01],
-            }}
-          >
-            <AboutCard data={data} commits={commits} />{" "}
-          </m.div>
-        )}
-      </div>
-    </div>
-  </div>
-  </>
+        </div></div>
+    </>
   );
 };
 

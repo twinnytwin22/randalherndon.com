@@ -27,13 +27,13 @@ export const primarySkills: PrimarySkills = [
    
     },
     {
-        skill: 'CMS Integration',
+        skill: 'Integrations',
         description:'Working with a content management system (CMS) like WordPress, Drupal, or Sanity, integrating the front-end design and functionality with the back-end content management system.',        
         id: 'cms',
 
     },
     {
-        skill: 'Web 3 Development',
+        skill: 'Web 3',
         description:'Working with blockchain technologies, decentralized applications (dApps), and Web 3.0 to build decentralized applications, smart contracts, and other blockchain-based solutions, creating a new generation of web applications that prioritize security, transparency, and user control.',
         id: 'web3',
     },

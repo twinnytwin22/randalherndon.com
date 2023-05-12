@@ -21,17 +21,17 @@ const skillBlockVariants: Variants = {
 
 function ServiceBlock({ skill, delay }: any, i: any) {
   return (
-    <div className="hover:scale-105 dark:hover:bg-gray-950 hover:bg-slate-300 bg-slate-200 dark:bg-black  " key={skill}>
-    <m.div
-      variants={skillBlockVariants}
-      initial="hidden"
-      
-      animate="visible"
-      transition={{ delay }}
-      className='my-2 p-3 rounded-md max-w-full  mx-auto md:px-16 border z-[999999]  border-slate-400 dark:border-gray-800'
-    >
-      <h1 className="text-sm lg:text-lg text-center font-owners-wide font-normal ">{skill}</h1>
-    </m.div></div>
+    <div className="" key={skill}>
+      <m.div
+        variants={skillBlockVariants}
+        initial="hidden"
+        animate="visible"
+        transition={{ delay }}
+        className=""
+      >
+        <div className="bg-blue-100 text-blue-800 text-sm font-medium mr-2 px-2.5 py-0.5 rounded dark:bg-blue-900 dark:text-blue-300 whitespace-nowrap ">{skill}</div>
+
+      </m.div></div>
   );
 }
 

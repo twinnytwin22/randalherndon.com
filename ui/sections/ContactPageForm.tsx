@@ -41,6 +41,7 @@ const ContactForm = ({ handleInputClick }: any) => {
       <h1 className="mb-4 text-4xl tracking-tight font-extrabold text-center text-black dark:text-white">
         Let's Chat!
       </h1>
+      <p className="text-lg text-center">or email me at randal.herndon@gmail.com</p>
       <form onSubmit={handleSubmit} className="flex flex-col w-full space-y-8">
         <div>
           <label

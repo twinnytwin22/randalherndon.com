@@ -3,7 +3,7 @@ import React from "react";
 import { useEffect, useState } from "react";
 import { ScrollDown } from "../misc/ScrollDown";
 import { m } from "framer-motion";
-import ContactButton from "../misc/modal";
+import ContactButton from "../buttons/modal";
 import { FaLinkedinIn, FaGithub } from "react-icons/fa";
 import Link from "next/link";
 import MyGitHubButton from "../buttons/CustomGitHubButton";
@@ -65,8 +65,8 @@ export default function IntroHero() {
       <div className="">
       <ScrollDown color="black"/></div>
 
-      <div className="grid lg:grid-cols-12 lg:mx-8 2xl:mx-16 min-h-screen place-items-center px-8 ">
-        <div className="content-center justify-center min-w-full h-full md:h-fit lg:col-span-7 col-span-12 mx-auto ml-2 space-y-2 md:space-y-4 xl:text-6xl 2xl:text-7xl  text-4xl sm:text-5xl lg:order-1 order-2">
+      <div className="grid lg:grid-cols-12 mx-auto min-h-screen items-center justify-center w-full lg:max-w-screen-xl place-items-center px-16 2xl:px-0 ">
+        <div className="content-center justify-center min-w-full  h-fit lg:col-span-7 col-span-12 mx-auto ml-2 space-y-2 md:space-y-4 xl:text-6xl 2xl:text-7xl  text-4xl sm:text-5xl lg:order-1 order-2">
           <h1 className=" text-left text-black dark:text-white">Hello,</h1>
           <h1 className="text-left text-black dark:text-white">I'm Randal,</h1>
           <m.h1
@@ -81,7 +81,9 @@ export default function IntroHero() {
           >
             {headlines[headlineIndex]}
           </m.h1>
-
+          <div className="lg:hidden block lg:col-span-5 col-span-12 lg:items-center mx-6 py-10 sm:mx-auto xl:mx-12 content-center mt-20 lg:mt-0 max-w-md md:min-w-md justify-center lg:order-2 order-1"  >
+      <p className="text-2xl"> I have a passion for learning, and creating new things. I love building beautiful web apps and products, while tinkering in between. 😃 </p>
+        </div>
           <m.div
             initial={{ opacity: 0, scale: 0.5 }}
             animate={{ opacity: 1, scale: 1 }}
@@ -97,29 +99,14 @@ export default function IntroHero() {
               headlineIndex={headlineIndex}
               buttonTextColors={buttonTextColors}
             />
-
+    
            <LinkedInButton/>
             <MyGitHubButton/>
             <DownloadButton/>
           </m.div>
         </div>
-        <div className="flex lg:col-span-5 col-span-12 lg:items-center mx-6 sm:mx-auto xl:mx-12 content-center mt-20 lg:mt-0 max-w-md md:min-w-md justify-center lg:order-2 order-1"  >
-          <m.div
-            className={`border-8 rounded-full text-left shadow-slate-300 dark:shadow-gray-800 shadow-2xl ${bColors[headlineIndex]}`}
-          >
-            <m.img
-              initial={{ opacity: 0, scale: 0.5 }}
-              animate={{ opacity: 1, scale: 1 }}
-              transition={{
-                duration: 0.8,
-                delay: 0.5,
-                ease: [0, 0.71, 0.2, 1.01],
-              }}
-              className="rounded-full p-6 lg:p-12 min-w-full   contrast-100 brightness-90"
-              src="/IMG_2763.JPG"
-              alt="Twinny"
-            ></m.img>
-          </m.div>
+        <div className="hidden lg:block lg:col-span-5 col-span-12 lg:items-center mx-6 sm:mx-auto xl:mx-12 content-center mt-20 lg:mt-0 max-w-md md:min-w-md justify-center lg:order-2 order-1"  >
+      <p className="text-3xl"> I have a passion for learning, and creating new things. I love building beautiful web apps and products, while tinkering in between. 😃 </p>
         </div>
       </div>
     </div>

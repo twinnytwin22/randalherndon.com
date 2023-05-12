@@ -4,7 +4,7 @@ import { projects } from "./projects";
 import { ScrollBoth, SwipeSides } from "@/ui/misc/ScrollDown";
 import { useInView } from "react-cool-inview";
 import Slider from "react-slick";
-import ContactButton from "@/ui/misc/modal";
+import ContactButton from "@/ui/buttons/modal";
 import Link from "next/link";
 const Portfolio = () => {
   const [showTooltip, setShowTooltip] = useState(false);
@@ -12,25 +12,24 @@ const Portfolio = () => {
   const [currentProjectImages, setCurrentProjectImages] = useState(
     projects[0].images
   );
-  const { inView,observe,entry } = useInView<HTMLDivElement>({
+  const { inView, observe, entry } = useInView<HTMLDivElement>({
     root: null,
     delay: 100,
     onEnter: () => {
-      console.log('here')
+      console.log("here");
     },
     onLeave: () => {
-      console.log('gone')
+      console.log("gone");
     },
     onChange: () => {
-      console.log('change')
-    }
-  } );
-
+      console.log("change");
+    },
+  });
 
   if (inView) {
-    console.log('in view' ,entry?.target.children)
-  } else{
-    console.log('out of view')
+    console.log("in view", entry?.target.children);
+  } else {
+    console.log("out of view");
   }
 
   var settings = {
@@ -41,196 +40,101 @@ const Portfolio = () => {
     slidesToScroll: 1,
   };
 
+  const ImageSlider = ({ project, index, settings }: any) => {
+    return (
+      <div key={index}>
+        <Slider {...settings}>
+          {project.images?.map((image: string, index: number) => (
+            <img
+              key={index}
+              className="h-full w-full"
+              src={image}
+              alt={`${project?.title} - Image ${index}`}
+            />
+          ))}
+        </Slider>
+      </div>
+    );
+  };
+
   const renderLarge = () => {
     return (
       <div
         className="dark:bg-neutral-950 bg-slate-200 mx-auto h-screen w-full border-t-4 dark:border-white border-black relative overflow-hidden"
         id="portfolio"
       >
-        <div className="w-full columns-1 lg:columns-2 max-w-screen min-h-screen h-full flex  lg:flex-row overflow-hidden relative">
-          <div className="flex mx-auto space-y-6 items-center content-center justify-center bg-slate-100 dark:bg-black h-full w-full overflow-hidden " ref={observe}>
-            <div className="max-w-lg w-full content-center mx-auto relative">
-              <Slider {...settings}>
-                {currentProjectImages?.map((images, index) => (
-                  <img
-                    key={index}
-                    className="justify-center max-w-lg mx-auto"
-                    src={images}
-                    alt={`${projects[currentProjectIndex]?.title} - Image ${index}`}
-                  />
-                ))}
-              </Slider>
-            </div>
-          </div>
-
+        <div className="w-full max-w-screen min-h-screen h-full flex  lg:flex-row overflow-hidden relative">
           <div className="portfolio-selector h-screen w-full mx-auto items-center content-center snap-y overflow-y-scroll overflow-x-hidden snap-mandatory ">
-            
-            <div className=""><ScrollBoth /></div>
-
-            <div 
-              className="min-w-[50vw] mx-auto content-center justify-center w-full flex flex-col" 
-            
-            >
-              {projects?.map((project, index) => (
-                <div
-                  key={index}
-                  className={`h-full min-h-screen min-w-full flex items-center mx-auto content-center snap-normal snap-center relative ${project.title}`}
-                >
+            <div className="">
+              <ScrollBoth />
+            </div>
+            {projects?.map((project, index) => (
+              <div className="grid grid-cols-10" key={index}>
+                <div className="col-span-10  lg:col-span-6 mx-auto content-center justify-center w-full flex flex-col">
                   <div
-                    className="w-full flex flex-col items-center"                   
-              
+
+                    className={`h-full min-h-screen min-w-full flex items-center mx-auto content-center snap-normal snap-center relative ${project.title}`}
                   >
-                    <h1 className="text-4xl text-center p-4" id={project.title} >
-                      {" "}
-                      {project?.title}
-                    </h1>
-                    <p className="max-w-sm p-2.5 text-center">
-                      {project?.description}
-                    </p>
-                    <div className="flex space-x-2 p-6 mb-4">
-                      {project?.stack.map((stack: any, i) => (
-                        <div className="" key={i}>
-                          <span className="bg-gray-100 text-gray-800 text-xs md:text-sm font-medium mr-2 px-2.5 py-0.5 rounded dark:bg-gray-700 dark:text-gray-300">
-                            {stack.name}
-                          </span>
-                        </div>
-                      ))}
-                    </div>
-                    <div className="flex space-x-2">
-                      <button
-                            onMouseOver={() => setShowTooltip(true)}
-                            onMouseOut={() => setShowTooltip(false)}
-                        key={project.title}
-                        className={`portfolio-selector-item p-4 h-fit text-sm bg-black hover:scale-105 dark:bg-white text-white items-center dark:text-black rounded-lg mx-auto ${
-                          index === currentProjectIndex ? "active" : ""
-                        }`}
-                        onClick={() => {
-                          setCurrentProjectIndex(index);
-                          setCurrentProjectImages(project?.images);
-                        }}
+                    <div className="w-full flex flex-col items-center">
+                      <h1
+                        className="text-4xl text-center p-4"
+                        id={project.title}
                       >
                         {" "}
-                        <h1 className="font-[owners-wide]">View</h1>
-                        {showTooltip && (
-            <span className="absolute top-full left-1/2 transform -translate-x-1/2 py-2 px-4 bg-black text-white text-xs rounded-md whitespace-nowrap">
-Click me to the preview            </span>
-          )}
-                      </button>
-                      <ContactButton />
-                      
+                        {project?.title}
+                      </h1>
+                      <div className="lg:hidden max-w-sm px-6 w-full">
+                        <ImageSlider project={project} index={index} settings={settings} />
+                      </div>
+                      <p className="max-w-sm p-2.5 text-center">
+                        {project?.description}
+                      </p>
+                      <div className="flex space-x-2 p-6 mb-4">
+                        {project?.stack.map((stack: any, i) => (
+                          <div className="" key={i}>
+                            <span className="bg-gray-100 text-gray-800 text-xs md:text-sm font-medium mr-2 px-2.5 py-0.5 rounded dark:bg-gray-700 dark:text-gray-300">
+                              {stack.name}
+                            </span>
+                          </div>
+                        ))}
+                      </div>
+                      <div className="flex space-x-2 h-fit">
+
+                        <ContactButton />
+                        {project?.url !== "" ? (
+                          <Link href={project.url}>
+                            <div className="p-4 h-fit text-sm  bg-blue-700 text-center font-[owners-wide] rounded-lg text-white font-bold hover:scale-105">
+                              See Live
+                            </div>{" "}
+                          </Link>
+                        ) : (
+                          ""
+                        )}
+                      </div>
+
                     </div>
-                    {project?.url !== "" ? 
-                    <Link href={project.url}>
-                    <div className="p-4 w-48 bg-blue-700 text-center font-[owners-wide] rounded-lg text-white font-bold mt-2 hover:scale-105">See Live</div> </Link>:
-                    ''}
+                  </div>
+                </div>
+                <div className="hidden lg:flex mx-auto space-y-6 items-center col-span-4 content-center justify-center bg-slate-100 dark:bg-black h-full w-full overflow-clip ">
+                  <div className="max-w-sm px-6 w-full">
+                    <ImageSlider project={project} index={index} settings={settings} />
 
                   </div>
                 </div>
-              ))}
-            </div>
+              </div>))}
           </div>
         </div>
       </div>
     );
   };
 
-  const renderSmall = () => {
-    return (
-      <div className="min-w-screen min-h-screen mx-auto w-full relative">
-        <div className="flex flex-col h-screen min-w-screen w-full">
-          <div className="h-full min-h-[55vh] p-8 md:p-20">
-            <div className="flex mx-auto space-y-6 items-center content-center justify-center bg-slate-100 dark:bg-black h-full w-full overflow-clip ">
-              <div className="max-w-sm px-6 w-full">
-                <Slider {...settings}>
-                  {currentProjectImages?.map((image, index) => (
-                    <img
-                      key={index}
-                      className="max-h-68 w-full"
-                      src={image}
-                      alt={`${projects[currentProjectIndex]?.title} - Image ${index}`}
-                    />
-                  ))}
-                </Slider>
-              </div>
-            </div>
-          </div>
-          <div className="bg-slate-200 dark:bg-neutral-950 h-full">
-            <div
-              id="portfolio-details"
-              className="h-full w-full items-center flex content-center justify-center"
-            >
-              <div className="portfolio-selector h-full w-full max-w-screen mx-auto items-center content-center snap-x overflow-x-scroll overflow-y-hidden snap-mandatory">
-                <div className="max-w-screen mx-auto content-center justify-center w-full flex ">
-                  {projects.map((project, index) => (
-                    <div
-
-                      key={index}
-                      className={`h-full min-h-[45vh] min-w-full max-w-screen w-full flex items-center mx-auto content-center snap-normal snap-center `}
-                    >
-                      <div className="w-full flex flex-col">
-                        <h1 className="text-3xl md:text-4xl text-center">
-                          {project.title}
-                        </h1>
-                        <p className="max-w-sm p-2.5 text-center mx-auto">
-                          {project?.description}
-                        </p>
-
-                        <div className="max-w-md flex space-x-1 p-4 mx-auto">
-                          {project?.stack.map((stack: any, i) => (
-                            <div className="" key={i}>
-                              <span className="bg-gray-100 text-gray-800 text-xs md:text-sm font-medium mr-2 px-2.5 py-0.5 rounded dark:bg-gray-700 dark:text-gray-300">
-                                {stack.name}
-                              </span>
-                            </div>
-                          ))}
-                        </div>
-                        <div className="flex space-x-2 m-auto">
-                        <button
-                            onMouseOver={() => setShowTooltip(true)}
-                            onMouseOut={() => setShowTooltip(false)}
-                        key={index}
-                        className={`portfolio-selector-item p-4 h-fit text-sm bg-black hover:scale-105 dark:bg-white text-white items-center dark:text-black rounded-lg mx-auto ${
-                          index === currentProjectIndex ? "active" : ""
-                        }`}
-                        onClick={() => {
-                          setCurrentProjectIndex(index);
-                          setCurrentProjectImages(project?.images);
-                        }}
-                      >
-                        {" "}
-                        <h1 className="font-[owners-wide]">View</h1>
-                        {showTooltip && (
-            <span className="absolute top-full left-1/2 transform -translate-x-1/2 py-2 px-4 bg-black text-white text-xs rounded-md whitespace-nowrap">
-Click me to the preview            </span>
-          )}
-                      </button>
-                      <ContactButton />
-                      </div>
-                      {project?.url !== "" ? 
-                    <Link href={project.url}>
-                    <div className="p-4 w-48 bg-blue-700 text-center font-[owners-wide] rounded-lg text-white font-bold mt-2 hover:scale-105 mx-auto">See Live</div> </Link>:
-                    ''}
-                      </div>
-                    </div>
-                  ))}
-                </div>
-              <SwipeSides/>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    );
-  };
 
   return (
     <>
-      <div className="hidden lg:block w-full mx-auto min-h-screen max-h-screen relative">
+      <div className="block w-full mx-auto min-h-screen max-h-screen relative">
         {renderLarge()}
       </div>
-      <div className="block lg:hidden w-full mx-auto min-h-screen max-h-screen relative">
-        {renderSmall()}
-      </div>
+
     </>
   );
 };

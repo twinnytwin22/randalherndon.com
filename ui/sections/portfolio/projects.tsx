@@ -180,7 +180,6 @@ export const projects = [
       "/images/portfolio/twinny/twinny_2_mock.png",
       "/images/portfolio/twinny/twinny_3_mock.png",
       "/images/portfolio/twinny/twinny_4_mock.png",
-      "/images/portfolio/twinny/twinny_5_mock.png",
 
     ],
     repo: "",
