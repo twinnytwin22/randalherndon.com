@@ -14,7 +14,7 @@ export default function IntroHero() {
   const [headlineIndex, setHeadlineIndex] = useState(0);
 
   const headlines = [
-    "Interdisciplinary.",
+    "Marketer.",
     "Creative.",
     "Developer.",
     "Musician.",
@@ -63,7 +63,7 @@ export default function IntroHero() {
   return (
     <div className="mx-auto bg-slate-100 dark:bg-black h-full lg:max-w-7xl xl:max-w-full w-full mb-20 md:mb-0 static isolate">
       <div className="">
-      <ScrollDown color="black"/></div>
+        <ScrollDown color="black" /></div>
 
       <div className="grid lg:grid-cols-12 mx-auto min-h-screen items-center justify-center w-full lg:max-w-screen-xl place-items-center px-16 2xl:px-0 ">
         <div className="content-center justify-center min-w-full  h-fit lg:col-span-7 col-span-12 mx-auto ml-2 space-y-2 md:space-y-4 xl:text-6xl 2xl:text-7xl  text-4xl sm:text-5xl lg:order-1 order-2">
@@ -82,8 +82,8 @@ export default function IntroHero() {
             {headlines[headlineIndex]}
           </m.h1>
           <div className="lg:hidden block lg:col-span-5 col-span-12 lg:items-center mx-6 py-10 sm:mx-auto xl:mx-12 content-center mt-20 lg:mt-0 max-w-md md:min-w-md justify-center lg:order-2 order-1"  >
-      <p className="text-2xl"> I have a passion for learning, and creating new things. I love building beautiful web apps and products, while tinkering in between. 😃 </p>
-        </div>
+            <p className="text-2xl"> I have a passion for learning, and creating new things. I love building beautiful web apps and products, while tinkering in between. 😃 </p>
+          </div>
           <m.div
             initial={{ opacity: 0, scale: 0.5 }}
             animate={{ opacity: 1, scale: 1 }}
@@ -99,14 +99,14 @@ export default function IntroHero() {
               headlineIndex={headlineIndex}
               buttonTextColors={buttonTextColors}
             />
-    
-           <LinkedInButton/>
-            <MyGitHubButton/>
-            <DownloadButton/>
+
+            <LinkedInButton />
+            <MyGitHubButton />
+            <DownloadButton />
           </m.div>
         </div>
         <div className="hidden lg:block lg:col-span-5 col-span-12 lg:items-center mx-6 sm:mx-auto xl:mx-12 content-center mt-20 lg:mt-0 max-w-md md:min-w-md justify-center lg:order-2 order-1"  >
-      <p className="text-3xl"> I have a passion for learning, and creating new things. I love building beautiful web apps and products, while tinkering in between. 😃 </p>
+          <p className="text-3xl"> I have a passion for learning, and creating new things. I love building beautiful web apps and products, while tinkering in between. 😃 </p>
         </div>
       </div>
     </div>
