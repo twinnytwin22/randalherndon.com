@@ -57,7 +57,7 @@ const Portfolio = () => {
     );
   };
 
-  const renderLarge = () => {
+  const renderPortfolio = () => {
     return (
       <div
         className="dark:bg-neutral-950 bg-slate-200 mx-auto h-screen w-full border-t-4 dark:border-white border-black relative overflow-hidden"
@@ -70,14 +70,14 @@ const Portfolio = () => {
             </div>
             {projects?.map((project, index) => (
               <div className="grid grid-cols-10" key={index}>
-                <div className="col-span-10  lg:col-span-6 mx-auto content-center justify-center w-full flex flex-col">
+                <div className="col-span-10 px-16  lg:col-span-6 mx-auto content-center justify-center w-full flex flex-col">
                   <div
 
                     className={`h-full min-h-screen min-w-full flex items-center mx-auto content-center snap-normal snap-center relative ${project.title}`}
                   >
                     <div className="w-full flex flex-col items-center">
                       <h1
-                        className="text-4xl text-center p-4"
+                        className="text-2xl lg:text-3xl text-center p-4"
                         id={project.title}
                       >
                         {" "}
@@ -116,7 +116,7 @@ const Portfolio = () => {
                   </div>
                 </div>
                 <div className="hidden lg:flex mx-auto space-y-6 items-center col-span-4 content-center justify-center bg-slate-100 dark:bg-black h-full w-full overflow-clip ">
-                  <div className="max-w-sm px-6 w-full">
+                  <div className="max-w-xl px-16 w-full">
                     <ImageSlider project={project} index={index} settings={settings} />
 
                   </div>
@@ -132,7 +132,7 @@ const Portfolio = () => {
   return (
     <>
       <div className="block w-full mx-auto min-h-screen max-h-screen relative">
-        {renderLarge()}
+        {renderPortfolio()}
       </div>
 
     </>

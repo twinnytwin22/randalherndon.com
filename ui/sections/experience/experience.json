@@ -19,13 +19,13 @@
     "Vast media background and ability to understand the audience",
     "Previous experience as a digital art instructor and graphic designer",
     "Lead creative designer and brand strategist for multiple successful businesses"
-    ],
+  ],
   "experience": [
     {
-      "title": "Frontend Developer / Digital Marketing",
+      "title": "Frontend Developer / Founder",
       "company": "The CRIB Network",
-      "location": "Phoenix, Arizona",
-      "startDate": "January 2020",
+      "location": "Phoenix, AZ",
+      "startDate": "Jan 2020",
       "endDate": "Present",
       "duration": "3 years 4 months",
       "description": "placeholder"
@@ -33,26 +33,26 @@
     {
       "title": "Digital Marketing Manager",
       "company": "Ayr Wellness Inc.",
-      "location": "Tempe, Arizona",
-      "startDate": "October 2019",
-      "endDate": "February 2022",
+      "location": "Tempe, AZ",
+      "startDate": "Oct 2019",
+      "endDate": "Feb 2022",
       "duration": "9 months",
       "description": "placeholder"
     },
     {
       "title": "Online Business Consultant",
       "company": "GoDaddy",
-      "location": "Phoenix, Arizona",
-      "startDate": "July 2018",
-      "endDate": "October 2019",
+      "location": "Phoenix, AZ",
+      "startDate": "Jul 2018",
+      "endDate": "Oct 2019",
       "duration": "1 year 4 months",
       "description": "placeholder"
     },
     {
       "title": "Promotions Specialist",
       "company": "Second Street",
-      "location": "Saint Louis, Missouri",
-      "startDate": "December 2014",
+      "location": "St. Louis, MO",
+      "startDate": "Dec 2014",
       "endDate": "June 2016",
       "duration": "1 year 7 months",
       "description": "placeholder"

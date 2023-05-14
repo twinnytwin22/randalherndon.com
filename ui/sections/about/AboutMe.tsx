@@ -47,8 +47,8 @@ const AboutMe = ({ data, commits }: any) => {
           <ScrollDown />
           <div className=" grid grid-cols-1 lg:grid-cols-12 min-h-full mx-auto max-w-screen-2xl place-items-center px-8 lg:gap-24 ">
 
-            <div className="min-w-full h-full col-span-6  mx-auto ml-2 space-y-6 xl:text-8xl text-5xl sm:text-7xl items-center place-items-center">
-              <div className="flex text-center p-4 items-center min-h-full ">
+            <div className="min-w-full h-full col-span-6  mx-auto ml-2 space-y-6 xl:text-8xl text-5xl sm:text-7xl lg:items-center">
+              <div className="flex text-center p-4 items-end lg:items-center min-h-full ">
                 <div className="content-start justify-start md:justify-center md:content-center items-center mx-auto">
                   <GradientText text="About Me" />
 
@@ -76,7 +76,7 @@ const AboutMe = ({ data, commits }: any) => {
                 </div>
               </div>
             </div>
-            <div className="block p-0 col-span-6 items-center w-full max-w-2xl  content-center justify-center lg:mt-8 px-4 xl:mr-16 lg:mr-12">
+            <div className="block p-0 col-span-6 lg:items-center w-full px-8 lg:max-w-2xl items-start  content-center justify-center ml-2 lg:mt-8 lg:px-4 xl:mr-16 lg:mr-12">
               <Slider
                 {...settings}
                 className="mb-8 p-8 sm:p-12 h-fit rounded-lg bg-slate-200 dark:bg-black shadow-lg  shadow-slate-300 dark:shadow-gray-900 "
@@ -102,21 +102,45 @@ const AboutMe = ({ data, commits }: any) => {
                 <>
                   <div className="">
                     <h1 className=" text-xl md:text-3xl">Experience</h1>
+                    <div className="md:grid grid-cols-2 ">
 
-                    {resume.experience.slice(0, 2).map((job: any, i: any) => (
-                      <div key={i} className="p-2.5">
-                        <p className="text-base font-semibold">{job.title}</p>
-                        <div className="flex">
-                          <p className="text-base">{job.company}</p>&nbsp;-&nbsp;
-                          <p className="text-base">{job.location}</p>
+                      {resume.experience.slice(0, 2).map((job: any, i: any) => (
+                        <div key={i} className="p-1.5">
+                          <p className="text-base font-semibold">{job.title}</p>
+                          <div className="flex">
+                            <p className="text-base">{job.company}</p>&nbsp;-&nbsp;
+                            <p className="text-base">{job.location}</p>
+                          </div>
+                          <div className="flex italic">
+                            <p className="text-base">{job.startDate}</p>
+                            &nbsp;-&nbsp;
+                            <p className="text-base">{job.endDate}</p>
+                          </div>
                         </div>
-                        <div className="flex italic">
-                          <p className="text-base">{job.startDate}</p>
-                          &nbsp;-&nbsp;
-                          <p className="text-base">{job.endDate}</p>
+                      ))}
+                    </div>
+                  </div>
+                </>
+                <>
+                  <div className="">
+                    <h1 className=" text-xl md:text-3xl">Experience</h1>
+                    <div className="md:grid grid-cols-2 ">
+
+                      {resume.experience.slice(2, 4).map((job: any, i: any) => (
+                        <div key={i} className="p-1.5">
+                          <p className="text-base font-semibold">{job.title}</p>
+                          <div className="flex">
+                            <p className="text-base">{job.company}</p>&nbsp;-&nbsp;
+                            <p className="text-base">{job.location}</p>
+                          </div>
+                          <div className="flex italic">
+                            <p className="text-base">{job.startDate}</p>
+                            &nbsp;-&nbsp;
+                            <p className="text-base">{job.endDate}</p>
+                          </div>
                         </div>
-                      </div>
-                    ))}
+                      ))}
+                    </div>
                   </div>
                 </>
               </Slider>

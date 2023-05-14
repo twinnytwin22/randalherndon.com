@@ -86,7 +86,7 @@ const Experience = () => {
                 {skillsets.skills.map(({ name }: any, index: number) => (
                   <m.h2
                     key={index}
-                    className={`lg:h-20 flex whitespace-nowrap items-center justify-center text-white hover:scale-105 text-xs md:text-sm p-3 font-normal font-[owners-wide] rounded-lg ${colors[Math.floor(Math.random() * colors.length)]
+                    className={`lg:h-20 flex whitespace-nowrap items-center font-bold justify-center text-white hover:scale-105 text-xs md:text-sm p-3  font-[owners-wide] rounded-lg ${colors[Math.floor(Math.random() * colors.length)]
                       }`}
                     initial={{ opacity: 0, y: 20 }}
                   >
