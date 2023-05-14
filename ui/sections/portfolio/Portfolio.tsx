@@ -70,14 +70,14 @@ const Portfolio = () => {
             </div>
             {projects?.map((project, index) => (
               <div className="grid grid-cols-10" key={index}>
-                <div className="col-span-10 px-16 max-w-sm lg:col-span-6 mx-auto content-center justify-center w-full flex flex-col">
+                <div className="col-span-10 mx-2 lg:col-span-6 md:mx-auto content-center justify-center w-full flex flex-col">
                   <div
 
                     className={`h-full min-h-screen min-w-full flex items-center mx-auto content-center snap-normal snap-center relative ${project.title}`}
                   >
                     <div className="w-full flex flex-col items-center">
                       <h1
-                        className="text-2xl lg:text-3xl text-center p-4"
+                        className="text-xl lg:text-3xl text-center p-4"
                         id={project.title}
                       >
                         {" "}
@@ -86,13 +86,13 @@ const Portfolio = () => {
                       <div className="lg:hidden max-w-sm px-6 w-full">
                         <ImageSlider project={project} index={index} settings={settings} />
                       </div>
-                      <p className="max-w-sm p-2.5 text-center">
+                      <p className="max-w-sm p-2.5 text-center lg:text-base text-sm">
                         {project?.description}
                       </p>
-                      <div className="flex space-x-2 p-6 mb-4">
+                      <div className="flex flex-wrap justify-center space-x-2 p-6 mb-4">
                         {project?.stack.map((stack: any, i) => (
                           <div className="" key={i}>
-                            <span className="bg-gray-100 text-gray-800 text-xs md:text-sm font-medium mr-2 px-2.5 py-0.5 rounded dark:bg-gray-700 dark:text-gray-300">
+                            <span className="bg-gray-100 text-gray-800 text-xs md:text-sm lg:text-base font-medium mr-2 px-2.5 py-0.5 rounded dark:bg-gray-700 dark:text-gray-300">
                               {stack.name}
                             </span>
                           </div>
