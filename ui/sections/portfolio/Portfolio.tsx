@@ -70,7 +70,7 @@ const Portfolio = () => {
             </div>
             {projects?.map((project, index) => (
               <div className="grid grid-cols-10" key={index}>
-                <div className="col-span-10 px-16  lg:col-span-6 mx-auto content-center justify-center w-full flex flex-col">
+                <div className="col-span-10 px-16 max-w-sm lg:col-span-6 mx-auto content-center justify-center w-full flex flex-col">
                   <div
 
                     className={`h-full min-h-screen min-w-full flex items-center mx-auto content-center snap-normal snap-center relative ${project.title}`}
