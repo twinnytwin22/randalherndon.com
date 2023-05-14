@@ -107,7 +107,7 @@ export const projects = [
         name: "CSS",
         logo: null,
       },
-     
+
     ],
   },
   {
@@ -140,7 +140,7 @@ export const projects = [
         name: "Adobe Suite",
         logo: null,
       },
-     
+
     ],
   },
   {
@@ -168,7 +168,7 @@ export const projects = [
         name: "Framer Motion",
         logo: null,
       },
-     
+
     ],
   },
   {
@@ -205,7 +205,50 @@ export const projects = [
         name: "Adobe Suite",
         logo: null,
       },
-     
+
+    ],
+  },
+  {
+    title: "STLFEST.live",
+    description:
+      "St. Louis's biggest music festival for 3 years. This year I created this site on Nextjs instead of Wordpress, to provide more flexibility, and customization. ",
+    images: [
+      "/images/portfolio/stlfest/stlfest.png",
+
+
+    ],
+    repo: "",
+    url: "http://stlfest.live",
+    stack: [
+      {
+        name: "NextJs",
+        logo: null,
+      },
+      {
+        name: "Framer-Motion",
+        logo: null,
+      },
+      {
+        name: "MomentJs",
+        logo: null,
+      },
+      {
+        name: "HTML",
+        logo: null,
+      },
+      {
+        name: "CSS",
+        logo: null,
+      },
+      {
+        name: "Javascript",
+        logo: null,
+      },
+      {
+        name: "Adobe Suite",
+        logo: null,
+      },
+
     ],
   },
 ];
