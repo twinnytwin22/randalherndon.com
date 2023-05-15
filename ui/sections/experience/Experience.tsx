@@ -18,6 +18,7 @@ import WelcomeMarquee from "@/ui/misc/WelcomeMarquee";
 import LinkedInButton from "@/ui/buttons/LinkedIn";
 import Badges from "./Badges";
 import Companies from "./Companies";
+import { GradientText } from "@/ui/misc/GradientText";
 function useStaggerAnimation(showExp: boolean) {
   const [scope, animate] = useAnimate();
   useEffect(() => {
@@ -79,6 +80,8 @@ const Experience = () => {
           </div>
           <div className="col-span-6 h-full items-center flex -mt-8 lg:-mt-0">
             <div>
+              <GradientText text="A few items in my toolbox" textSize="xl" />
+
               <div
                 className="grid grid-cols-3 md:grid-cols-3 lg:grid-cols-3 xl:grid-cols-4 gap-4 items-center h-fit  max-w-xs sm:max-w-sm md:max-w-md"
                 ref={scope}
