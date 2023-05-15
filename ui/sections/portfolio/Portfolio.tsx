@@ -89,7 +89,7 @@ const Portfolio = () => {
                       <p className="max-w-sm p-2.5 text-center lg:text-base text-sm">
                         {project?.description}
                       </p>
-                      <div className="flex flex-wrap justify-center space-x-2 p-6 mb-4">
+                      <div className="flex flex-wrap justify-center space-x-2 p-6 mb-4 max-w-md space-y-1">
                         {project?.stack.map((stack: any, i) => (
                           <div className="" key={i}>
                             <span className="bg-gray-100 text-gray-800 text-xs md:text-sm lg:text-base font-medium mr-2 px-2.5 py-0.5 rounded dark:bg-gray-700 dark:text-gray-300">

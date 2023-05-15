@@ -1,16 +1,15 @@
 "use client";
-import React, { useEffect, useState, useRef } from "react";
+import React from "react";
 import { Variants } from "framer-motion";
 import { GradientText } from "@/ui/misc/GradientText";
 import ContactButton from "@/ui/buttons/modal";
-import { useInView } from "framer-motion";
 import { ScrollDown } from "@/ui/misc/ScrollDown";
 import resume from "@/ui/sections/experience/experience.json";
 import { FaCheckCircle, FaMapPin } from "react-icons/fa";
 import LinkedInButton from "@/ui/buttons/LinkedIn";
 import { DownloadButton } from "@/ui/buttons/DownloadButton";
 import Slider from "react-slick";
-const AboutMe = ({ data, commits }: any) => {
+const AboutMe = () => {
 
   let settings = {
     dots: false,
@@ -20,21 +19,6 @@ const AboutMe = ({ data, commits }: any) => {
     slidesToScroll: 1,
   };
 
-  const card: Variants = {
-    hidden: {
-      y: -50,
-      opacity: 0,
-    },
-    visible: {
-      y: 0,
-      opacity: 1,
-      transition: {
-        delay: 0.9,
-        type: "spring",
-        stiffness: 500,
-      },
-    },
-  };
 
   return (
     <> <div className="absolute top-0 left-0 w-full h-full bg-slate-100 dark:bg-black  opacity-10 bg-cover bg-[url(https://i.imgur.com/XqbXLxL.png)]" />
@@ -76,10 +60,10 @@ const AboutMe = ({ data, commits }: any) => {
                 </div>
               </div>
             </div>
-            <div className="block p-0 col-span-6 lg:items-center w-full px-8 lg:max-w-2xl items-start  content-center justify-center ml-2 lg:mt-8 lg:px-4 xl:mr-16 lg:mr-12">
+            <div className="block p-0 col-span-6 lg:items-center w-full px-8 lg:max-w-2xl items-start mx-auto content-center justify-center ml-2 lg:mt-8 lg:px-4 xl:mr-16 lg:mr-12">
               <Slider
                 {...settings}
-                className="mb-8 p-8 sm:p-12 h-fit rounded-lg bg-slate-200 dark:bg-black shadow-lg  shadow-slate-300 dark:shadow-gray-900 "
+                className="mb-8 p-8 sm:p-12 h-fit rounded-lg bg-slate-200 dark:bg-black shadow-lg mx-auto shadow-slate-300 dark:shadow-gray-900 "
               >
                 <>
                   <h1 className="text-xl md:text-3xl">Education</h1>

@@ -3,12 +3,12 @@
 @tailwind utilities;
 @import url("https://use.typekit.net/yka6cyh.css");
 
-
-html, body {
+html,
+body {
   overflow-x: hidden;
 }
 body {
-  position: relative
+  position: relative;
 }
 
 h1 {
@@ -17,8 +17,7 @@ h1 {
   font-style: normal;
 }
 
-Copy code
-.w-fit {
+Copy code .w-fit {
   animation: fade-in 1s ease-out forwards;
 }
 
@@ -32,8 +31,6 @@ Copy code
     opacity: 1;
   }
 }
-
-
 
 @layer base {
   .font-outline-2 {
@@ -57,10 +54,10 @@ Copy code
   .snap-start {
     scroll-snap-align: start;
   }
-
 }
 .slick-prev:before,
 .slick-next:before {
-  color: slategrey;
+  color: rgb(109, 145, 255) !important;
+  font-size: 30px !important;
+  text-align: left;
 }
-
