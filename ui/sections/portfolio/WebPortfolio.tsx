@@ -50,7 +50,7 @@ export const renderPortfolio = ({ id, settings }: any) => {
                                             <ContactButton />
                                             {project?.url !== "" ? (
                                                 <Link href={project.url}>
-                                                    <div className="p-4 h-fit text-sm  bg-blue-700 text-center font-[owners-wide] rounded-lg text-white font-bold hover:scale-105">
+                                                    <div className="p-4 h-fit text-sm  bg-blue-700 text-center font-[owners-wide] rounded-lg text-white font-bold hover:scale-105 duration-200 ease-in-out">
                                                         See Live
                                                     </div>{" "}
                                                 </Link>

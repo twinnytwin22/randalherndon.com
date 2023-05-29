@@ -7,7 +7,7 @@ function LinkedInButton() {
     <div className="">
       <Link
         href="https://www.linkedin.com/in/randalherndon/"
-        className="rounded-lg p-4 h-fit text-xl hover:scale-105 text-white bg-blue-700 w-full flex"
+        className="rounded-lg p-4 h-fit text-xl hover:scale-105 duration-200 ease-in-out text-white bg-blue-700 w-full flex"
       >
         <FaLinkedinIn />
       </Link>

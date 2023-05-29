@@ -17,7 +17,7 @@ const ContactButton = ({ bgColors, buttonTextColors, headlineIndex }: any) => {
     return (
         <div className="flex">
             <button
-                className={`rounded-lg p-4 h-fit text-sm relative hover:scale-105 ${bgColors ? bgColors[headlineIndex] : 'bg-black dark:bg-white'} ${buttonTextColors ? buttonTextColors[headlineIndex] : "text-white dark:text-black "}`}
+                className={`rounded-lg p-4 h-fit text-sm relative hover:scale-105 duration-200 ease-in-out ${bgColors ? bgColors[headlineIndex] : 'bg-black dark:bg-white'} ${buttonTextColors ? buttonTextColors[headlineIndex] : "text-white dark:text-black "}`}
                 onClick={handleOpenModal}
             >
                 <h1 className="font-[owners-wide]">Let's Chat!</h1>

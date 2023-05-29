@@ -63,7 +63,7 @@ function PortfolioAlpha() {
             </div>
             {showModal && (
                 <div className="fixed inset-0 flex justify-center items-center bg-black bg-opacity-50 z-50">
-                    <div className="bg-white dark:bg-zinc-950 p-8 max-w-7xl w-full">
+                    <div className="bg-white dark:bg-zinc-950 p-8 max-w-7xl w-full rounded-lg">
                         <h2 className="text-xl font-bold mb-4 text-black dark:text-white">Project: {selectedProject}</h2>
                         {selectedProject && <ModalSection handleGridItemClick={handleGridItemClick} title={selectedProject} closeModal={closeModal} />}
                         {/* Add sliders of project images and project info here */}
