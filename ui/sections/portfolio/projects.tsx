@@ -289,8 +289,59 @@ export const gfx = [
 
 export const branding = [
   {
-    title: '',
-    image: '',
+    title: 'Oasis Style Guide',
+    images: [
+      'images/portfolio/oasis-guide/oasisbranding1.png',
+      'images/portfolio/oasis-guide/oasisbranding2.png',
+      'images/portfolio/oasis-guide/oasisbranding3.png',
+      'images/portfolio/oasis-guide/oasisbranding4.png',
+      'images/portfolio/oasis-guide/oasisbranding5.png',
+      'images/portfolio/oasis-guide/oasisbranding6.png',
+      'images/portfolio/oasis-guide/oasisbranding7.png',
+      'images/portfolio/oasis-guide/oasisbranding8.png',
+      'images/portfolio/oasis-guide/oasisbranding9.png',
+      'images/portfolio/oasis-guide/oasisbranding10.png',
+      'images/portfolio/oasis-guide/oasisbranding11.png',
+      'images/portfolio/oasis-guide/oasisbranding12.png',
+
+    ],
+    description: '',
+  },
+  {
+    title: 'Lit Style Guide',
+    images: [
+      'images/portfolio/lit-guide/litbranding1.png',
+      'images/portfolio/lit-guide/litbranding2.png',
+      'images/portfolio/lit-guide/litbranding3.png',
+      'images/portfolio/lit-guide/litbranding4.png',
+      'images/portfolio/lit-guide/litbranding5.png',
+      'images/portfolio/lit-guide/litbranding6.png',
+      'images/portfolio/lit-guide/litbranding7.png',
+      'images/portfolio/lit-guide/litbranding8.png',
+      'images/portfolio/lit-guide/litbranding9.png',
+      'images/portfolio/lit-guide/litbranding10.png',
+      'images/portfolio/lit-guide/litbranding11.png',
+      'images/portfolio/lit-guide/litbranding12.png',
+
+    ],
+    description: '',
+  },
+  {
+    title: 'Haze Style Guide',
+    images: [
+      'images/portfolio/haze-guide/hazebranding1.png',
+      'images/portfolio/haze-guide/hazebranding2.png',
+      'images/portfolio/haze-guide/hazebranding3.png',
+      'images/portfolio/haze-guide/hazebranding4.png',
+      'images/portfolio/haze-guide/hazebranding5.png',
+      'images/portfolio/haze-guide/hazebranding6.png',
+      'images/portfolio/haze-guide/hazebranding7.png',
+      'images/portfolio/haze-guide/hazebranding8.png',
+      'images/portfolio/haze-guide/hazebranding9.png',
+      'images/portfolio/haze-guide/hazebranding10.png',
+      'images/portfolio/haze-guide/hazebranding11.png',
+      'images/portfolio/haze-guide/hazebranding12.png',
+    ],
     description: '',
   },
 ]

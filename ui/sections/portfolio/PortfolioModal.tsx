@@ -1,11 +1,24 @@
 "use client";
-import { useEffect, useRef, useState } from "react";
+import { useState } from "react";
 import { branding, gfx } from "./projects";
 import { m } from "framer-motion";
+import GrfxPortfolio from "./GrfxPortfolio";
+import BrandingPortfolio from "./BrandingPortfolio";
+
+interface ItemsPerPageByTitle {
+    [key: string]: number;
+}
+
+const itemsPerPageByTitle: ItemsPerPageByTitle = {
+    Branding: 1,
+    "Graphic Design": 4,
+};
+
 
 export const ModalSection = ({ title, closeModal }: any) => {
     const [currentPage, setCurrentPage] = useState(0);
-    const itemsPerPage = 4;
+    const [itemOpen, setItemOpen] = useState(false)
+    const itemsPerPage = itemsPerPageByTitle[title] || 4; // Default to 4 items per page if the title is not found
     const visibleItems =
         title === "Branding"
             ? branding.slice(currentPage * itemsPerPage, (currentPage + 1) * itemsPerPage)
@@ -22,38 +35,15 @@ export const ModalSection = ({ title, closeModal }: any) => {
     const handleClickPrevious = () => {
         setCurrentPage((prevPage) => (prevPage - 1 + totalPages) % totalPages);
     };
+    const handleItemClick = () => {
+        console.log('item open')
+        setItemOpen(true)
 
+    }
     return (
         <>
-            <m.div
-                initial={{ opacity: 0, y: -50 }}
-                animate={{ opacity: 1, y: 0 }}
-                exit={{ opacity: 0, y: 50 }}
-                transition={{ duration: 0.3 }}
-                style={{ zIndex: 9999, position: "relative" }}
-                className="grid grid-cols-3 lg:grid-cols-4 gap-8 pb-6 relative w-full"
-            >
-                {visibleItems.map((p) => (
-                    <div
-                        key={p.image}
-                        style={{
-                            backgroundImage: `url(${p.image})`,
-                            backgroundSize: "cover",
-                            backgroundPosition: "center",
-                            backgroundRepeat: "no-repeat",
-                        }}
-                        className="relative p-8 mx-auto bg-slate-200 text-white text-2xl text-center font-bold w-72 h-72 hover:scale-105 duration-300 ease-in-out cursor-pointer flex items-end justify-center"
-                    >
-                        <div
-                            className="absolute inset-0 bg-black bg-opacity-40"
-                            style={{
-                                zIndex: 1,
-                            }}
-                        ></div>
-                        <h1 className="relative z-10 text-base">{p.title}</h1>
-                    </div>
-                ))}
-            </m.div>
+            {title === 'Graphic Design' && <GrfxPortfolio visibleItems={visibleItems} />}
+            {title === "Branding" && <BrandingPortfolio visibleItems={visibleItems} />}
             <div className="flex justify-center text-white  font-bold relative z-50">
                 <button
                     className="bg-zinc-600 px-4 py-2 rounded-lg mx-1 hover:bg-zinc-800 hover:scale-105 duration-200 ease-in-out"
