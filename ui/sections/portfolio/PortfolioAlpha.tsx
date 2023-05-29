@@ -34,7 +34,7 @@ function PortfolioAlpha() {
     }, []);
 
     return (
-        <div id="portfolio" className='font-[owners]'>
+        <div id="portfolio" className='font-[owners] '>
             <h1 className="text-3xl text-center pb-8">Portfolio</h1>
 
             <div className="grid lg:grid-cols-3 gap-8 pb-6 ">
@@ -50,7 +50,7 @@ function PortfolioAlpha() {
                             className="relative rounded-lg dark:rounded-lg p-8 mx-auto bg-slate-200 text-white text-2xl text-center font-bold h-32 w-96 md:h-36 lg:w-72 lg:h-72 xl:w-96 xl:h-96 hover:scale-105 duration-300 ease-in-out cursor-pointer flex items-center justify-center"
                             onClick={() => handleGridItemClick(m)}
                         >
-                            <div className="absolute inset-0 bg-zinc-500 dark:bg-black bg-opacity-60 hover:bg-opacity-40 dark:bg-opacity-60 dark:hover:bg-opacity-40" />
+                            <div className="absolute inset-0 rounded-lg bg-black bg-opacity-40 hover:bg-opacity-40 dark:bg-opacity-60 dark:hover:bg-opacity-40" />
                             <h1 className="relative z-10 [text-shadow:_2px_4px_2px_rgb(0_0_0_/_60%)]" style={{ textShadow: '8px' }}>{m.title}</h1>
                         </div>
                     </a>
@@ -62,8 +62,8 @@ function PortfolioAlpha() {
                 <DownloadButton />
             </div>
             {showModal && (
-                <div className="fixed inset-0 flex justify-center items-center bg-black bg-opacity-50 z-50">
-                    <div className="bg-white dark:bg-zinc-950 p-8 max-w-7xl w-full rounded-lg">
+                <div className="fixed inset-0 flex justify-center items-center bg-black bg-opacity-50 z-50 rounded-lg">
+                    <div className="bg-white dark:bg-zinc-950 p-8 max-w-7xl w-full rounded-lg border border-zinc-100 dark:border-zinc-800">
                         <h2 className="text-xl font-bold mb-4 text-black dark:text-white">Project: {selectedProject}</h2>
                         {selectedProject && <ModalSection handleGridItemClick={handleGridItemClick} title={selectedProject} closeModal={closeModal} />}
                         {/* Add sliders of project images and project info here */}
