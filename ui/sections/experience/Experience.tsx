@@ -3,7 +3,7 @@ import React, { useEffect, useRef, useState } from "react";
 import resume from "./experience.json";
 import { DownloadButton } from "@/ui/buttons/DownloadButton";
 import skillsets from "./skillsets.json";
-import ContactButton from "@/ui/buttons/modal";
+import ContactButton from "@/ui/buttons/ContactButton";
 import { useAnimate, stagger, m } from "framer-motion";
 import { useInView } from "react-intersection-observer";
 import Slider from "react-slick";
@@ -89,7 +89,7 @@ const Experience = () => {
                 {skillsets.skills.map(({ name }: any, index: number) => (
                   <m.h2
                     key={index}
-                    className={`lg:h-20 flex whitespace-nowrap items-center font-bold justify-center text-white hover:scale-105 text-xs md:text-sm p-3  font-[owners-wide] rounded-lg ${colors[Math.floor(Math.random() * colors.length)]
+                    className={`lg:h-20 flex whitespace-nowrap items-center font-bold justify-center text-white hover:scale-105 text-xs md:text-sm p-3  font-[owners] tracking-wide rounded-lg ${colors[Math.floor(Math.random() * colors.length)]
                       }`}
                     initial={{ opacity: 0, y: 20 }}
                   >

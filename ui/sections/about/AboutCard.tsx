@@ -1,17 +1,12 @@
 "use client";
 import React, { useState } from "react";
 import Link from "next/link";
-import { FaHeart } from "react-icons/fa";
 import { IoIosHeart, IoIosHeartEmpty } from "react-icons/io";
 import GitHubButton from "react-github-btn";
-import MyGitHubButton from "@/ui/buttons/CustomGitHubButton";
-import { m } from "framer-motion";
-import { FollowButton } from "@/lib/followOnGitbhub";
 function AboutCard(props: any) {
-  const commits = props?.commits;
   const data = props?.data;
   const [like, setLike] = useState(false);
-console.log(data)
+  console.log(data)
   const handleLike = () => {
     setLike(true);
   };

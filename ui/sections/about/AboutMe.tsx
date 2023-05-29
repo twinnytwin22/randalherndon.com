@@ -1,8 +1,7 @@
 "use client";
 import React from "react";
-import { Variants } from "framer-motion";
 import { GradientText } from "@/ui/misc/GradientText";
-import ContactButton from "@/ui/buttons/modal";
+import ContactButton from "@/ui/buttons/ContactButton";
 import { ScrollDown } from "@/ui/misc/ScrollDown";
 import resume from "@/ui/sections/experience/experience.json";
 import { FaCheckCircle, FaMapPin } from "react-icons/fa";

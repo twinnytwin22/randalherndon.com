@@ -256,8 +256,33 @@ export const projects = [
 
 export const gfx = [
   {
-    title: '',
-    image: '',
+    title: 'Boys & Girls Club Flyer',
+    image: '/images/bgcflyer.png',
+    description: '',
+  },
+  {
+    title: 'Boys & Girls Club Flyer',
+    image: '/images/bgcflyer2.png',
+    description: '',
+  },
+  {
+    title: 'Music Event Flyer',
+    image: '/images/goodmusicflyer.png',
+    description: '',
+  },
+  {
+    title: 'Club Flyer',
+    image: '/images/clubflyer.png',
+    description: '',
+  },
+  {
+    title: 'Media Company Flyer',
+    image: '/images/liftedflyer.jpg',
+    description: '',
+  },
+  {
+    title: 'Tour Flyer',
+    image: '/images/billctourflyer.png',
     description: '',
   },
 ]
@@ -269,3 +294,18 @@ export const branding = [
     description: '',
   },
 ]
+
+export const portfolios = [
+  {
+    title: 'Web Development',
+    image: '/images/portfolio/twinny/twinny_3_mock.png'
+  },
+  {
+    title: 'Branding',
+    image: '/images/branding.jpg'
+  },
+  {
+    title: 'Graphic Design',
+    image: '/images/graphicdesign.png'
+  }
+];
