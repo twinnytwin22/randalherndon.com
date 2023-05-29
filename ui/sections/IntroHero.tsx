@@ -106,7 +106,7 @@ export default function IntroHero() {
           </m.div>
         </div>
         <div className="hidden lg:block lg:col-span-5 col-span-12 lg:items-center mx-6 sm:mx-auto xl:mx-12 content-center mt-20 lg:mt-0 max-w-md md:min-w-md justify-center lg:order-2 order-1"  >
-          <p className="text-3xl"> I have a passion for learning, and creating new things. I love building beautiful web apps, releasing music, and developing products, while tinkering in between. 😃 </p>
+          <p className="text-3xl"> I have a passion for learning, and creating new things. I love building beautiful web apps, releasing music, developing products, and managing projects from start to finish. 😃 </p>
         </div>
       </div>
     </div>

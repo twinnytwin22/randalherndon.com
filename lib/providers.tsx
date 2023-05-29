@@ -5,8 +5,6 @@ import { LazyMotion, domAnimation } from "framer-motion"
 import dynamic from 'next/dynamic';
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
-import { ToastContainer } from 'react-toastify'
-import 'react-toastify/dist/ReactToastify.css'
 
 
 
@@ -21,19 +19,20 @@ const ThemeProvider = dynamic(
 
 
 export const Providers = ({
-    children,
-  }: {
-    children: React.ReactNode
-  }) => {
-  return ( 
-  <>
-         <ThemeProvider enableSystem={true} attribute="class">
-         <LazyMotion features={domAnimation}>
+  children,
+}: {
+  children: React.ReactNode
+}) => {
+  return (
+    <>
+      <ThemeProvider enableSystem={true} attribute="class">
+        <LazyMotion features={domAnimation}>
 
           {children}
-          </LazyMotion>
-         </ThemeProvider> 
-         <ToastContainer/> </>
+        </LazyMotion>
+      </ThemeProvider>
+
+    </>
 
   )
 }

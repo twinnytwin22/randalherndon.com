@@ -2,7 +2,6 @@
 import Link from "next/link";
 import React from "react";
 import { useState } from "react";
-import { toast } from "react-toastify";
 
 const ContactForm = ({ handleInputClick }: any) => {
   const [formData, setFormData] = useState({
@@ -27,12 +26,10 @@ const ContactForm = ({ handleInputClick }: any) => {
       });
       setStatus("success");
       if (res) {
-        toast("Your message was sent successfully");
       }
       setFormData({ email: "", subject: "", message: "", name: "" });
     } catch (err) {
       setStatus("error");
-      toast("Error sending email. Please try again later.");
     }
   };
 

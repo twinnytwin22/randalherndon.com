@@ -6,7 +6,7 @@ import { useInView } from "react-cool-inview";
 import Slider from "react-slick";
 import ContactButton from "@/ui/buttons/modal";
 import Link from "next/link";
-const Portfolio = () => {
+const WebDev = (id: any) => {
   const [showTooltip, setShowTooltip] = useState(false);
   const [currentProjectIndex, setCurrentProjectIndex] = useState(0);
   const [currentProjectImages, setCurrentProjectImages] = useState(
@@ -61,7 +61,7 @@ const Portfolio = () => {
     return (
       <div
         className="dark:bg-neutral-950 bg-slate-200 mx-auto h-screen w-full border-t-4 dark:border-white border-black relative overflow-hidden"
-        id="portfolio"
+        id={id}
       >
         <div className="w-full max-w-screen min-h-screen h-full flex  lg:flex-row overflow-hidden relative">
           <div className="portfolio-selector h-screen w-full mx-auto items-center content-center snap-y overflow-y-scroll overflow-x-hidden snap-mandatory ">
@@ -139,4 +139,4 @@ const Portfolio = () => {
   );
 };
 
-export default Portfolio;
+export default WebDev;

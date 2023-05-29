@@ -252,3 +252,20 @@ export const projects = [
     ],
   },
 ];
+
+
+export const gfx = [
+  {
+    title: '',
+    image: '',
+    description: '',
+  },
+]
+
+export const branding = [
+  {
+    title: '',
+    image: '',
+    description: '',
+  },
+]
