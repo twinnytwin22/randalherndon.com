@@ -43,6 +43,7 @@ export const ModalSection = ({ title, closeModal }: any) => {
     return (
         <>
             {title === 'Graphic Design' && <GrfxPortfolio visibleItems={visibleItems} />}
+
             {title === "Branding" && <BrandingPortfolio visibleItems={visibleItems} />}
             <div className="flex justify-center text-white  font-bold relative z-50">
                 <button
