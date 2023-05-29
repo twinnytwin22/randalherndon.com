@@ -70,7 +70,11 @@ export const renderPortfolio = ({ id, settings }: any) => {
                             </div>
                         </div>))}
                 </div>
+                <h1 className="text-white absolute bottom-0 left-0 bg-blue-700 dark:bg-blue-900 rounded-tr-xl p-6 md:text-base text-sm z-50 hover:scale-105 duration-200 ease-in-out">
+                    <a href="#portfolio" className=" relative">Back to Portfolio</a></h1>
+
             </div>
+
         </div>
     );
 };

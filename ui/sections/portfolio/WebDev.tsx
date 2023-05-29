@@ -36,6 +36,8 @@ const WebDev = (id: any) => {
     <>
       <div className="block w-full mx-auto min-h-screen max-h-screen relative">
         {renderPortfolio({ id, settings })}
+
+
       </div>
 
     </>
