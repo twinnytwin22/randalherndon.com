@@ -30,7 +30,7 @@ function GrfxPortfolio({ visibleItems }: any) {
                 exit={{ opacity: 0, y: 50 }}
                 transition={{ duration: 0.3 }}
                 style={{ zIndex: 9999, position: "relative" }}
-                className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-8 pb-6 relative w-full"
+                className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8 pb-6 relative w-full"
             >
                 {currentItems.map((p: any) => (
                     <div
@@ -41,7 +41,7 @@ function GrfxPortfolio({ visibleItems }: any) {
                             backgroundPosition: "center",
                             backgroundRepeat: "no-repeat",
                         }}
-                        className="relative p-8 mx-auto bg-slate-200 text-white text-2xl text-center font-bold w-72 h-72 hover:scale-105 duration-300 ease-in-out cursor-pointer flex items-end justify-center"
+                        className="relative p-8 mx-auto bg-slate-200 text-white text-2xl text-center font-bold w-48 h-48 lg:w-60 lg:h-60 xl:w-72 xl:h-72 hover:scale-105 duration-300 ease-in-out cursor-pointer flex items-end justify-center"
                         onClick={() => handleClick(p)}
                     >
                         <div

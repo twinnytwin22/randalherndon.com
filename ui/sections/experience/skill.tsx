@@ -37,11 +37,7 @@ export const primarySkills: PrimarySkills = [
         description: 'Working with blockchain technologies, decentralized applications (dApps), and Web 3.0 to build decentralized applications, smart contracts, and other blockchain-based solutions, creating a new generation of web applications that prioritize security, transparency, and user control.',
         id: 'web3',
     },
-    {
-        skill: 'Technical support and maintenance',
-        description: 'Provide ongoing technical support and maintenance for a website or web application, ensuring that it continues to run smoothly and stay up-to-date with the latest web technologies.',
-        id: 'support',
-    },
+
     {
         skill: 'User Testing',
         description: 'Conduct user testing to gather feedback and insights on a website or web application, helping to identify areas for improvement and optimization.',
@@ -49,6 +45,10 @@ export const primarySkills: PrimarySkills = [
     },
     {
         skill: 'Digital Marketing',
+        description: 'Search engine optimization (SEO), pay-per-click (PPC) advertising, social media marketing, email marketing, and other forms of digital advertising, to increase brand awareness and drive traffic to a website or web application.',
+        id: 'marketing',
+    }, {
+        skill: 'Project Management',
         description: 'Search engine optimization (SEO), pay-per-click (PPC) advertising, social media marketing, email marketing, and other forms of digital advertising, to increase brand awareness and drive traffic to a website or web application.',
         id: 'marketing',
     },
