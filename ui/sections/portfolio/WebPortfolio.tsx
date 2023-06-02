@@ -17,7 +17,7 @@ export const renderPortfolio = ({ id, settings }: any) => {
                     </div>
                     {projects?.map((project, index) => (
                         <div className="grid grid-cols-10" key={index}>
-                            <div className="col-span-10 mx-2 lg:col-span-6 md:mx-auto content-center justify-center w-full flex flex-col">
+                            <div className="col-span-10 mx-2 lg:col-span-5 md:mx-auto content-center justify-center w-full flex flex-col">
                                 <div
 
                                     className={`h-full min-h-screen min-w-full flex items-center mx-auto content-center snap-normal snap-center relative ${project.title}`}
@@ -62,8 +62,8 @@ export const renderPortfolio = ({ id, settings }: any) => {
                                     </div>
                                 </div>
                             </div>
-                            <div className="hidden lg:flex mx-auto space-y-6 items-center col-span-4 content-center justify-center bg-slate-100 dark:bg-black h-full w-full overflow-clip ">
-                                <div className="max-w-xl px-16 w-full">
+                            <div className="hidden lg:flex mx-auto space-y-6 items-center col-span-5 content-center justify-center bg-slate-100 dark:bg-black h-full w-full overflow-clip ">
+                                <div className="max-w-2xl px-16 w-full">
                                     <ImageSlider project={project} index={index} settings={settings} />
 
                                 </div>

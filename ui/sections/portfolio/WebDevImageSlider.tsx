@@ -7,7 +7,7 @@ export const ImageSlider = ({ project, index, settings }: any) => {
                 {project.images?.map((image: string, index: number) => (
                     <img
                         key={index}
-                        className="h-full w-full"
+                        className="h-full w-full pl-2.5 "
                         src={image}
                         alt={`${project?.title} - Image ${index}`}
                     />

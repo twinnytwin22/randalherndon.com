@@ -27,7 +27,7 @@ const Navbar = () => {
           className="fixed flex items-center justify-between top-3 right-0 left-0 w-[90vw] max-w-lg md:max-w-5xl mx-auto py-2.5 px-8 rounded-xl transition-all duration-300 dark:bg-black bg-slate-200 border-slate-300 dark:border-gray-900 shadow-slate-300 dark:shadow-gray-700 shadow-sm border opacity-80"
         >
           <RHLogo />
-          <nav className="hidden md:flex w-full mx-auto px-4 items-center h-fit text-center justify-center font-[owners]">
+          <nav className="hidden md:flex md:-ml-12 lg:-ml-24 w-full mx-auto px-4 items-center h-fit text-center justify-center font-[owners]">
             <div className="flex content-between mx-auto items-center h-fit w-full justify-center font-bold">
               <div className="mx-4  hover:scale-105">
                 <a href="#about">About</a>

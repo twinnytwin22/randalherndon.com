@@ -293,6 +293,37 @@ export const projects = [
 
     ],
   },
+  {
+    title: "Reusable Music Player",
+    description:
+      "This was a self coding challenge, contributing to my love of music and technology. Utilizes external database for managing music.  ",
+    images: [
+      "/images/portfolio/rh/musicPlayer.png",
+
+
+    ],
+    repo: "",
+    url: "https://crib-music-player.vercel.app/",
+    stack: [
+      {
+        name: "TailwindCSS",
+        logo: null,
+      },
+      {
+        name: "NextJs",
+        logo: null,
+      },
+      {
+        name: "React",
+        logo: null,
+      },
+      {
+        name: "Sanity CMS",
+        logo: null,
+      },
+
+    ],
+  },
 ];
 
 
