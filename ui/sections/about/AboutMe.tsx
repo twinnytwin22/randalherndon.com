@@ -129,7 +129,7 @@ const AboutMe = () => {
                   </div>
                 </>
               </Slider>
-              <div className="flex h-fit space-x-2">
+              <div className="hidden md:flex h-fit space-x-2">
                 <ContactButton color="text-blue-800 dark:text-blue-600" />
                 <LinkedInButton />
                 <MyGitHubButton />
