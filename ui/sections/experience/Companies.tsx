@@ -5,7 +5,7 @@ import { GradientText } from '@/ui/misc/GradientText'
 function Companies() {
     return (
         <div>
-            <GradientText text="Companies I've worked with" textSize="xl" />
+            <GradientText text="Companies I've worked with." textSize="xl" />
 
             <div className='grid grid-cols-5 p-4 gap-4 mb-10 md:mb-0 '>
                 {companies.map((company) => (

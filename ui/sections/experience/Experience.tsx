@@ -19,6 +19,7 @@ import LinkedInButton from "@/ui/buttons/LinkedIn";
 import Badges from "./Badges";
 import Companies from "./Companies";
 import { GradientText } from "@/ui/misc/GradientText";
+import MyGitHubButton from "@/ui/buttons/CustomGitHubButton";
 function useStaggerAnimation(showExp: boolean) {
   const [scope, animate] = useAnimate();
   useEffect(() => {
@@ -72,18 +73,19 @@ const Experience = () => {
         <div className="flex items-center flex-col lg:grid grid-cols-12 w-full h-full place-items-center mx-auto">
           <div className="col-span-6 flex flex-col lg:mt-24 content-start max-w-xs sm:max-w-sm md:max-w-lg mx-auto h-fit">
             <Companies />
-            <div className="hidden lg:flex space-x-2">
+            <div className="hidden lg:flex space-x-2 mx-auto">
               <ContactButton />
               <LinkedInButton />
+              <MyGitHubButton />
               <DownloadButton />
             </div>
           </div>
           <div className="col-span-6 h-full items-center flex -mt-8 lg:-mt-0">
             <div>
-              <GradientText text="A few items in my toolbox" textSize="xl" />
+              <GradientText text="My toolbox." textSize="xl" />
 
               <div
-                className="grid grid-cols-3 md:grid-cols-3 lg:grid-cols-3 xl:grid-cols-4 gap-4 items-center h-fit  max-w-xs sm:max-w-sm md:max-w-md"
+                className="grid grid-cols-3 md:grid-cols-3 lg:grid-cols-3 xl:grid-cols-4 gap-4 items-center h-fit mx-auto  max-w-xs sm:max-w-sm md:max-w-md"
                 ref={scope}
               >
                 {skillsets.skills.map(({ name }: any, index: number) => (
@@ -97,10 +99,11 @@ const Experience = () => {
                   </m.h2>
                 ))}
               </div>
-              <div className="flex lg:hidden h-fit mt-8 space-x-5">
+              <div className="flex lg:hidden h-fit mt-8 space-x-4">
                 {" "}
                 <ContactButton />
                 <LinkedInButton />
+                <MyGitHubButton />
                 <DownloadButton />
               </div>
             </div>

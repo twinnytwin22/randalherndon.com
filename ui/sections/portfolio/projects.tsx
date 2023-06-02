@@ -1,5 +1,40 @@
 export const projects = [
   {
+    title: "Sync OS",
+    description:
+      "Chrome extension and website for PRNS. Music publishing dashboard, with quick links, todo list, and external resources, CMS integration.",
+    images: [
+      "/images/portfolio/syncos/syncOS3.png",
+      "/images/portfolio/syncos/syncOS2.png",
+      "/images/portfolio/syncos/syncOS1.png",
+    ],
+    repo: "",
+    url: "https://prns.app/syncos",
+    gitUrl: "",
+    stack: [
+      {
+        name: "TailwindCSS",
+        logo: null,
+      },
+      {
+        name: "NextJs",
+        logo: null,
+      },
+      {
+        name: "SanityCMS",
+        logo: null,
+      },
+      {
+        name: "Draggable",
+        logo: null,
+      },
+      {
+        name: "Google APIs",
+        logo: null,
+      },
+    ],
+  },
+  {
     title: "Web 3 Creator Manager",
     description:
       "Portfolio, web 3 commerce, and engagement manager for creators, providing discoverability to previous drops that would often get lost with new releases.",
@@ -9,6 +44,7 @@ export const projects = [
     ],
     repo: "",
     url: "https://thecrib.space",
+    gitUrl: "",
     stack: [
       {
         name: "TailwindCSS",
@@ -40,6 +76,7 @@ export const projects = [
     ],
     repo: "",
     url: "https://thecrib.network",
+    gitUrl: "",
     stack: [
       {
         name: "TailwindCSS",
@@ -61,6 +98,7 @@ export const projects = [
     ],
     repo: "",
     url: "https://thecrib.network",
+    gitUrl: "",
     stack: [
       {
         name: "TailwindCSS",
@@ -94,6 +132,7 @@ export const projects = [
     ],
     repo: "",
     url: "https://dwdhomes.com/",
+    gitUrl: "",
     stack: [
       {
         name: "Wordpress",
@@ -123,6 +162,7 @@ export const projects = [
     ],
     repo: "",
     url: "https://www.curlsponge.com/",
+    gitUrl: "",
     stack: [
       {
         name: "Shopify",
@@ -184,6 +224,7 @@ export const projects = [
     ],
     repo: "",
     url: "http://twinnytwin.io",
+    gitUrl: "",
     stack: [
       {
         name: "Wordpress",
@@ -219,6 +260,7 @@ export const projects = [
     ],
     repo: "",
     url: "http://stlfest.live",
+    gitUrl: "",
     stack: [
       {
         name: "NextJs",

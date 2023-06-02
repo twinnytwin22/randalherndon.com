@@ -5,6 +5,7 @@ import ContactButton from '@/ui/buttons/ContactButton';
 import React, { useState, useEffect } from 'react';
 import { portfolios } from './projects';
 import { ModalSection } from './PortfolioModal';
+import MyGitHubButton from '@/ui/buttons/CustomGitHubButton';
 
 
 function PortfolioAlpha() {
@@ -59,6 +60,7 @@ function PortfolioAlpha() {
             <div className="flex space-x-2 mx-auto w-full justify-center">
                 <ContactButton />
                 <LinkedInButton />
+                <MyGitHubButton />
                 <DownloadButton />
             </div>
             {showModal && (
