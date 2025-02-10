@@ -1,9 +1,9 @@
 "use client";
 import React, { useState } from "react";
 import { m, AnimatePresence } from "framer-motion";
-import DarkModeSwitch from "../buttons/DarkModeSwitch";
 import { RHLogo } from "../misc/RHLogo";
 import { NavContent } from "./NavContent";
+import Link from "next/link";
 // ... existing imports ...
 
 const Navbar = () => {
@@ -12,6 +12,12 @@ const Navbar = () => {
   const handleShowContent = () => {
     setShowNavContent(!showNavContent);
   };
+
+  const ROUTES = [
+    { name: "About", link: "#about" },
+    { name: "Experience", link: "#skills" },
+    { name: "Portfolio", link: "#portfolio" },
+  ];
 
   return (
     <AnimatePresence>
@@ -28,41 +34,12 @@ const Navbar = () => {
           <RHLogo />
           <nav className="mt-12 space-y-8">
             <div className="flex flex-col space-y-6 text-lg font-medium font-mono">
-              <a href="#about" className="hover:scale-105 transition-transform">
-                About
-              </a>
-              <a href="#skills" className="hover:scale-105 transition-transform">
-                Experience
-              </a>
-              <a href="#portfolio" className="hover:scale-105 transition-transform">
-                Portfolio
-              </a>
+              {ROUTES.map((route, index) => (
+              <Link key={index} href={route.link} className="hover:scale-105 transition-transform">
+                {route.name}
+              </Link>))}
             </div>
           </nav>
-          
-          {/* Mobile menu button - only show on small screens */}
-          <div className="lg:hidden mt-8 bg-white dark:bg-black">
-            <button
-              onClick={handleShowContent}
-              className={`border-2 dark:border-slate-200 border-gray-900 rounded-full p-2 ${
-                showNavContent ? "rotate-90" : ""
-              } transition-transform duration-300`}
-            >
-              <svg
-                className="w-6 h-6"
-                fill="none"
-                stroke="currentColor"
-                strokeWidth={3}
-                viewBox="0 0 24 24"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5"
-                />
-              </svg>
-            </button>
-          </div>
         </m.nav>
 
         {showNavContent && (

@@ -11,7 +11,7 @@ import { Suspense } from "react";
 
 export default async function Home() {
   const [portfolio, aboutMe] = await Promise.all([
-    getPortfolio(),
+    getPortfolio({projectId: null}),
     getAboutMe(),
   ]);
   return (

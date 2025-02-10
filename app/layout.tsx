@@ -47,7 +47,7 @@ export default function RootLayout({
         <Providers>
           <div className="flex">
             {/* Sticky Sidebar */}
-            <div className="fixed w-64 h-screen border-r border-slate-300 dark:border-gray-800">
+            <div className="fixed w-64 h-screen md:border-r border-slate-300 dark:border-gray-800">
               <div className="p-8 h-full bg-white dark:bg-black hidden md:block">
                 <div className="fixed top-10 left-10">
                   <DarkModeSwitch />

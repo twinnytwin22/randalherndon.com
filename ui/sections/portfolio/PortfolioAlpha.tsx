@@ -1,6 +1,7 @@
 'use client'
 import { imageBuilder } from "@/lib/providers/sanity/sanity";
 import Image from "next/image";
+import Link from "next/link";
 import React from "react"
 
 function PortfolioAlpha({ portfolio }: any) {
@@ -24,10 +25,25 @@ function PortfolioAlpha({ portfolio }: any) {
                     <div className="portfolio-grid grid grid-cols-1 sm:grid-cols-2 gap-6 mt-6" >
                         {portfolio.map((item: any) => (
                             // <!-- Portfolio Item 1 -->
-                            <div style={{ backgroundColor: item?.previewBGColor?.hex }} className={`portfolio-item h-full min-h-80 min-w-1/2 w-full border border-slate-300 dark:border-gray-700 relative category-1 place-items-center place-content-center bg-[${item.previewBGColor?.hex || 'red'}]`} key={item._id}>
+                            <div style={{ backgroundColor: item?.previewBGColor?.hex }} className={`portfolio-item h-full min-h-80 min-w-1/2 w-full border border-slate-300 dark:border-gray-700 relative category-1 flex items-center justify-center`} key={item._id}>
                                 {item?.images?.length > 0 && (
-                                    <div className={`overflow-hidden group rounded-lg after:content-[''] after:absolute after:top-0 after:left-0 after:w-full after:h-full after:bg-gradient-to-t after:from-black/30 after:to-transparent after:opacity-0 after:transition after:ease-out after:duration-[160ms] hover:after:opacity-100 category-1 bg-[${item?.previewBGColor?.hex || 'red'}]`}>
-                                        <Image width={400} height={200} className="transition ease-custom duration-500 group-hover:scale-105" src={imageBuilder(item?.images[0])} alt="" />
+                                    <Link style={{
+                                        width: '100%',
+                                        height: '100%',
+                                        display: 'flex',
+                                        alignItems: 'center',
+                                        justifyContent: 'center'
+                                    }} href={`/portfolio/${item._id}`} 
+                                    >
+                                        <div
+                                    className={`relative w-full h-full flex items-center justify-center overflow-hidden group rounded-lg after:content-[''] after:absolute after:top-0 after:left-0 after:w-full after:h-full after:bg-gradient-to-t after:from-black/30 after:to-transparent after:opacity-0 after:transition after:ease-out after:duration-[160ms] hover:after:opacity-100 category-1 bg-[${item?.previewBGColor?.hex || 'red'}]`}>
+                                        <Image 
+                                            width={400} 
+                                            height={200} 
+                                            className="transition ease-custom duration-500 group-hover:scale-105 object-cover" 
+                                            src={imageBuilder(item?.images[0])} 
+                                            alt=""
+                                        />
                                         <div className="z-[1] absolute top-4 right-4 bg-black/20 px-4 py-2 rounded-full backdrop-blur-[5px] text-white font-mono font-normal text-sm uppercase tracking-[0.5px]">
                                             Web Design
                                         </div>
@@ -35,12 +51,11 @@ function PortfolioAlpha({ portfolio }: any) {
                                         <div className="z-[1] absolute bottom-0 left-0 w-full px-7 pb-6 translate-y-2 mb-0 transition ease-out duration-[160ms]">
                                             <p className="text-white font-poppins font-semibold text-lg lg:text-xl tracking-[0.5px] portfolio-stroke-text transition-all ease-linear duration-100">{item.title}</p>
                                         </div>
-                                    </div>
+                                        </div>
+                                    </Link>
                                 )}
                             </div>
                         ))}
-
-
                     </div>
                 </div>
             </div>

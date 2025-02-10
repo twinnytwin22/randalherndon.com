@@ -43,10 +43,11 @@ export async function getSiteSettings() {
   return res[0];
 }
 
-export const getPortfolio = async () => {
-  const query: string =
-    "*%5B_type+%3D%3D+%27portfolio%27%5D";
-  const res = await fetchSanity(query);
+export const getPortfolio = async ({projectId}: {projectId?: string | null}) => {
+  const query = projectId 
+    ? `*[_type == 'portfolio' && _id == '${projectId}'][0]`
+    : "*[_type == 'portfolio']";
+  const res = await client.fetch(query);
   return res;
 };
 
