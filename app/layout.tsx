@@ -57,7 +57,7 @@ export default function RootLayout({
             </div>
             
             {/* Main Content */}
-            <div className="w-full md:ml-64 min-h-screen p-8">
+            <div className="w-full md:ml-64 min-h-screen px-8 top-0">
               {children}
             </div>
           </div>

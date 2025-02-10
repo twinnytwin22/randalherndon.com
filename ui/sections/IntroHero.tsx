@@ -6,7 +6,7 @@ export default function IntroHero({aboutMe}: any) {
 
 
   return (
-    <div className="w-full space-y-6 pb-12 relative">
+    <div className="w-full space-y-6 pb-8 relative">
 
                     {/* <!-- About me section --> */}
                     <div id="about" className="section border border-slate-300 dark:border-gray-800 bg-white dark:bg-black text-black dark:text-white rounded-lg px-6 py-8 md:px-8 md:py-10 lg:p-12 shadow-sectionBoxShadow hover:shadow-sectionBoxShadowHover transition ease-out duration-[160ms]">
@@ -26,7 +26,7 @@ export default function IntroHero({aboutMe}: any) {
                                 </h2>
                                 <ul className="space-y-3 mb-4">
                                   {aboutMe?.skills.map((skill: {name: string, percentage: number}, index: number) => (
-                                    <li key={index} className="list-none inline-block px-4 py-2 me-2 rounded-full border border-black/20 dark:border-white/30 border-dashed text-pColor hover:text-black dark:text-white/70 dark:hover:text-white transition ease-linear duration-100">
+                                    <li key={index} className=" text-sm list-none inline-block px-4 py-2 me-2 rounded-full border border-black/20 dark:border-white/30 border-dashed text-pColor hover:text-black dark:text-white/70 dark:hover:text-white transition ease-linear duration-100">
                                         <i className="bi bi-camera pe-1"></i>
                                         {skill.name}
                                         <div className="inline-block font-mono text-sm">(<span className="counter">{skill.percentage.toString()}</span>%)</div>
@@ -38,36 +38,17 @@ export default function IntroHero({aboutMe}: any) {
                             </div>
                         </div>
                         <div className="grid grid-cols-1 lg:grid-cols-3 gap-5 mt-8">
-                            {/* <!-- box 1 --> */}
-                            <div className="flex items-center">
+                            {aboutMe.stats.map((stat: {label: string, value: number, suffix: string}, index: number) => (
+                            <div className="flex items-center" key={index}>
                                 <div className="pe-2">
-                                    <div className="font-mono font-semibold text-6xl stroke-text"><span className="counter">12</span></div>
+                                    <div className="font-mono font-semibold text-6xl stroke-text"><span className="counter">{stat?.value.toString()}</span></div>
                                 </div>
                                 <div className="dark:text-white">
-                                    <span className="block text-2xl font-normal mb-1">+</span>
-                                    <p className="font-mono font-medium text-sm uppercase tracking-[0.5px]">Years of Experience</p>
+                                    <span className="block text-2xl font-normal mb-1">{stat.suffix}</span>
+                                    <p className="font-mono font-medium text-sm uppercase tracking-[0.5px]">{stat.label}</p>
                                 </div>
                             </div>
-                            {/* <!-- box 2 --> */}
-                            <div className="flex items-center">
-                                <div className="pe-2">
-                                    <div className="font-mono font-semibold text-6xl stroke-text"><span className="counter">20</span></div>
-                                </div>
-                                <div className="dark:text-white">
-                                    <span className="block text-2xl font-normal mb-1">k</span>
-                                    <p className="font-mono font-medium text-sm uppercase tracking-[0.5px]">Hours of Working</p>
-                                </div>
-                            </div>
-                            {/* <!-- box 3 --> */}
-                            <div className="flex items-center">
-                                <div className="pe-2">
-                                    <div className="font-mono font-semibold text-6xl stroke-text"><span className="counter">90</span></div>
-                                </div>
-                                <div className="dark:text-white">
-                                    <span className="block text-2xl font-normal mb-1">+</span>
-                                    <p className="font-mono font-medium text-sm uppercase tracking-[0.5px]">Projects Done</p>
-                                </div>
-                            </div>
+                            ))}
                         </div>
                     </div>
 

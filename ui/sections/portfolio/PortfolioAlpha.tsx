@@ -7,7 +7,7 @@ function PortfolioAlpha({ portfolio }: any) {
 
 
     return (
-        <div className="w-full pb-12 relative">
+        <div className="w-full pb-8 relative">
 
             <div id="portfolio" className=" section border border-slate-300 dark:border-gray-800 bg-white dark:bg-black text-black dark:text-white rounded-lg px-6 py-8 md:px-8 md:py-10 lg:p-12 shadow-sectionBoxShadow hover:shadow-sectionBoxShadowHover transition ease-out duration-[160ms] relative">
                 <div className="md:w-4/5 lg:w-3/4">

@@ -27,7 +27,7 @@ const Navbar = () => {
         >
           <RHLogo />
           <nav className="mt-12 space-y-8">
-            <div className="flex flex-col space-y-6 text-lg font-medium">
+            <div className="flex flex-col space-y-6 text-lg font-medium font-mono">
               <a href="#about" className="hover:scale-105 transition-transform">
                 About
               </a>
