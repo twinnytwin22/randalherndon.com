@@ -19,7 +19,7 @@ const skillBlockVariants: Variants = {
   },
 };
 
-function ServiceBlock({ skill, delay }: any, i: any) {
+function ServiceBlock({ skill, delay }: any) {
   return (
     <div className="" key={skill}>
       <m.div
