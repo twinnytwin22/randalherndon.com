@@ -1,7 +1,7 @@
 import { getPortfolio } from "@/lib/providers/sanity/sanity";
 export default async function Portfolio() {
 
-  const portfolio = await getPortfolio()
+  const portfolio = await getPortfolio({projectId: null});
   console.log(portfolio, "PORTFOLIO")
   return (
  
