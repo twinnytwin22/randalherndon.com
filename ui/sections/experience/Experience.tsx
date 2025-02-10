@@ -63,29 +63,21 @@ const Experience = () => {
   return (
     <>
       <div
-        className="flex min-h-screen w-full  min-w-6xl max-w-screen-2xl items-center mx-auto content-center relative"
+        className="flex min-h-screen w-full max-w-screen-2xl items-center mx-auto content-center relative"
         id="experience"
         ref={expRef}
       >
-        <div className="top-0 left-0 right-0 mx-auto mt-24 lg:mt-36 w-full md:inline-flex absolute max-w-md md:max-w-xl lg:max-w-full hidden">
+        <div className="top-0 left-0 right-0 mx-auto w-full md:inline-flex absolute  hidden">
           <Badges />
         </div>
-        <div className="flex items-center flex-col lg:grid grid-cols-12 w-full h-full place-items-center mx-auto">
-          <div className="col-span-6 flex flex-col lg:mt-24 content-start max-w-xs sm:max-w-sm md:max-w-lg mx-auto h-fit">
-            <Companies />
-            <div className="hidden lg:flex space-x-2 mx-auto">
-              <ContactButton />
-              <LinkedInButton />
-              <MyGitHubButton />
-              <DownloadButton />
-            </div>
-          </div>
-          <div className="col-span-6 h-full items-center flex -mt-8 lg:-mt-0">
+        <div className="flex items-center flex-col w-full h-full place-items-center mx-auto">
+         
+          <div className="col-span-12 h-full items-center flex -mt-8 lg:-mt-0">
             <div>
               <GradientText text="My toolbox." textSize="xl" />
 
               <div
-                className="grid grid-cols-3 md:grid-cols-3 lg:grid-cols-3 xl:grid-cols-4 gap-4 items-center h-fit mx-auto  max-w-xs sm:max-w-sm md:max-w-md"
+                className="grid grid-cols-3 md:grid-cols-4 lg:grid-cols-6 xl:grid-cols-8 gap-4 items-center h-fit mx-auto w-full"
                 ref={scope}
               >
                 {skillsets.skills.map(({ name }: any, index: number) => (

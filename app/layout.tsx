@@ -1,8 +1,7 @@
 import Providers from "@/lib/providers";
-import "@/styles/globals.css";
+import "./globals.css";
 import Navbar from "@/ui/navigation/Navbar";
 import DarkModeSwitch from "@/ui/buttons/DarkModeSwitch";
-import Script from "next/script";
 import { metaDataKeywords } from "@/lib/keywords";
 export const metadata = {
   title: "RandalHerndon.com",
@@ -30,7 +29,7 @@ export const metadata = {
     ],
     locale: "en-US",
     type: "website",
-    
+
   },
 };
 
@@ -44,18 +43,23 @@ export default function RootLayout({
       <head>
         <link rel="stylesheet" href="https://use.typekit.net/yka6cyh.css" />
       </head>
-
-      <body className="bg-slate-100 dark:bg-black h-screen mx-auto w-full max-w-screen flex overflow-x-hidden relative">
+      <body className="bg-slate-100 dark:bg-slate-950 min-h-screen">
         <Providers>
-          <div className="fixed ml-10 mt-10 z-50 hidden lg:block">
-            <DarkModeSwitch />
-          </div>
-          <div className="min-h-full relative max-w-screen w-full mx-auto flex overflow-x-hidden">
-            <div className="relative  z-[999999]">
-              <Navbar />
+          <div className="flex">
+            {/* Sticky Sidebar */}
+            <div className="fixed w-64 h-screen border-r border-slate-300 dark:border-gray-800">
+              <div className="p-8 h-full bg-white dark:bg-black hidden md:block">
+                <div className="fixed top-10 left-10">
+                  <DarkModeSwitch />
+                </div>
+                <Navbar />
+              </div>
             </div>
-
-            {children}
+            
+            {/* Main Content */}
+            <div className="w-full md:ml-64 min-h-screen p-8">
+              {children}
+            </div>
           </div>
         </Providers>
       </body>

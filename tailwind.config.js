@@ -26,6 +26,7 @@ module.exports = {
         'owners-wide': ['owners-wide', 'sans-serif'],
         'owners-xwide': ['owners-xwide', 'sans-serif'],
         'owners-xxwide': ['owners-xxwide', 'sans-serif'],
+        'poppins': ['poppins', 'sans-serif'],
 
       },
   

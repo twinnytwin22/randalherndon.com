@@ -1,112 +1,77 @@
 "use client";
 import React from "react";
-import { useEffect, useState } from "react";
-import { ScrollDown } from "../misc/ScrollDown";
-import { m } from "framer-motion";
-import ContactButton from "../buttons/ContactButton";
-import MyGitHubButton from "../buttons/CustomGitHubButton";
-import LinkedInButton from "../buttons/LinkedIn";
-import { DownloadButton } from "../buttons/DownloadButton";
 
-export default function IntroHero() {
-  const [headlineIndex, setHeadlineIndex] = useState(0);
+export default function IntroHero({aboutMe}: any) {
 
-  const headlines = [
-    "Marketer.",
-    "Creative.",
-    "Developer.",
-    "Musician.",
-  ];
 
-  useEffect(() => {
-    const intervalId = setInterval(() => {
-      setHeadlineIndex((prevIndex) =>
-        prevIndex === headlines.length - 1 ? 0 : prevIndex + 1
-      );
-    }, 2000);
-
-    return () => clearInterval(intervalId);
-  }, []);
-
-  const colors = [
-    "text-black dark:text-white",
-    "text-yellow-500",
-    "text-blue-600",
-    "text-red-500",
-  ];
-  const bColors = [
-    "border-black dark:border-white",
-    "border-yellow-500",
-    "border-blue-600",
-    "border-red-500",
-  ];
-  const bgColors = [
-    "bg-black dark:bg-white",
-    "bg-yellow-500",
-    "bg-blue-600",
-    "bg-red-500",
-  ];
-
-  const buttonTextColors = [
-    "text-white dark:text-black",
-    "text-white",
-    "text-white",
-    "text-white",
-  ];
-
-  const headlineVariants = {
-    animate: { color: colors[headlineIndex], transition: { duration: 0.5 } },
-  };
 
   return (
-    <div className="mx-auto bg-slate-100 dark:bg-black h-full lg:max-w-7xl xl:max-w-full w-full mb-20 md:mb-0 static isolate">
-      <div className="">
-        <ScrollDown color="black" /></div>
+    <div className="w-full space-y-6 pb-12 relative">
 
-      <div className="grid lg:grid-cols-12 mx-auto min-h-screen items-center justify-center w-full lg:max-w-screen-xl place-items-center px-16 2xl:px-0 ">
-        <div className="content-center justify-center min-w-full  h-fit lg:col-span-7 col-span-12 mx-auto ml-2 space-y-2 md:space-y-4 xl:text-6xl 2xl:text-7xl  text-4xl sm:text-5xl lg:order-1 order-2">
-          <h1 className=" text-left text-black dark:text-white">Hello,</h1>
-          <h1 className="text-left text-black dark:text-white">I'm Randal,</h1>
-          <m.h1
-            initial={{ opacity: 0, scale: 0.5 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{
-              duration: 0.8,
-              delay: 0.5,
-              ease: [0, 0.71, 0.2, 1.01],
-            }}
-            className={`text-left ${colors[headlineIndex]}`}
-          >
-            {headlines[headlineIndex]}
-          </m.h1>
-          <div className="lg:hidden block lg:col-span-5 col-span-12 lg:items-center mx-6 py-10 sm:mx-auto xl:mx-12 content-center mt-20 lg:mt-0 max-w-md md:min-w-md justify-center lg:order-2 order-1"  >
-            <p className="text-2xl"> I have a passion for learning, and creating new things. I love building beautiful web apps, releasing music, and developing products, while tinkering in between. 😃 </p>
-          </div>
-          <m.div
-            initial={{ opacity: 0, scale: 0.5 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{
-              duration: 0.8,
-              delay: 0.5,
-              ease: [0, 0.71, 0.2, 1.01],
-            }}
-            className="flex space-x-2 items-end h-fit"
-          >
-            <ContactButton
-              bgColors={bgColors}
-              headlineIndex={headlineIndex}
-              buttonTextColors={buttonTextColors}
-            />
+                    {/* <!-- About me section --> */}
+                    <div id="about" className="section border border-slate-300 dark:border-gray-800 bg-white dark:bg-black text-black dark:text-white rounded-lg px-6 py-8 md:px-8 md:py-10 lg:p-12 shadow-sectionBoxShadow hover:shadow-sectionBoxShadowHover transition ease-out duration-[160ms]">
+                        <div className="lg:flex lg:space-x-10">
+                            <div className="relative h-fit mb-6">
+                                <img className="min-w-52 min-h-52 max-w-64 max-h-64 rounded-full" src="/randal.jpeg" alt=""/>
+                                <div className="absolute bottom-4 left-2 bg-black/30 dark:bg-black/60 px-4 py-2 rounded-full shadow-avatarText backdrop-blur-[5px] text-white font-mono font-normal uppercase text-sm tracking-wider">
+                                    <span className="typer" id="typer1" data-words="Hi There!, I'm Randal" data-colors="white" data-delay="50" data-deletedelay="1500" style={{ color: "white" }}> I'm Randal</span><span className="cursor" data-owner="typer1" style={{ transition: "0.1s", opacity: 0 }}>_</span>
+                                </div>
+                            </div>
+                            <div>
+                                <h6 className="font-mono font-medium uppercase text-sm tracking-wider relative pt-4 mb-5 dark:text-white before:content-['//'] before:pr-2 after:content-[attr(data-backdrop-text)] after:absolute after:top-0 after:left-0 after:font-poppins after:font-bold after:uppercase after:text-4xl after:opacity-15" data-backdrop-text="About Me">About Me</h6>
+                                <h2 className="text-4xl font-poppins font-semibold mb-2 dark:text-white">
+                                  {aboutMe?.headlines.map((headline: string, index: number) => (
+                                    <span key={index}>{headline}<br/></span>
+                                ))}
+                                </h2>
+                                <ul className="space-y-3 mb-4">
+                                  {aboutMe?.skills.map((skill: {name: string, percentage: number}, index: number) => (
+                                    <li key={index} className="list-none inline-block px-4 py-2 me-2 rounded-full border border-black/20 dark:border-white/30 border-dashed text-pColor hover:text-black dark:text-white/70 dark:hover:text-white transition ease-linear duration-100">
+                                        <i className="bi bi-camera pe-1"></i>
+                                        {skill.name}
+                                        <div className="inline-block font-mono text-sm">(<span className="counter">{skill.percentage.toString()}</span>%)</div>
+                                    </li>
+                               
+                                  ))}
+                                </ul>
+                                <p className="text-black/70 dark:text-white/70">{aboutMe.aboutMe}</p>
+                            </div>
+                        </div>
+                        <div className="grid grid-cols-1 lg:grid-cols-3 gap-5 mt-8">
+                            {/* <!-- box 1 --> */}
+                            <div className="flex items-center">
+                                <div className="pe-2">
+                                    <div className="font-mono font-semibold text-6xl stroke-text"><span className="counter">12</span></div>
+                                </div>
+                                <div className="dark:text-white">
+                                    <span className="block text-2xl font-normal mb-1">+</span>
+                                    <p className="font-mono font-medium text-sm uppercase tracking-[0.5px]">Years of Experience</p>
+                                </div>
+                            </div>
+                            {/* <!-- box 2 --> */}
+                            <div className="flex items-center">
+                                <div className="pe-2">
+                                    <div className="font-mono font-semibold text-6xl stroke-text"><span className="counter">20</span></div>
+                                </div>
+                                <div className="dark:text-white">
+                                    <span className="block text-2xl font-normal mb-1">k</span>
+                                    <p className="font-mono font-medium text-sm uppercase tracking-[0.5px]">Hours of Working</p>
+                                </div>
+                            </div>
+                            {/* <!-- box 3 --> */}
+                            <div className="flex items-center">
+                                <div className="pe-2">
+                                    <div className="font-mono font-semibold text-6xl stroke-text"><span className="counter">90</span></div>
+                                </div>
+                                <div className="dark:text-white">
+                                    <span className="block text-2xl font-normal mb-1">+</span>
+                                    <p className="font-mono font-medium text-sm uppercase tracking-[0.5px]">Projects Done</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
 
-            <LinkedInButton />
-            <MyGitHubButton />
-            <DownloadButton />
-          </m.div>
-        </div>
-        <div className="hidden lg:block lg:col-span-5 col-span-12 lg:items-center mx-6 sm:mx-auto xl:mx-12 content-center mt-20 lg:mt-0 max-w-md md:min-w-md justify-center lg:order-2 order-1"  >
-          <p className="text-3xl"> I have a passion for learning, and creating new things. I love building beautiful web apps, releasing music, developing products, and managing projects from start to finish. 😃 </p>
-        </div>
-      </div>
-    </div>
-  );
+           
+                </div>
+  )
 }
