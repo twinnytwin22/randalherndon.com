@@ -51,6 +51,18 @@ export const getPortfolio = async ({projectId}: {projectId?: string | null}) => 
   return res;
 };
 
+export const getSkills = async () => {
+  const query: string = "*%5B_type%20%3D%3D%20%22skills%22%5D";
+  const res = await fetchSanity(query);
+  return res[0];
+}
+
+export const getWorkExperience = async () => {
+  const query: string = "*%5B_type%20%3D%3D%20%22workExperience%22%5D";
+  const res = await fetchSanity(query);
+  return res[0];
+}
+
 export const getAboutMe = async () => {
   const query: string =
     "*%5B_type+%3D%3D+%27aboutMe%27%5D";

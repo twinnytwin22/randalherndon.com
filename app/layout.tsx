@@ -49,7 +49,7 @@ export default function RootLayout({
             {/* Sticky Sidebar */}
             <div className="fixed w-64 h-screen md:border-r border-slate-300 dark:border-gray-800">
               <div className="p-8 h-full bg-white dark:bg-black hidden md:block">
-                <div className="fixed top-10 left-10">
+                <div className="fixed top-10 left-6">
                   <DarkModeSwitch />
                 </div>
                 <Navbar />

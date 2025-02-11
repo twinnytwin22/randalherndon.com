@@ -1,27 +1,38 @@
 "use client";
-import React, { useState } from "react";
+import React, { useEffect } from "react";
+import { useRouter, usePathname } from "next/navigation";
 import { m, AnimatePresence } from "framer-motion";
 import { RHLogo } from "../misc/RHLogo";
-import { NavContent } from "./NavContent";
-import Link from "next/link";
-// ... existing imports ...
 
 const Navbar = () => {
-  const [showNavContent, setShowNavContent] = useState(false);
+  const router = useRouter();
+  const pathname = usePathname();
 
-  const handleShowContent = () => {
-    setShowNavContent(!showNavContent);
+  const handleNavigation = (link: string) => {
+      router.push(`/${link}`);
   };
+
+  useEffect(() => {
+    const hash = typeof window && window.location.hash;
+    if (hash) {
+      const id = hash.replace("#", "");
+      document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
+    }
+  }, [pathname, router]);
 
   const ROUTES = [
     { name: "About", link: "#about" },
-    { name: "Experience", link: "#skills" },
+    { name: "Skills", link: "#skills" },
+    { name: "Experience", link: "#experience" },
     { name: "Portfolio", link: "#portfolio" },
+    {name: "Resume", link: "Randal-Herndon-Resume-2025.pdf"}
   ];
 
   return (
     <AnimatePresence>
       <aside className="mt-24 bg-white dark:bg-black">
+      <RHLogo />
+
         <m.nav
           initial={{ opacity: 0, scale: 0.5 }}
           animate={{ opacity: 1, scale: 1 }}
@@ -31,20 +42,20 @@ const Navbar = () => {
             ease: [0, 0.71, 0.2, 1.01],
           }}
         >
-          <RHLogo />
           <nav className="mt-12 space-y-8">
             <div className="flex flex-col space-y-6 text-lg font-medium font-mono">
               {ROUTES.map((route, index) => (
-              <Link key={index} href={route.link} className="hover:scale-105 transition-transform">
-                {route.name}
-              </Link>))}
+                <a
+                  key={index}
+                  onClick={() => handleNavigation(route.link)}
+                  className="hover:scale-105 transition-transform cursor-pointer"
+                >
+                  {route.name}
+                </a>
+              ))}
             </div>
           </nav>
         </m.nav>
-
-        {showNavContent && (
-          <NavContent showNavbar={true} setShowNavbar={() => {}} />
-        )}
       </aside>
     </AnimatePresence>
   );

@@ -1,6 +1,6 @@
 export const RHLogo = () => {
     return ( 
-        <svg className="text-black dark:text-white w-16 md:w-20 p-2" fill="currentColor"
+        <svg className="text-black dark:text-white w-24 md:w-32" fill="currentColor"
          xmlns="http://www.w3.org/2000/svg" viewBox="0 0 194 90">
 <path className="cls-1" d="m27.8,9h40c15.4,0,23.6,7.9,23.6,18.3,0,1.3-.1,2.7-.4,4.1-1.4,7.6-6.4,13-14.1,15.3,5.2,1.9,7.3,5.4,7,10.6-.2,5-3.2,14.3-2,21.7h-24.9c-.8-7,2.5-16.4,2.7-21.2.1-3.1-1.3-4.5-4.7-4.5h-12l-5.4,25.7H12.9L27.8,9Zm21.3,15.6l-3,14.2h12.8c4,0,6.9-2.2,7.8-6.5.1-.8.2-1.4.2-2.1,0-3.6-2.2-5.6-6.5-5.6h-11.3Z"/>
 <path className="cls-1" d="m100.7,9h24.7l-5.5,25.8h19l5.5-25.8h24.7l-14.9,70h-24.7l5.8-27.4h-19l-5.8,27.4h-24.6l14.8-70Z"/>
