@@ -15,7 +15,7 @@ function PortfolioAlpha({ portfolio }: any) {
                     <p className="text-pColor dark:text-white/70">{portfolio?.description || ""}</p>
                 </div>
                 <div className="mt-6 lg:mt-12">
-                    <ul className="filter space-x-2">
+                    <ul className="hidden filter space-x-2">
                         <li className="list-none inline-block font-mono text-sm px-4 py-2 border border-black border-dashed rounded-full hover:bg-black hover:text-white transition ease-linear duration-100 cursor-pointer dark:text-white dark:border-white dark:hover:bg-white dark:hover:text-black mixitup-control-active" data-filter="all">Show All</li>
                         <li className="list-none inline-block font-mono text-sm px-4 py-2 border border-black border-dashed rounded-full hover:bg-black hover:text-white transition ease-linear duration-100 cursor-pointer dark:text-white dark:border-white dark:hover:bg-white dark:hover:text-black" data-filter=".category-1">Branding</li>
                         <li className="list-none inline-block font-mono text-sm px-4 py-2 border border-black border-dashed rounded-full hover:bg-black hover:text-white transition ease-linear duration-100 cursor-pointer dark:text-white dark:border-white dark:hover:bg-white dark:hover:text-black" data-filter=".category-2">Mockup</li>

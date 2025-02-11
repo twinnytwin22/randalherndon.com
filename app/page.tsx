@@ -5,6 +5,8 @@ import PortfolioAlpha from "@/ui/sections/portfolio/PortfolioAlpha";
 import Link from "next/link";
 import { Suspense } from "react";
 
+export const revalidate = 60
+
 export default async function Home() {
   const [portfolio, aboutMe, skills, workExperience] = await Promise.all([
     getPortfolio({projectId: null}),
@@ -17,7 +19,7 @@ export default async function Home() {
         <NameAndNav/>
       <main className="relative overflow-x-hidden">
    
-        <Suspense>
+        <Suspense fallback={<div className="w-full h-screen bg-white dark:bg-black"></div>}>
           <section
             className="flex flex-col relative w-full mx-auto justify-center"
             id="intro"
@@ -50,10 +52,6 @@ export default async function Home() {
 }
 
 const socials = [
-  // {
-  //   name: "FB",
-  //   link: "https://facebook.com",
-  // },
   {
     name: "LN",
     link: "https://www.linkedin.com/in/randalherndon/",
