@@ -25,7 +25,7 @@ const Navbar = () => {
     { name: "Skills", link: "#skills" },
     { name: "Experience", link: "#experience" },
     { name: "Portfolio", link: "#portfolio" },
-    {name: "Resume", link: "Randal-Herndon-Resume-2025.pdf"}
+    {name: "Resume", link: "Randal Herndon 2025 - DMM.pdf"}
   ];
 
   return (
