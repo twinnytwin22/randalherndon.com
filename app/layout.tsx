@@ -21,32 +21,25 @@ export default function RootLayout({
       <body className="bg-slate-100 dark:bg-slate-950 min-h-screen">
         <Providers>
           <div className="flex">
-            <div className="flex space-x-4 isolate absolute top-0 right-4">
+            <div className="flex space-x-4 isolate absolute top-0 right-4 z-50">
               {socials.map((social, index) => (
                 <Link
                   key={index}
                   href={social.link}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="w-12 h-12
-             bg-black text-white p-4 border border-slate-300 dark:border-gray-800 flex items-center justify-center text-lg font-bold font-mono"
+                  className="w-12 h-12 bg-black text-white p-4 border border-slate-300 dark:border-gray-800 flex items-center justify-center text-lg font-bold font-mono"
                 >
                   {social.name}
                 </Link>
               ))}
             </div>
-            <div className="fixed top-4 left-24 md:top-10 md:left-6 z-[9000]">
-                  <DarkModeSwitch />
-                </div>
-
-            {/* Sticky Sidebar */}
-      
-            
-                <Navbar />
-            
-
+            <div className="fixed top-4 left-24 md:top-10 md:left-6 z-50">
+              <DarkModeSwitch />
+            </div>
+            <Navbar />
             {/* Main Content */}
-            <div className="w-full md:ml-64 min-h-screen px-8 top-16 md:top-0 relative">
+            <div className="w-full md:ml-64 min-h-screen px-8 top-16 md:top-0 relative z-10">
               {children}
             </div>
           </div>

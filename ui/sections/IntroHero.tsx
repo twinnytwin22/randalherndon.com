@@ -2,9 +2,6 @@
 import React from "react";
 
 export default function IntroHero({aboutMe}: any) {
-
-
-
   return (
     <div className="w-full space-y-6 pb-8 relative">
 
