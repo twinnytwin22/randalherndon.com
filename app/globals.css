@@ -39,20 +39,7 @@ Copy code .w-fit {
   }
 }
 
-@layer utilities {
-  .snap {
-    scroll-snap-type: var(--scroll-snap-direction) var(--scroll-snap-constraint);
-  }
-  .snap-y {
-    --scroll-snap-direction: y;
-  }
-  .snap-mandatory {
-    --scroll-snap-constraint: mandatory;
-  }
-  .snap-start {
-    scroll-snap-align: start;
-  }
-}
+
 .slick-prev:before,
 .slick-next:before {
   color: rgb(109, 145, 255) !important;
