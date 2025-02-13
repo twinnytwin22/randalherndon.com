@@ -5,7 +5,8 @@ import DarkModeSwitch from "@/ui/buttons/DarkModeSwitch";
 import { socials } from "@/lib/socials";
 import Link from "next/link";
 import { metadata as meta } from "@/lib/metadata";
-export const metadataa = meta
+import { Metadata } from "next";
+export const metadata: Metadata = meta
 
 export default function RootLayout({
   children,

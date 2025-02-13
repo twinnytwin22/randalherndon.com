@@ -1,6 +1,7 @@
+import { Metadata } from "next";
 import { metaDataKeywords } from "./keywords";
 
-export const metadata = {
+export const metadata: Metadata = {
     title: "RandalHerndon.com",
     description:
       "Randal Herndon | Interdisciplinary, Creative, Developer, Musician.",
