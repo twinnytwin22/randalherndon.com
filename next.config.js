@@ -11,6 +11,15 @@ const nextConfig = {
     loader: "custom",
     loaderFile: "./lib/providers/sanity/imageLoader.tsx",
   },
+  redirects: async () => {
+    return [
+      {
+        source: "/github",
+        destination: "https://github.com/twinnytwin22",
+        permanent: true,
+      },
+    ]
+  },
 }
 
 module.exports = nextConfig
