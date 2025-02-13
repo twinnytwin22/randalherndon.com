@@ -5,47 +5,8 @@
 @custom-variant dark (&:where(.dark, .dark *));
 
 
-html,
-body {
-  overflow-x: hidden;
-}
-body {
-  position: relative;
-}
 
 
-
-Copy code .w-fit {
-  animation: fade-in 1s ease-out forwards;
-}
-
-@keyframes fade-in {
-  from {
-    transform: translateY(50%);
-    opacity: 0;
-  }
-  to {
-    transform: translateY(0);
-    opacity: 1;
-  }
-}
-
-@layer base {
-  .font-outline-2 {
-    -webkit-text-stroke: 2px black;
-  }
-  .font-outline-4 {
-    -webkit-text-stroke: 4px black;
-  }
-}
-
-
-.slick-prev:before,
-.slick-next:before {
-  color: rgb(109, 145, 255) !important;
-  font-size: 30px !important;
-  text-align: left;
-}
 
 .poppins-thin {
   font-family: "Poppins", serif;

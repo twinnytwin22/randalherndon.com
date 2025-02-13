@@ -33,49 +33,50 @@ const Navbar = () => {
 
   return (
     <div
-     className={`fixed w-64 h-screen md:border-r ${isOpen && 'bg-white'} ${isOpen && 'dark:bg-black'} border-slate-300 dark:border-gray-800 z-50`}>
-      <div className="p-8 h-full ">
-    <AnimatePresence>
-      <div className="z-50">
-        <button
-          className="text-2xl border rounded-xl p-2 md:hidden z-20 absolute top-4"
-          onClick={() => setIsOpen(!isOpen)}
-        >
-          {isOpen ? <IoClose /> : <IoMenu />}
-        </button>
-        <aside className="mt-24  relative">
-          <div className="md:flex justify-between items-center px-6 py-4 hidden">
-            <RHLogo />
-          </div>
+      className={`fixed isolate w-64 z md:border-r ${isOpen && "bg-white"} ${isOpen && "dark:bg-black"} border-slate-300 dark:border-gray-800 z-[1001] `}
+    >
+      <div className={`p-8 ${isOpen && 'h-screen'} `}>
+        <AnimatePresence>
+          <div className="z-[1000]">
+            <button
+              className="text-2xl border rounded-xl p-2 md:hidden z-20 absolute top-4"
+              onClick={() => setIsOpen(!isOpen)}
+            >
+              {isOpen ? <IoClose /> : <IoMenu />}
+            </button>
+            <aside className="mt-24  relative">
+              <div className="md:flex justify-between items-center px-6 py-4 hidden">
+                <RHLogo />
+              </div>
 
-          <m.nav
-            initial={{ opacity: 0, scale: 0.5 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{
-              duration: 0.8,
-              delay: 0.5,
-              ease: [0, 0.71, 0.2, 1.01],
-            }}
-            className={`${
-              isOpen ? "block" : "hidden"
-            } md:block mt-12 space-y-8`}
-          >
-            <nav className="flex flex-col space-y-6 text-lg font-medium font-mono">
-              {ROUTES.map((route, index) => (
-                <a
-                  key={index}
-                  onClick={() => handleNavigation(route.link)}
-                  className="hover:scale-105 transition-transform cursor-pointer"
-                >
-                  {route.name}
-                </a>
-              ))}
-            </nav>
-          </m.nav>
-        </aside>
+              <m.nav
+                initial={{ opacity: 0, scale: 0.5 }}
+                animate={{ opacity: 1, scale: 1 }}
+                transition={{
+                  duration: 0.8,
+                  delay: 0.5,
+                  ease: [0, 0.71, 0.2, 1.01],
+                }}
+                className={`${
+                  isOpen ? "block" : "hidden"
+                } md:block mt-12 space-y-8`}
+              >
+                <nav className="flex flex-col space-y-6 text-lg font-medium font-mono">
+                  {ROUTES.map((route, index) => (
+                    <a
+                      key={index}
+                      onClick={() => handleNavigation(route.link)}
+                      className="hover:scale-105 transition-transform cursor-pointer"
+                    >
+                      {route.name}
+                    </a>
+                  ))}
+                </nav>
+              </m.nav>
+            </aside>
+          </div>
+        </AnimatePresence>
       </div>
-    </AnimatePresence>
-    </div>
     </div>
   );
 };
