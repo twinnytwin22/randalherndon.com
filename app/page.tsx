@@ -51,16 +51,6 @@ export default async function Home() {
   );
 }
 
-const socials = [
-  {
-    name: "LN",
-    link: "https://www.linkedin.com/in/randalherndon/",
-  },
-  {
-    name: "GH",
-    link: "https://github.com/twinnytwin22",
-  },
-];
 
 const NameAndNav = () => {
   return (
@@ -68,19 +58,7 @@ const NameAndNav = () => {
       <h1 className="text-6xl font-[owners] italic font-extrabold my-8 dark:text-white/90 uppercase pt-8">
         Randal <span className="relative">Herndon</span>
       </h1>
-      <div className="flex space-x-4 isolate">
-        {socials.map((social, index) => (
-          
-          <Link   
-            key={index}
-            href={social.link}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="w-12 h-12
-             bg-black text-white p-4 border border-slate-300 dark:border-gray-800 flex items-center justify-center text-lg font-bold font-mono"
-          >{social.name}</Link>))}
       
-      </div>
     </div>
   );
 }

@@ -14,9 +14,13 @@ async function page({ params }: Props) {
 
   return (
     <div>
-      <Link href={'/'}>
+      <Link
+      className="flex md:block justify-end"
+      style={{
+        width: '100%',
+      }} href={'/'}>
         <button
-          className="flex items-center gap-3 mt-8 bg-blue-700 text-white dark:text-gray-200 px-4 py-2 rounded-full shadow-md hover:shadow-lg transition-shadow duration-300"
+          className="flex items-center gap-3 mt-8 bg-blue-700 text-white dark:text-gray-200 px-4 py-2 rounded-full shadow-md hover:shadow-lg transition-shadow duration-300 right-0 justidy-end relative z-20"
         >
           <IoCaretBackCircleSharp />
           Go Back
