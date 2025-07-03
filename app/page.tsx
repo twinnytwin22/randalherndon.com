@@ -2,7 +2,6 @@ import { getAboutMe, getPortfolio, getSkills, getWorkExperience } from "@/lib/pr
 import IntroHero from "@/ui/sections/IntroHero";
 import SkillsList, { WorkExperience } from "@/ui/sections/experience/Experience";
 import PortfolioAlpha from "@/ui/sections/portfolio/PortfolioAlpha";
-import Link from "next/link";
 import { Suspense } from "react";
 
 export const revalidate = 60
@@ -15,7 +14,7 @@ export default async function Home() {
     getWorkExperience(),
   ]);
   return (
-    <div className="mx-auto z-0 w-full max-w-screen relative isolate top-0">
+    <div className="mx-auto z-0 w-full max-w-screen relative isolate top-0 ">
         <NameAndNav/>
       <main className="relative overflow-x-hidden">
    
