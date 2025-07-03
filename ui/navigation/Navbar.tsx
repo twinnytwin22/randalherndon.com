@@ -11,6 +11,10 @@ const Navbar = () => {
   const pathname = usePathname();
 
   const handleNavigation = (link: string) => {
+    if (link.startsWith("http")) {
+      window.open(link, "_blank", "noopener,noreferrer");
+      return;
+    }
     setIsOpen(false);
     router.push(`/${link}`);
   };
@@ -28,6 +32,7 @@ const Navbar = () => {
     { name: "Skills", link: "#skills" },
     { name: "Experience", link: "#experience" },
     { name: "Portfolio", link: "#portfolio" },
+    { name: "Github", link: "https://github.com/twinnytwin22"},
     { name: "Resume", link: "Randal Herndon 2025 - DMM.pdf" },
   ];
 
