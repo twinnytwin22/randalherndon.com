@@ -28,6 +28,8 @@
 
   font-family: var(--font-body);
   color: var(--color-text);
+  min-width: 0;
+  isolation: isolate;
 }
 
 .rhos-root,
@@ -157,4 +159,19 @@
   .rhos-root .rhos-topbar-actions { padding-left: 0; border-left: 0; }
   .rhos-root .rhos-topbar-btn { width: 30px; padding: 0; justify-content: center; }
   .rhos-root .rhos-topbar-btn span { display: none; }
+}
+
+@media (max-width: 480px) {
+  .rhos-root .rhos-topbar-status {
+    min-width: 0;
+  }
+
+  .rhos-root .rhos-topbar-status > span:last-child {
+    font-size: 10px;
+    white-space: nowrap;
+  }
+
+  .rhos-root .rhos-window-header {
+    flex: 0 0 auto;
+  }
 }

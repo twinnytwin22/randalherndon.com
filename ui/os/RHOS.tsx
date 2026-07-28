@@ -67,6 +67,19 @@ type GithubEvent = {
 
 type TermLine = { text: string; color: string };
 
+function getAppViewport() {
+  const rawScale = Number.parseFloat(
+    getComputedStyle(document.documentElement).getPropertyValue("--app-scale")
+  );
+  const scale = Number.isFinite(rawScale) && rawScale > 0 ? rawScale : 1;
+
+  return {
+    width: window.innerWidth / scale,
+    height: window.innerHeight / scale,
+    scale,
+  };
+}
+
 const DOCK_ITEMS: { id: WinId; Icon: React.ComponentType; label: string }[] = [
   { id: "about", Icon: PiUser, label: "About" },
   { id: "work", Icon: PiBriefcase, label: "Work" },
@@ -102,14 +115,16 @@ export default function RHOS({
   projects?: PortfolioProject[];
   about?: AboutContent | null;
 }) {
-  const cx = useMemo(() => Math.max(60, (window.innerWidth - 560) / 2), []);
+  const initialViewport = useMemo(() => getAppViewport(), []);
+  const cx = Math.max(60, (initialViewport.width - 560) / 2);
 
   const [booting, setBooting] = useState(() => bootIntro);
   const [now, setNow] = useState(() => new Date());
   const [gh, setGh] = useState<GithubEvent[]>([]);
+  const [viewport, setViewport] = useState(initialViewport);
   const zTopRef = useRef(100);
   const [nowPlaying, setNowPlaying] = useState<{ title: string; artist: string; isPlaying: boolean } | null>(null);
-  const [isMobile, setIsMobile] = useState(() => window.innerWidth < 768);
+  const isMobile = viewport.width < 768;
   const [selectedProject, setSelectedProject] = useState<Project | null>(null);
   const [projectImageIndex, setProjectImageIndex] = useState(0);
   const [termLines, setTermLines] = useState<TermLine[]>([
@@ -145,7 +160,7 @@ export default function RHOS({
   useEffect(() => {
     const tick = setInterval(() => setNow(new Date()), 30000);
 
-    const onResize = () => setIsMobile(window.innerWidth < 768);
+    const onResize = () => setViewport(getAppViewport());
     window.addEventListener("resize", onResize);
 
     let npT: ReturnType<typeof setInterval> | undefined;
@@ -175,9 +190,13 @@ export default function RHOS({
     (id: WinId, e: React.MouseEvent) => {
       if (isMobile || (e.target as HTMLElement).tagName === "BUTTON") return;
       const w = winsRef.current[id];
-      dragRef.current = { id, dx: e.clientX - w.x, dy: e.clientY - w.y };
+      dragRef.current = {
+        id,
+        dx: e.clientX / viewport.scale - w.x,
+        dy: e.clientY / viewport.scale - w.y,
+      };
     },
-    [isMobile]
+    [isMobile, viewport.scale]
   );
 
   const openWin = useCallback((id: WinId) => {
@@ -217,9 +236,13 @@ export default function RHOS({
     const { id, dx, dy } = dragRef.current;
     setWins((w) => ({
       ...w,
-      [id]: { ...w[id], x: Math.max(-200, e.clientX - dx), y: Math.max(34, e.clientY - dy) },
+      [id]: {
+        ...w[id],
+        x: Math.max(-200, e.clientX / viewport.scale - dx),
+        y: Math.max(34, e.clientY / viewport.scale - dy),
+      },
     }));
-  }, []);
+  }, [viewport.scale]);
 
   const onDragEnd = useCallback(() => {
     dragRef.current = null;
@@ -262,7 +285,7 @@ export default function RHOS({
         title: meta[id],
         x: isMobile ? 8 : w.x,
         y: isMobile ? 54 : w.y,
-        w: isMobile ? window.innerWidth - 16 : w.w,
+        w: isMobile ? viewport.width - 16 : w.w,
         z: w.z,
         focus: () => {
           const z = ++zTopRef.current;
@@ -352,8 +375,8 @@ export default function RHOS({
     <div
       className="rhos-root"
       style={{
-        width: "100vw",
-        height: "100vh",
+        width: viewport.width,
+        height: viewport.height,
         position: "relative",
         overflow: "hidden",
         background: "radial-gradient(ellipse 80% 60% at 50% -10%, #17171b, #0a0a0c 70%)",
@@ -484,7 +507,14 @@ export default function RHOS({
               {w.title}
             </span>
           </div>
-          <div style={{ overflow: "auto", userSelect: "text" }}>
+          <div
+            style={{
+              overflow: "auto",
+              userSelect: "text",
+              minHeight: 0,
+              height: w.id === "cv" ? "min(560px, calc(78vh - 42px))" : undefined,
+            }}
+          >
             {w.id === "about" && (
               <div style={{ padding: 22, display: "flex", gap: 20, alignItems: "flex-start" }}>
                 <div className="lighten" style={{ flexShrink: 0 }}>
@@ -770,7 +800,11 @@ export default function RHOS({
                     Open full screen
                   </a>
                 </div>
-                <iframe src="/cv" style={{ width: "100%", height: 460, border: 0, background: "#1a1a1e" }} title="Resume" />
+                <iframe
+                  src="/cv?embedded=1"
+                  style={{ width: "100%", height: "100%", minHeight: 0, border: 0, background: "#f6f2e9", display: "block" }}
+                  title="Resume"
+                />
               </div>
             )}
 

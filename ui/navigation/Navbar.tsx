@@ -36,11 +36,11 @@ const Navbar = () => {
 
   return (
     <div
-      className={`fixed isolate w-64 z md:border-r ${isOpen && "bg-white"} ${isOpen && "dark:bg-black"} border-slate-300 dark:border-gray-800 z-[1001] `}
+      className={`fixed isolate w-64 z md:border-r ${isOpen && "bg-white"} ${isOpen && "dark:bg-black"} border-slate-300 dark:border-gray-800 z-1001 `}
     >
       <div className={`p-8 ${isOpen && 'h-screen'} `}>
         <AnimatePresence>
-          <div className="z-[1000]">
+          <div className="z-1000">
             <button
               className="text-2xl border rounded-xl p-2 md:hidden z-20 absolute top-4"
               onClick={() => setIsOpen(!isOpen)}

@@ -26,7 +26,7 @@ async function page({ params }: Props) {
           Go Back
         </button>
       </Link>
-      <div className="section border border-slate-300 dark:border-gray-800 bg-white dark:bg-black rounded-lg px-6 py-8 md:px-8 md:py-10 lg:p-12 shadow-sectionBoxShadow hover:shadow-sectionBoxShadowHover transition-all duration-[160ms] w-full my-8">
+      <div className="section border border-slate-300 dark:border-gray-800 bg-white dark:bg-black rounded-lg px-6 py-8 md:px-8 md:py-10 lg:p-12 shadow-sectionBoxShadow hover:shadow-sectionBoxShadowHover transition-all duration-160 w-full my-8">
         <h6 className="font-mono font-medium uppercase text-sm tracking-wider relative pt-4 mb-5 dark:text-white before:content-['//'] before:pr-2 after:content-[attr(data-backdrop-text)] after:absolute after:top-0 after:left-0 after:font-poppins after:font-bold after:uppercase after:text-4xl after:opacity-15" data-backdrop-text="PROJECT">
           Project
         </h6>
@@ -36,7 +36,7 @@ async function page({ params }: Props) {
 
         <div className="bg-white dark:bg-gray-950 rounded-lg p-6 border border-gray-200 dark:border-gray-800 group-hover:shadow-xl transition-all duration-300 hover:scale-[1.02]">
           <div className="flex flex-col lg:flex-row gap-8">
-            <div className="flex-shrink-0">
+            <div className="shrink-0">
               <Image
                 width={400}
                 height={200}
@@ -45,7 +45,7 @@ async function page({ params }: Props) {
                 className="rounded-lg shadow-lg "
               />
             </div>
-            <div className="flex-grow">
+            <div className="grow">
               <p className="text-slate-700 dark:text-slate-300 mb-4">{project.description}</p>
               <div className="flex flex-wrap gap-2 mb-4">
                 {project.tags.map((tag: string, index: number) => (
