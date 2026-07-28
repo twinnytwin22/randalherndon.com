@@ -17,7 +17,7 @@ import {
 import "./rhos.css";
 
 // Paste a Spotify playlist share URL here to mount the embed in the Music window.
-const SPOTIFY_PLAYLIST_URL: string = "";
+const SPOTIFY_PLAYLIST_URL: string = "https://open.spotify.com/playlist/2jj4Wlh0TNf0s0Rab4THuV";
 // Optional endpoint returning { isPlaying, title, artist } for the top-bar "now playing" ticker.
 const NOW_PLAYING_ENDPOINT: string = "";
 
@@ -70,7 +70,7 @@ type TermLine = { text: string; color: string };
 const DOCK_ITEMS: { id: WinId; Icon: React.ComponentType; label: string }[] = [
   { id: "about", Icon: PiUser, label: "About" },
   { id: "work", Icon: PiBriefcase, label: "Work" },
-  { id: "music", Icon: PiVinylRecord, label: "Music" },
+  // { id: "music", Icon: PiVinylRecord, label: "Music" },
   { id: "cv", Icon: PiReadCvLogo, label: "CV" },
   { id: "contact", Icon: PiChatCircleText, label: "Contact" },
 ];
@@ -756,12 +756,7 @@ export default function RHOS({
                     (add a playlist URL to RHOS.tsx)
                   </div>
                 )}
-                <div style={{ fontSize: 12, color: "var(--color-neutral-500)", marginTop: 10 }}>
-                  The music half lives at{" "}
-                  <a href="https://twinnytwin.com" target="_blank" rel="noreferrer">
-                    twinnytwin.com
-                  </a>
-                </div>
+          
               </div>
             )}
 
