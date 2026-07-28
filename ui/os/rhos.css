@@ -153,6 +153,336 @@
 .rhos-root .rhos-window-header { cursor: grab; }
 .rhos-root .rhos-window-header:active { cursor: grabbing; }
 
+@media (max-width: 1023px) {
+  .rhos-root {
+    background: #101012 !important;
+  }
+
+  .rhos-root > .rhos-topbar {
+    display: none !important;
+  }
+
+  .rhos-root .rhos-app-screen {
+    inset: 0 !important;
+    width: 100% !important;
+    height: 100dvh !important;
+    max-height: 100dvh !important;
+    min-height: 100dvh !important;
+    border: 0 !important;
+    border-radius: 0 !important;
+    background: #101012 !important;
+    box-shadow: none !important;
+    backdrop-filter: none !important;
+    overflow: hidden;
+    padding-bottom: calc(76px + env(safe-area-inset-bottom));
+  }
+
+  .rhos-root .rhos-window-body {
+    flex: 1 1 auto;
+    min-height: 0;
+    height: auto !important;
+    background: #101012;
+    overscroll-behavior: contain;
+  }
+
+  .rhos-root .rhos-app-screen .rhos-window-header {
+    min-height: calc(58px + env(safe-area-inset-top));
+    padding: calc(10px + env(safe-area-inset-top)) 16px 10px !important;
+    border-radius: 0 !important;
+    cursor: default;
+    background: color-mix(in srgb, #17171a 96%, transparent);
+    backdrop-filter: blur(18px);
+  }
+
+  .rhos-root .rhos-app-screen .rhos-window-header span {
+    font-size: 13px !important;
+    letter-spacing: 0 !important;
+    font-family: var(--font-body), sans-serif !important;
+    font-weight: 650;
+    text-transform: none !important;
+    color: var(--color-text) !important;
+  }
+
+  .rhos-root .rhos-app-screen .rhos-close-btn {
+    position: relative;
+    width: 36px !important;
+    height: 36px !important;
+    order: 0;
+    margin-left: 0;
+    background: transparent !important;
+    border: 0 !important;
+  }
+
+  .rhos-root .rhos-app-screen .rhos-close-btn::before,
+  .rhos-root .rhos-app-screen .rhos-close-btn::after {
+    content: "";
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    width: 10px;
+    height: 10px;
+    background: var(--color-neutral-300);
+    border: solid currentColor;
+    border-width: 0 0 1.5px 1.5px;
+  }
+
+  .rhos-root .rhos-app-screen .rhos-close-btn::before {
+    transform: translate(-35%, -50%) rotate(45deg);
+  }
+
+  .rhos-root .rhos-app-screen .rhos-close-btn::after {
+    display: none;
+  }
+
+  .rhos-root .rhos-app-screen .rhos-work-tile {
+    border-radius: 22px !important;
+    transform: none !important;
+  }
+
+  .rhos-root .rhos-app-screen .rhos-work-caption {
+    justify-content: flex-end !important;
+    color: var(--color-text);
+    background: linear-gradient(to top, rgba(8, 8, 10, 0.86), transparent 64%);
+    backdrop-filter: none;
+  }
+
+  .rhos-root .rhos-about-screen {
+    min-height: 100%;
+    display: grid !important;
+    grid-template-columns: 1fr !important;
+    gap: 18px !important;
+    align-items: start !important;
+    padding: 20px !important;
+  }
+
+  .rhos-root .rhos-about-photo {
+    width: 100%;
+    aspect-ratio: 1.25;
+    border-radius: 24px;
+    overflow: hidden;
+    border: 1px solid var(--color-divider);
+  }
+
+  .rhos-root .rhos-about-photo img {
+    width: 100% !important;
+    height: 100% !important;
+    border-radius: 0 !important;
+  }
+
+  .rhos-root .rhos-about-title {
+    font-size: clamp(30px, 8vw, 56px) !important;
+    line-height: 0.92;
+    margin-bottom: 10px !important;
+  }
+
+  .rhos-root .rhos-about-meta {
+    font-size: 12px !important;
+    line-height: 1.55;
+    margin-bottom: 16px !important;
+  }
+
+  .rhos-root .rhos-about-bio {
+    font-size: 15px !important;
+    line-height: 1.7 !important;
+  }
+
+  .rhos-root .rhos-about-actions,
+  .rhos-root .rhos-project-actions,
+  .rhos-root .rhos-contact-actions,
+  .rhos-root .rhos-cv-actions {
+    width: 100%;
+    gap: 10px !important;
+    flex-wrap: wrap;
+  }
+
+  .rhos-root .rhos-about-actions .btn,
+  .rhos-root .rhos-project-actions .btn,
+  .rhos-root .rhos-contact-actions .btn,
+  .rhos-root .rhos-cv-actions .btn {
+    min-height: 44px;
+    border-radius: 14px;
+    padding: 0 14px;
+  }
+
+  .rhos-root .rhos-work-screen {
+    padding: 18px 16px 28px !important;
+  }
+
+  .rhos-root .rhos-screen-kicker {
+    margin-bottom: 16px !important;
+  }
+
+  .rhos-root .rhos-work-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+    gap: 12px !important;
+  }
+
+  .rhos-root .rhos-work-tile {
+    aspect-ratio: 0.82 !important;
+    box-shadow: inset 0 -60px 60px rgba(0, 0, 0, 0.32);
+  }
+
+  .rhos-root .rhos-work-caption span:first-child {
+    font-size: 14px !important;
+    line-height: 1.15;
+  }
+
+  .rhos-root .rhos-work-caption span:last-child {
+    font-size: 10px !important;
+  }
+
+  .rhos-root .rhos-project-screen {
+    padding: 0 !important;
+  }
+
+  .rhos-root .rhos-project-media-block {
+    margin: 0 !important;
+  }
+
+  .rhos-root .rhos-project-media {
+    aspect-ratio: 1 / 1 !important;
+    border-width: 0 !important;
+    border-radius: 0 !important;
+    background: #08080a !important;
+  }
+
+  .rhos-root .rhos-project-pager,
+  .rhos-root .rhos-project-heading,
+  .rhos-root .rhos-project-blurb,
+  .rhos-root .rhos-project-tags,
+  .rhos-root .rhos-project-actions {
+    margin-left: 18px !important;
+    margin-right: 18px !important;
+  }
+
+  .rhos-root .rhos-project-heading {
+    margin-top: 20px;
+    align-items: flex-start !important;
+  }
+
+  .rhos-root .rhos-project-blurb {
+    font-size: 15px !important;
+    line-height: 1.65 !important;
+  }
+
+  .rhos-root .rhos-project-tags .tag {
+    min-height: 30px;
+    align-items: center;
+    border-radius: 999px;
+  }
+
+  .rhos-root .rhos-project-actions {
+    padding-bottom: 22px;
+  }
+
+  .rhos-root .rhos-github-screen {
+    gap: 10px !important;
+    padding: 16px !important;
+  }
+
+  .rhos-root .rhos-gh-row {
+    min-height: 58px;
+    display: grid !important;
+    grid-template-columns: auto 1fr auto;
+    align-items: center !important;
+    border: 1px solid var(--color-divider);
+    border-radius: 16px !important;
+    background: color-mix(in srgb, var(--color-neutral-900) 62%, transparent);
+  }
+
+  .rhos-root .rhos-gh-row span:nth-child(2) {
+    white-space: normal !important;
+    line-height: 1.35;
+  }
+
+  .rhos-root .rhos-github-footer {
+    flex-direction: column;
+    align-items: stretch !important;
+    gap: 10px;
+  }
+
+  .rhos-root .rhos-github-footer .btn {
+    min-height: 42px;
+    justify-content: center;
+    border: 1px solid var(--color-divider);
+    border-radius: 14px;
+  }
+
+  .rhos-root .rhos-cv-screen {
+    min-height: calc(100dvh - 196px);
+  }
+
+  .rhos-root .rhos-cv-actions {
+    padding: 12px !important;
+  }
+
+  .rhos-root .rhos-cv-screen iframe {
+    min-height: 420px !important;
+  }
+
+  .rhos-root .rhos-contact-screen {
+    min-height: 100%;
+    padding: 18px !important;
+    gap: 16px !important;
+  }
+
+  .rhos-root .rhos-contact-direct {
+    padding: 14px;
+    border: 1px solid var(--color-divider);
+    border-radius: 18px;
+    background: color-mix(in srgb, var(--color-neutral-900) 62%, transparent);
+    line-height: 1.5;
+  }
+
+  .rhos-root .field > label {
+    font-size: 12px;
+    margin-bottom: 7px;
+  }
+
+  .rhos-root .input {
+    min-height: 48px;
+    border-radius: 15px;
+    font-size: 16px;
+    background: color-mix(in srgb, var(--color-neutral-900) 80%, transparent);
+  }
+
+  .rhos-root textarea.input {
+    min-height: 138px;
+  }
+
+  .rhos-root .rhos-terminal-screen {
+    min-height: calc(100dvh - 196px) !important;
+    padding: 18px !important;
+    font-size: 13px !important;
+  }
+
+  .rhos-root .rhos-dock {
+    position: fixed !important;
+    left: 0 !important;
+    bottom: 0 !important;
+    transform: none !important;
+    width: 100%;
+    min-height: calc(68px + env(safe-area-inset-bottom));
+    justify-content: space-around;
+    gap: 0 !important;
+    border-width: 1px 0 0 !important;
+    border-radius: 0 !important;
+    padding: 6px 8px calc(6px + env(safe-area-inset-bottom)) !important;
+    background: color-mix(in srgb, #17171a 96%, transparent) !important;
+    box-shadow: 0 -10px 28px rgba(0, 0, 0, 0.28) !important;
+  }
+
+  .rhos-root .rhos-dock-btn:hover {
+    transform: none;
+  }
+
+  .rhos-root .rhos-dock-btn {
+    width: min(18vw, 72px) !important;
+    height: 56px !important;
+    border-radius: 12px !important;
+  }
+}
+
 @media (max-width: 720px) {
   .rhos-root .rhos-github-ticker { display: none !important; }
   .rhos-root .rhos-topbar-status { gap: 7px !important; }

@@ -124,7 +124,7 @@ export default function RHOS({
   const [viewport, setViewport] = useState(initialViewport);
   const zTopRef = useRef(100);
   const [nowPlaying, setNowPlaying] = useState<{ title: string; artist: string; isPlaying: boolean } | null>(null);
-  const isMobile = viewport.width < 768;
+  const isAppViewport = viewport.width < 1024;
   const [selectedProject, setSelectedProject] = useState<Project | null>(null);
   const [projectImageIndex, setProjectImageIndex] = useState(0);
   const [termLines, setTermLines] = useState<TermLine[]>([
@@ -188,7 +188,7 @@ export default function RHOS({
 
   const handleDragStart = useCallback(
     (id: WinId, e: React.MouseEvent) => {
-      if (isMobile || (e.target as HTMLElement).tagName === "BUTTON") return;
+      if (isAppViewport || (e.target as HTMLElement).tagName === "BUTTON") return;
       const w = winsRef.current[id];
       dragRef.current = {
         id,
@@ -196,7 +196,7 @@ export default function RHOS({
         dy: e.clientY / viewport.scale - w.y,
       };
     },
-    [isMobile, viewport.scale]
+    [isAppViewport, viewport.scale]
   );
 
   const openWin = useCallback((id: WinId) => {
@@ -276,16 +276,23 @@ export default function RHOS({
     contact: "let's chat",
   };
 
-  const windows = (Object.keys(wins) as WinId[])
+  const openWindows = (Object.keys(wins) as WinId[])
     .filter((id) => wins[id].open)
+    .sort((a, b) => wins[a].z - wins[b].z);
+
+  const visibleWindowIds = isAppViewport && openWindows.length
+    ? [openWindows[openWindows.length - 1]]
+    : openWindows;
+
+  const windows = visibleWindowIds
     .map((id) => {
       const w = wins[id];
       return {
         id,
         title: meta[id],
-        x: isMobile ? 8 : w.x,
-        y: isMobile ? 54 : w.y,
-        w: isMobile ? viewport.width - 16 : w.w,
+        x: isAppViewport ? 0 : w.x,
+        y: isAppViewport ? 0 : w.y,
+        w: isAppViewport ? viewport.width : w.w,
         z: w.z,
         focus: () => {
           const z = ++zTopRef.current;
@@ -467,6 +474,7 @@ export default function RHOS({
       {windows.map((w) => (
         <div
           key={w.id}
+          className={isAppViewport ? "rhos-window rhos-app-screen" : "rhos-window"}
           style={{
             position: "absolute",
             left: w.x,
@@ -481,7 +489,7 @@ export default function RHOS({
             animation: "rhos-win-in 0.18s ease-out",
             display: "flex",
             flexDirection: "column",
-            maxHeight: "78vh",
+            maxHeight: isAppViewport ? "100dvh" : "78vh",
           }}
           onMouseDown={w.focus}
         >
@@ -498,8 +506,8 @@ export default function RHOS({
             onMouseDown={(e) => handleDragStart(w.id, e)}
           >
             <button
-              onClick={w.close}
-              aria-label="Close"
+              onClick={w.id === "project" ? backToWork : w.close}
+              aria-label={w.id === "project" ? "Back to work" : "Close"}
               className="rhos-close-btn"
               style={{ width: 11, height: 11, borderRadius: 999, background: "var(--color-neutral-700)", border: "none", cursor: "pointer", padding: 0 }}
             />
@@ -508,6 +516,7 @@ export default function RHOS({
             </span>
           </div>
           <div
+            className="rhos-window-body"
             style={{
               overflow: "auto",
               userSelect: "text",
@@ -516,28 +525,28 @@ export default function RHOS({
             }}
           >
             {w.id === "about" && (
-              <div style={{ padding: 22, display: "flex", gap: 20, alignItems: "flex-start" }}>
-                <div className="lighten" style={{ flexShrink: 0 }}>
+              <div className="rhos-about-screen" style={{ padding: 22, display: "flex", gap: 20, alignItems: "flex-start" }}>
+                <div className="lighten rhos-about-photo" style={{ flexShrink: 0 }}>
                   <img
                     src={about?.profileImageUrl || "/randal.jpeg"}
                     alt={about?.introText || "Randal Herndon"}
                     style={{ width: 96, height: 96, borderRadius: "var(--radius-md)", objectFit: "cover" }}
                   />
                 </div>
-                <div>
-                  <div style={{ fontSize: 20, fontFamily: "owners, var(--font-heading), sans-serif", fontWeight: 700, fontStyle: "italic", textTransform: "uppercase", marginBottom: 6 }}>
+                <div className="rhos-about-copy">
+                  <div className="rhos-about-title" style={{ fontSize: 20, fontFamily: "owners, var(--font-heading), sans-serif", fontWeight: 700, fontStyle: "italic", textTransform: "uppercase", marginBottom: 6 }}>
                     {about?.introText || "Randal Herndon"}
                   </div>
-                  <div style={{ fontSize: 12, color: "var(--color-neutral-500)", fontFamily: "ui-monospace, Menlo, monospace", marginBottom: 12 }}>
+                  <div className="rhos-about-meta" style={{ fontSize: 12, color: "var(--color-neutral-500)", fontFamily: "ui-monospace, Menlo, monospace", marginBottom: 12 }}>
                     {about?.headlines?.length
                       ? about.headlines.join(" · ")
                       : "product developer · phoenix, az"}
                   </div>
-                  <p style={{ fontSize: 13, lineHeight: 1.6, color: "var(--color-neutral-300)", margin: "0 0 14px" }}>
+                  <p className="rhos-about-bio" style={{ fontSize: 13, lineHeight: 1.6, color: "var(--color-neutral-300)", margin: "0 0 14px" }}>
                     {about?.biography ||
                       "15 years building web products and the systems behind them — museum-scale launches, ticketing APIs wired to live dashboards, and products that produce measurable results."}
                   </p>
-                  <div style={{ display: "flex", gap: 8 }}>
+                  <div className="rhos-about-actions" style={{ display: "flex", gap: 8 }}>
                     <a href="/cv" target="_blank" rel="noreferrer" className="btn btn-secondary" style={{ fontSize: 12 }}>
                       Resume
                     </a>
@@ -568,11 +577,11 @@ export default function RHOS({
             )}
 
             {w.id === "work" && (
-              <div style={{ padding: 18 }}>
-                <div style={{ fontSize: 11, color: "var(--color-neutral-600)", fontFamily: "ui-monospace, Menlo, monospace", marginBottom: 14 }}>
-                  web work · hover for stack · click to open
+              <div className="rhos-work-screen" style={{ padding: 18 }}>
+                <div className="rhos-screen-kicker" style={{ fontSize: 11, color: "var(--color-neutral-600)", fontFamily: "ui-monospace, Menlo, monospace", marginBottom: 14 }}>
+                  selected web work
                 </div>
-                <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(96px, 1fr))", gap: 14 }}>
+                <div className="rhos-work-grid" style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(96px, 1fr))", gap: 14 }}>
                   {webWork && webWork.map((p) => (
                     <button
                       key={p.slug}
@@ -627,10 +636,11 @@ export default function RHOS({
             )}
 
             {w.id === "project" && selectedProject && (
-              <div style={{ padding: 22 }}>
+              <div className="rhos-project-screen" style={{ padding: 22 }}>
                 {selectedProject.images.length > 0 && (
-                  <div style={{ marginBottom: 18 }}>
+                  <div className="rhos-project-media-block" style={{ marginBottom: 18 }}>
                     <div
+                      className="rhos-project-media"
                       style={{
                         position: "relative",
                         aspectRatio: "16 / 9",
@@ -647,7 +657,7 @@ export default function RHOS({
                       />
                     </div>
                     {selectedProject.images.length > 1 && (
-                      <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginTop: 8 }}>
+                      <div className="rhos-project-pager" style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginTop: 8 }}>
                         <button
                           type="button"
                           className="btn btn-ghost"
@@ -677,7 +687,7 @@ export default function RHOS({
                     )}
                   </div>
                 )}
-                <div style={{ display: "flex", gap: 16, alignItems: "center", marginBottom: 16 }}>
+                <div className="rhos-project-heading" style={{ display: "flex", gap: 16, alignItems: "center", marginBottom: 16 }}>
                   <div
                     style={{
                       position: "relative",
@@ -722,15 +732,15 @@ export default function RHOS({
                     </div>
                   </div>
                 </div>
-                <p style={{ fontSize: 13.5, lineHeight: 1.65, color: "var(--color-neutral-300)", margin: "0 0 14px" }}>{selectedProject.blurb}</p>
-                <div style={{ display: "flex", gap: 6, flexWrap: "wrap", marginBottom: 18 }}>
+                <p className="rhos-project-blurb" style={{ fontSize: 13.5, lineHeight: 1.65, color: "var(--color-neutral-300)", margin: "0 0 14px" }}>{selectedProject.blurb}</p>
+                <div className="rhos-project-tags" style={{ display: "flex", gap: 6, flexWrap: "wrap", marginBottom: 18 }}>
                   {selectedProject.stack.map((t) => (
                     <span key={t} className="tag tag-outline" style={{ fontSize: 11 }}>
                       {t}
                     </span>
                   ))}
                 </div>
-                <div style={{ display: "flex", gap: 10 }}>
+                <div className="rhos-project-actions" style={{ display: "flex", gap: 10 }}>
                   {selectedProject.url && (
                     <a href={selectedProject.url} target="_blank" rel="noreferrer" className="btn btn-primary" style={{ fontSize: 13, whiteSpace: "nowrap" }}>
                       View site <PiArrowUpRight />
@@ -744,7 +754,7 @@ export default function RHOS({
             )}
 
             {w.id === "github" && (
-              <div style={{ padding: 14, fontFamily: "ui-monospace, Menlo, monospace", fontSize: 12, display: "flex", flexDirection: "column", gap: 8 }}>
+              <div className="rhos-github-screen" style={{ padding: 14, fontFamily: "ui-monospace, Menlo, monospace", fontSize: 12, display: "flex", flexDirection: "column", gap: 8 }}>
                 {ghEvents.length === 0 && <div style={{ color: "var(--color-neutral-500)", padding: "6px 8px" }}>no recent public activity — check back soon</div>}
                 {ghEvents.map((e, i) => (
                   <div key={i} className="rhos-gh-row" style={{ display: "flex", gap: 10, alignItems: "baseline", padding: "6px 8px", borderRadius: "var(--radius-sm)" }}>
@@ -753,7 +763,7 @@ export default function RHOS({
                     <span style={{ color: "var(--color-neutral-600)", marginLeft: "auto", flexShrink: 0 }}>{e.when}</span>
                   </div>
                 ))}
-                <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", padding: "6px 8px" }}>
+                <div className="rhos-github-footer" style={{ display: "flex", alignItems: "center", justifyContent: "space-between", padding: "6px 8px" }}>
                   <span style={{ color: "var(--color-neutral-600)", fontSize: 11 }}>live · api.github.com/users/twinnytwin22</span>
                   <a href="https://github.com/twinnytwin22" target="_blank" rel="noreferrer" className="btn btn-ghost" style={{ fontSize: 11 }}>
                     <PiGithubLogo /> View profile <PiArrowUpRight />
@@ -791,8 +801,8 @@ export default function RHOS({
             )}
 
             {w.id === "cv" && (
-              <div style={{ display: "flex", flexDirection: "column", height: "100%" }}>
-                <div style={{ display: "flex", gap: 8, padding: "10px 14px", borderBottom: "1px solid var(--color-divider)", alignItems: "center" }}>
+              <div className="rhos-cv-screen" style={{ display: "flex", flexDirection: "column", height: "100%" }}>
+                <div className="rhos-cv-actions" style={{ display: "flex", gap: 8, padding: "10px 14px", borderBottom: "1px solid var(--color-divider)", alignItems: "center" }}>
                   <a href="/cv" target="_blank" rel="noreferrer" className="btn btn-secondary" style={{ fontSize: 12, whiteSpace: "nowrap" }}>
                     <PiDownloadSimple /> Print / save PDF
                   </a>
@@ -809,8 +819,8 @@ export default function RHOS({
             )}
 
             {w.id === "contact" && (
-              <form onSubmit={handleContactSubmit} style={{ padding: 22, display: "flex", flexDirection: "column", gap: 14 }}>
-                <p style={{ fontSize: 12, color: "var(--color-neutral-500)", margin: 0 }}>
+              <form className="rhos-contact-screen" onSubmit={handleContactSubmit} style={{ padding: 22, display: "flex", flexDirection: "column", gap: 14 }}>
+                <p className="rhos-contact-direct" style={{ fontSize: 12, color: "var(--color-neutral-500)", margin: 0 }}>
                   or email me directly at <a href="mailto:randal.herndon@gmail.com">randal.herndon@gmail.com</a>
                 </p>
                 <div className="field">
@@ -854,7 +864,7 @@ export default function RHOS({
                     onChange={(e) => setContactForm((f) => ({ ...f, message: e.target.value }))}
                   />
                 </div>
-                <div style={{ display: "flex", gap: 10, alignItems: "center" }}>
+                <div className="rhos-contact-actions" style={{ display: "flex", gap: 10, alignItems: "center" }}>
                   <button type="submit" disabled={contactStatus === "sending"} className="btn btn-primary" style={{ fontSize: 13 }}>
                     {contactStatus === "sending" ? "Sending…" : "Send message"}
                   </button>
@@ -869,6 +879,7 @@ export default function RHOS({
 
             {w.id === "terminal" && (
               <div
+                className="rhos-terminal-screen"
                 style={{ padding: 14, fontFamily: "ui-monospace, Menlo, monospace", fontSize: 12.5, lineHeight: 1.7, minHeight: 220, display: "flex", flexDirection: "column" }}
                 onClick={() => termRef.current && termRef.current.focus()}
               >
@@ -894,6 +905,7 @@ export default function RHOS({
       ))}
 
       <div
+        className="rhos-dock"
         style={{
           position: "absolute",
           bottom: 18,
