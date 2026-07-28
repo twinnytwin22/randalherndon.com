@@ -5,7 +5,7 @@ export function PrintResumeButton({className}: {className?: string}) {
       download="Randal-Herndon-Resume.pdf"
       href="/api/cv"
     >
-      Download 2-page PDF
+      Download PDF
     </a>
   )
 }

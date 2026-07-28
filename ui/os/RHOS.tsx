@@ -46,64 +46,13 @@ export type PortfolioProject = {
   imageUrls: string[];
 };
 
-const WEB_WORK: Project[] = [
-  {
-    slug: "azscience",
-    title: "Arizona Science Center",
-    monogram: "AZ",
-    logo: "",
-    tileBg: "linear-gradient(135deg, #1a1a1f, #232329)",
-    stack: ["Next.js", "Tessitura API", "MySQL"],
-    role: "Website Manager",
-    year: "2023–now",
-    url: "https://azscience.org",
-    blurb:
-      "End-to-end relaunch of a museum-scale website — CMS workflows, SEO program, and internal tools that give leadership real-time attendance from Tessitura instead of week-old spreadsheets.",
-    images: [],
-  },
-  {
-    slug: "crib",
-    title: "CRIB Network",
-    monogram: "CB",
-    logo: "",
-    tileBg: "linear-gradient(135deg, #17171c, #26262c)",
-    stack: ["Next.js", "Sanity", "Stripe"],
-    role: "Software Engineer",
-    year: "2022–now",
-    url: "https://cribnetwork.io",
-    blurb:
-      "Full-stack platforms for multi-million dollar clients across industries — $15M+ in client revenue generated between 2022 and 2023.",
-    images: [],
-  },
-  {
-    slug: "twinnytwin",
-    title: "Twinny Twin",
-    monogram: "TT",
-    logo: "",
-    tileBg: "linear-gradient(135deg, #1c1c22, #2a2a31)",
-    stack: ["Next.js", "Supabase", "Spotify API"],
-    role: "Everything",
-    year: "ongoing",
-    url: "https://twinnytwin.com",
-    blurb:
-      "The music half — artist site with releases, mixes, and events, wired to Spotify and a custom CMS.",
-    images: [],
-  },
-  {
-    slug: "ayr",
-    title: "Ayr Wellness",
-    monogram: "AW",
-    logo: "",
-    tileBg: "linear-gradient(135deg, #191920, #24242a)",
-    stack: ["WordPress", "PHP", "SEM"],
-    role: "DM Manager",
-    year: "2019–22",
-    url: "https://ayrwellness.com",
-    blurb:
-      "Web + digital marketing for internal brands and three retail locations driving $3M+ monthly gross revenue.",
-    images: [],
-  },
-];
+export type AboutContent = {
+  introText: string;
+  biography: string;
+  headlines: string[];
+  profileImageUrl: string;
+};
+
 
 type WinId = "about" | "work" | "github" | "music" | "terminal" | "cv" | "project" | "contact";
 
@@ -147,9 +96,11 @@ const VERBS: Record<string, string> = {
 export default function RHOS({
   bootIntro = true,
   projects = [],
+  about,
 }: {
   bootIntro?: boolean;
   projects?: PortfolioProject[];
+  about?: AboutContent | null;
 }) {
   const cx = useMemo(() => Math.max(60, (window.innerWidth - 560) / 2), []);
 
@@ -344,7 +295,7 @@ export default function RHOS({
     labelColor: wins[d.id].open ? "var(--color-neutral-200)" : "var(--color-neutral-600)",
   }));
 
-  const portfolioWork: Project[] = projects.length
+  const portfolioWork: Project[] | null = projects.length
     ? projects.map((project) => ({
         slug: project.id,
         title: project.title,
@@ -365,9 +316,9 @@ export default function RHOS({
         blurb: project.description,
         images: project.imageUrls,
       }))
-    : WEB_WORK;
+    : null;
 
-  const webWork = portfolioWork.map((p) => ({
+  const webWork = portfolioWork?.map((p) => ({
     ...p,
     hasLogo: !!p.logo,
     noLogo: !p.logo,
@@ -537,22 +488,24 @@ export default function RHOS({
             {w.id === "about" && (
               <div style={{ padding: 22, display: "flex", gap: 20, alignItems: "flex-start" }}>
                 <div className="lighten" style={{ flexShrink: 0 }}>
-                  <img src="/randal.jpeg" alt="Randal" style={{ width: 96, height: 96, borderRadius: "var(--radius-md)", objectFit: "cover" }} />
+                  <img
+                    src={about?.profileImageUrl || "/randal.jpeg"}
+                    alt={about?.introText || "Randal Herndon"}
+                    style={{ width: 96, height: 96, borderRadius: "var(--radius-md)", objectFit: "cover" }}
+                  />
                 </div>
                 <div>
                   <div style={{ fontSize: 20, fontFamily: "owners, var(--font-heading), sans-serif", fontWeight: 700, fontStyle: "italic", textTransform: "uppercase", marginBottom: 6 }}>
-                    Randal Herndon
+                    {about?.introText || "Randal Herndon"}
                   </div>
                   <div style={{ fontSize: 12, color: "var(--color-neutral-500)", fontFamily: "ui-monospace, Menlo, monospace", marginBottom: 12 }}>
-                    product developer · phoenix, az
+                    {about?.headlines?.length
+                      ? about.headlines.join(" · ")
+                      : "product developer · phoenix, az"}
                   </div>
                   <p style={{ fontSize: 13, lineHeight: 1.6, color: "var(--color-neutral-300)", margin: "0 0 14px" }}>
-                    15 years building web products and the systems behind them — museum-scale launches, ticketing APIs wired to
-                    live dashboards, $15M+ in client revenue. Music runs in parallel at{" "}
-                    <a href="https://twinnytwin.com" target="_blank" rel="noreferrer">
-                      twinnytwin.com
-                    </a>
-                    .
+                    {about?.biography ||
+                      "15 years building web products and the systems behind them — museum-scale launches, ticketing APIs wired to live dashboards, and products that produce measurable results."}
                   </p>
                   <div style={{ display: "flex", gap: 8 }}>
                     <a href="/cv" target="_blank" rel="noreferrer" className="btn btn-secondary" style={{ fontSize: 12 }}>
@@ -590,7 +543,7 @@ export default function RHOS({
                   web work · hover for stack · click to open
                 </div>
                 <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(96px, 1fr))", gap: 14 }}>
-                  {webWork.map((p) => (
+                  {webWork && webWork.map((p) => (
                     <button
                       key={p.slug}
                       onClick={p.openDetail}

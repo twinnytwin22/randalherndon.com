@@ -1,3 +1,4 @@
+import { getAboutMe, type AboutMe } from "@/lib/providers/sanity/about-me";
 import { getPortfolio, imageBuilder } from "@/lib/providers/sanity/sanity";
 import RHOSClient from "@/ui/os/RHOSClient";
 
@@ -17,12 +18,15 @@ type PortfolioRecord = {
 
 export default async function Home() {
   let records: PortfolioRecord[] = [];
+  let about: AboutMe | null = null;
 
-  try {
-    records = await getPortfolio({ projectId: null });
-  } catch {
-    // RHOS retains its built-in work list if Sanity is unavailable.
-  }
+  const [portfolioResult, aboutResult] = await Promise.allSettled([
+    getPortfolio({ projectId: null }) as Promise<PortfolioRecord[]>,
+    getAboutMe(),
+  ]);
+
+  if (portfolioResult.status === "fulfilled") records = portfolioResult.value;
+  if (aboutResult.status === "fulfilled") about = aboutResult.value;
 
   const projects = records.map((project) => ({
     id: project._id,
@@ -35,5 +39,14 @@ export default async function Home() {
     imageUrls: (project.images || []).map(imageBuilder).filter(Boolean),
   }));
 
-  return <RHOSClient projects={projects} />;
+  const aboutContent = about
+    ? {
+        introText: about.introText || "",
+        biography: about.aboutMe || "",
+        headlines: Array.isArray(about.headlines) ? about.headlines : [],
+        profileImageUrl: imageBuilder(about.profileImage),
+      }
+    : null;
+
+  return <RHOSClient projects={projects} about={aboutContent} />;
 }
