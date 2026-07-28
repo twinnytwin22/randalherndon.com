@@ -1,12 +1,39 @@
-"use client";
+import { getPortfolio, imageBuilder } from "@/lib/providers/sanity/sanity";
+import RHOSClient from "@/ui/os/RHOSClient";
 
-import dynamic from "next/dynamic";
+export const revalidate = 60;
 
-const RHOS = dynamic(() => import("@/ui/os/RHOS"), {
-  ssr: false,
-  loading: () => <div style={{ width: "100vw", height: "100vh", background: "#0a0a0c" }} />,
-});
+type SanityImage = { asset?: { _ref?: string } };
+type PortfolioRecord = {
+  _id: string;
+  title?: string;
+  description?: string;
+  link?: string;
+  tags?: string[];
+  previewBGColor?: { hex?: string };
+  logoImage?: SanityImage;
+  images?: SanityImage[];
+};
 
-export default function Home() {
-  return <RHOS />;
+export default async function Home() {
+  let records: PortfolioRecord[] = [];
+
+  try {
+    records = await getPortfolio({ projectId: null });
+  } catch {
+    // RHOS retains its built-in work list if Sanity is unavailable.
+  }
+
+  const projects = records.map((project) => ({
+    id: project._id,
+    title: project.title || "Untitled project",
+    description: project.description || "",
+    url: project.link || "",
+    tags: Array.isArray(project.tags) ? project.tags : [],
+    tileColor: project.previewBGColor?.hex,
+    logoUrl: imageBuilder(project.logoImage),
+    imageUrls: (project.images || []).map(imageBuilder).filter(Boolean),
+  }));
+
+  return <RHOSClient projects={projects} />;
 }

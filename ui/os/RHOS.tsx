@@ -32,6 +32,18 @@ type Project = {
   year: string;
   url: string;
   blurb: string;
+  images: string[];
+};
+
+export type PortfolioProject = {
+  id: string;
+  title: string;
+  description: string;
+  url: string;
+  tags: string[];
+  tileColor?: string;
+  logoUrl: string;
+  imageUrls: string[];
 };
 
 const WEB_WORK: Project[] = [
@@ -47,6 +59,7 @@ const WEB_WORK: Project[] = [
     url: "https://azscience.org",
     blurb:
       "End-to-end relaunch of a museum-scale website — CMS workflows, SEO program, and internal tools that give leadership real-time attendance from Tessitura instead of week-old spreadsheets.",
+    images: [],
   },
   {
     slug: "crib",
@@ -60,6 +73,7 @@ const WEB_WORK: Project[] = [
     url: "https://cribnetwork.io",
     blurb:
       "Full-stack platforms for multi-million dollar clients across industries — $15M+ in client revenue generated between 2022 and 2023.",
+    images: [],
   },
   {
     slug: "twinnytwin",
@@ -73,6 +87,7 @@ const WEB_WORK: Project[] = [
     url: "https://twinnytwin.com",
     blurb:
       "The music half — artist site with releases, mixes, and events, wired to Spotify and a custom CMS.",
+    images: [],
   },
   {
     slug: "ayr",
@@ -86,6 +101,7 @@ const WEB_WORK: Project[] = [
     url: "https://ayrwellness.com",
     blurb:
       "Web + digital marketing for internal brands and three retail locations driving $3M+ monthly gross revenue.",
+    images: [],
   },
 ];
 
@@ -128,7 +144,13 @@ const VERBS: Record<string, string> = {
   PublicEvent: "public",
 };
 
-export default function RHOS({ bootIntro = true }: { bootIntro?: boolean }) {
+export default function RHOS({
+  bootIntro = true,
+  projects = [],
+}: {
+  bootIntro?: boolean;
+  projects?: PortfolioProject[];
+}) {
   const cx = useMemo(() => Math.max(60, (window.innerWidth - 560) / 2), []);
 
   const [booting, setBooting] = useState(() => bootIntro);
@@ -138,6 +160,7 @@ export default function RHOS({ bootIntro = true }: { bootIntro?: boolean }) {
   const [nowPlaying, setNowPlaying] = useState<{ title: string; artist: string; isPlaying: boolean } | null>(null);
   const [isMobile, setIsMobile] = useState(() => window.innerWidth < 768);
   const [selectedProject, setSelectedProject] = useState<Project | null>(null);
+  const [projectImageIndex, setProjectImageIndex] = useState(0);
   const [termLines, setTermLines] = useState<TermLine[]>([
     { text: "RH·OS — type 'help' to look around", color: "var(--color-neutral-500)" },
   ]);
@@ -321,7 +344,30 @@ export default function RHOS({ bootIntro = true }: { bootIntro?: boolean }) {
     labelColor: wins[d.id].open ? "var(--color-neutral-200)" : "var(--color-neutral-600)",
   }));
 
-  const webWork = WEB_WORK.map((p) => ({
+  const portfolioWork: Project[] = projects.length
+    ? projects.map((project) => ({
+        slug: project.id,
+        title: project.title,
+        monogram:
+          project.title
+            .split(/\s+/)
+            .filter(Boolean)
+            .slice(0, 2)
+            .map((word) => word[0])
+            .join("")
+            .toUpperCase() || "•",
+        logo: project.logoUrl,
+        tileBg: project.tileColor || "linear-gradient(135deg, #1a1a1f, #26262c)",
+        stack: project.tags,
+        role: "Selected work",
+        year: "",
+        url: project.url,
+        blurb: project.description,
+        images: project.imageUrls,
+      }))
+    : WEB_WORK;
+
+  const webWork = portfolioWork.map((p) => ({
     ...p,
     hasLogo: !!p.logo,
     noLogo: !p.logo,
@@ -329,6 +375,7 @@ export default function RHOS({ bootIntro = true }: { bootIntro?: boolean }) {
     stackLine: p.stack.slice(0, 3).join(" · "),
     openDetail: () => {
       setSelectedProject(p);
+      setProjectImageIndex(0);
       openWin("project");
     },
   }));
@@ -589,6 +636,55 @@ export default function RHOS({ bootIntro = true }: { bootIntro?: boolean }) {
 
             {w.id === "project" && selectedProject && (
               <div style={{ padding: 22 }}>
+                {selectedProject.images.length > 0 && (
+                  <div style={{ marginBottom: 18 }}>
+                    <div
+                      style={{
+                        position: "relative",
+                        aspectRatio: "16 / 9",
+                        overflow: "hidden",
+                        borderRadius: 12,
+                        border: "1px solid var(--color-neutral-800)",
+                        background: "#09090b",
+                      }}
+                    >
+                      <img
+                        src={selectedProject.images[projectImageIndex]}
+                        alt={`${selectedProject.title} showcase ${projectImageIndex + 1}`}
+                        style={{ width: "100%", height: "100%", objectFit: "contain", display: "block" }}
+                      />
+                    </div>
+                    {selectedProject.images.length > 1 && (
+                      <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginTop: 8 }}>
+                        <button
+                          type="button"
+                          className="btn btn-ghost"
+                          onClick={() =>
+                            setProjectImageIndex((index) =>
+                              (index - 1 + selectedProject.images.length) % selectedProject.images.length
+                            )
+                          }
+                          aria-label="Previous project image"
+                        >
+                          ←
+                        </button>
+                        <span style={{ fontSize: 11, color: "var(--color-neutral-500)", fontFamily: "ui-monospace, Menlo, monospace" }}>
+                          {projectImageIndex + 1} / {selectedProject.images.length}
+                        </span>
+                        <button
+                          type="button"
+                          className="btn btn-ghost"
+                          onClick={() =>
+                            setProjectImageIndex((index) => (index + 1) % selectedProject.images.length)
+                          }
+                          aria-label="Next project image"
+                        >
+                          →
+                        </button>
+                      </div>
+                    )}
+                  </div>
+                )}
                 <div style={{ display: "flex", gap: 16, alignItems: "center", marginBottom: 16 }}>
                   <div
                     style={{
@@ -629,7 +725,7 @@ export default function RHOS({ bootIntro = true }: { bootIntro?: boolean }) {
                       {selectedProject.title}
                     </div>
                     <div style={{ fontSize: 12, color: "var(--color-neutral-500)", fontFamily: "ui-monospace, Menlo, monospace" }}>
-                      {selectedProject.role + " · " + selectedProject.year}
+                      {[selectedProject.role, selectedProject.year].filter(Boolean).join(" · ")}
                     </div>
                   </div>
                 </div>
@@ -642,9 +738,11 @@ export default function RHOS({ bootIntro = true }: { bootIntro?: boolean }) {
                   ))}
                 </div>
                 <div style={{ display: "flex", gap: 10 }}>
-                  <a href={selectedProject.url} target="_blank" rel="noreferrer" className="btn btn-primary" style={{ fontSize: 13, whiteSpace: "nowrap" }}>
-                    View site <PiArrowUpRight />
-                  </a>
+                  {selectedProject.url && (
+                    <a href={selectedProject.url} target="_blank" rel="noreferrer" className="btn btn-primary" style={{ fontSize: 13, whiteSpace: "nowrap" }}>
+                      View site <PiArrowUpRight />
+                    </a>
+                  )}
                   <button onClick={backToWork} className="btn btn-ghost" style={{ fontSize: 13, whiteSpace: "nowrap", cursor: "pointer" }}>
                     ← All work
                   </button>

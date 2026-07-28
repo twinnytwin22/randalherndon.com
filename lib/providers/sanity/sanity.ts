@@ -1,4 +1,5 @@
 import { createClient } from "@sanity/client";
+import { createImageUrlBuilder } from "@sanity/image-url";
 
 const projectId = 
   process.env.SANITY_PROJECT_ID || process.env.NEXT_PUBLIC_SANITY_PROJECT_ID!;
@@ -22,21 +23,15 @@ export default isPreviewMode;
 
 export const getPortfolio = async ({projectId}: {projectId?: string | null}) => {
   const query = projectId
-    ? `*[_type == 'portfolio' && _id == '${projectId}'][0]`
+    ? "*[_type == 'portfolio' && _id == $projectId][0]"
     : "*[_type == 'portfolio']";
-  const res = await client.fetch(query);
+  const res = await client.fetch(query, projectId ? { projectId } : {});
   return res;
 };
 
-export function imageBuilder(inputString: any) {
-  const imageRef = inputString?.asset._ref;
-  const parts = imageRef.split("-");
-  const imageId = parts.slice(1, -2).join("-"); // Extract the image ID
-  const dimensions = parts[parts.length - 2]; // Extract the dimensions
-  const extension = parts[parts.length - 1]; // Extract the image extension
+const builder = createImageUrlBuilder(client);
 
-  const baseURL = `https://cdn.sanity.io/images/${projectId}/production/`;
-  const imageURL = `${baseURL}${imageId}-${dimensions}.${extension}`;
-
-  return imageURL;
+export function imageBuilder(source: unknown) {
+  if (!source) return "";
+  return builder.image(source).auto("format").url();
 }

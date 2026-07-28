@@ -28,8 +28,16 @@ export const portfolio = defineType({
         rule.required().uri({scheme: ['http', 'https']}),
     }),
     defineField({
+      name: 'logoImage',
+      title: 'Logo Image',
+      description: 'Optional project logo shown in the Work grid. The project initials are used when omitted.',
+      type: 'image',
+      options: {hotspot: true},
+    }),
+    defineField({
       name: 'images',
-      title: 'Images',
+      title: 'Showcase Images',
+      description: 'Optional images displayed one at a time in the project detail slider.',
       type: 'array',
       of: [
         defineArrayMember({
@@ -37,7 +45,6 @@ export const portfolio = defineType({
           options: {hotspot: true},
         }),
       ],
-      validation: (rule) => rule.required().min(1),
     }),
     defineField({
       name: 'tags',
@@ -56,7 +63,11 @@ export const portfolio = defineType({
     select: {
       title: 'title',
       subtitle: 'description',
-      media: 'images.0',
+      logoImage: 'logoImage',
+      showcaseImage: 'images.0',
+    },
+    prepare({title, subtitle, logoImage, showcaseImage}) {
+      return {title, subtitle, media: logoImage || showcaseImage}
     },
   },
 })
