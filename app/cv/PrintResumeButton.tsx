@@ -1,9 +1,11 @@
-'use client'
-
-export function PrintResumeButton() {
+export function PrintResumeButton({className}: {className?: string}) {
   return (
-    <button type="button" onClick={() => window.print()}>
+    <a
+      className={className}
+      download="Randal-Herndon-Resume.pdf"
+      href="/api/cv"
+    >
       Download 2-page PDF
-    </button>
+    </a>
   )
 }

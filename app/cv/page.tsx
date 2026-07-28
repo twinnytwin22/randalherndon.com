@@ -88,8 +88,8 @@ export default async function ResumePage() {
     <main className={styles.canvas}>
       <div className={styles.toolbar}>
         <Link href="/">← RH·OS</Link>
-        <span>Live from Sanity</span>
-        <PrintResumeButton />
+        <span>Direct PDF · Live from Sanity</span>
+        <PrintResumeButton className={styles.downloadButton} />
       </div>
 
       <article className={styles.resume}>
