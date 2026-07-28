@@ -1,0 +1,110 @@
+/* RH·OS — scoped Nocturne design tokens + component classes for the desktop-style homepage. */
+
+.rhos-root {
+  --color-bg: #131316;
+  --color-surface: #1e1e22;
+  --color-text: #ececee;
+  --color-accent: #ececee;
+  --color-accent-2: #b3b3b9;
+  --color-divider: color-mix(in srgb, #ececee 16%, transparent);
+
+  --color-neutral-100: #f4f4f6;
+  --color-neutral-200: #e6e6e9;
+  --color-neutral-300: #d0d0d5;
+  --color-neutral-400: #b3b3b9;
+  --color-neutral-500: #94949b;
+  --color-neutral-600: #75757c;
+  --color-neutral-700: #595960;
+  --color-neutral-800: #3f3f45;
+  --color-neutral-900: #28282c;
+
+  --font-heading: "Inter", system-ui, sans-serif;
+  --font-heading-weight: 500;
+  --font-body: "Inter", system-ui, sans-serif;
+
+  --radius-sm: 4px;
+  --radius-md: 8px;
+  --radius-lg: 14px;
+
+  font-family: var(--font-body);
+  color: var(--color-text);
+}
+
+.rhos-root,
+.rhos-root *,
+.rhos-root *::before,
+.rhos-root *::after {
+  box-sizing: border-box;
+}
+
+.rhos-root a { color: var(--color-text); }
+.rhos-root a:hover { color: var(--color-neutral-300); }
+.rhos-root ::selection { background: var(--color-neutral-700); }
+
+@keyframes rhos-pulse { 0%, 100% { opacity: 1; } 50% { opacity: 0.3; } }
+@keyframes rhos-win-in { from { opacity: 0; transform: scale(0.97) translateY(6px); } to { opacity: 1; transform: none; } }
+
+/* — buttons (from the Nocturne design system) — */
+.rhos-root .btn {
+  display: inline-flex; align-items: center; justify-content: center; gap: 6px;
+  cursor: pointer; text-decoration: none;
+  font-family: var(--font-heading); font-weight: var(--font-heading-weight);
+  font-size: 14px; line-height: 1.2; color: var(--color-text);
+  background: transparent; border: 1px solid transparent;
+  padding: 6px 10px; border-radius: var(--radius-md);
+}
+.rhos-root .btn-primary { color: var(--color-accent); border-color: var(--color-accent); }
+.rhos-root .btn-primary:hover { background: color-mix(in srgb, var(--color-accent) 12%, transparent); }
+.rhos-root .btn-secondary { border-color: var(--color-divider); }
+.rhos-root .btn-secondary:hover { background: color-mix(in srgb, var(--color-text) 7%, transparent); }
+.rhos-root .btn-ghost { color: var(--color-accent); padding-inline: 3px; }
+.rhos-root .btn-ghost:hover { background: color-mix(in srgb, var(--color-accent) 10%, transparent); }
+
+/* — tags — */
+.rhos-root .tag {
+  display: inline-flex; align-items: center; font-size: 11px;
+  letter-spacing: 0.02em; padding: 3px 10px; border-radius: 6px;
+}
+.rhos-root .tag-outline { border: 1px solid var(--color-accent); color: var(--color-accent); }
+
+.rhos-root .lighten { mix-blend-mode: lighten; background-color: transparent; }
+
+/* — form fields — */
+.rhos-root .field > label {
+  display: block; font-size: 12px; margin-bottom: 5px;
+  color: color-mix(in srgb, var(--color-text) 70%, transparent);
+}
+.rhos-root .input {
+  width: 100%; min-height: 36px; padding: 6px 10px; font: inherit;
+  font-size: 13px; color: var(--color-text); caret-color: var(--color-accent);
+  background: var(--color-neutral-900);
+  border: 1px solid var(--color-divider); border-radius: var(--radius-md);
+}
+.rhos-root .input:hover { border-color: color-mix(in srgb, var(--color-text) 45%, transparent); }
+.rhos-root .input:focus-visible { border-color: var(--color-neutral-400); outline: none; }
+.rhos-root textarea.input { min-height: 80px; resize: vertical; font-family: inherit; }
+
+/* — interactive hover states (DC's style-hover, expressed as real CSS) — */
+.rhos-root .rhos-close-btn:hover { background: #e0655f; }
+
+.rhos-root .rhos-work-tile { transition: transform 0.15s; }
+.rhos-root .rhos-work-tile:hover { transform: scale(1.05); border-color: var(--color-neutral-600); }
+.rhos-root .rhos-work-caption { color: transparent; transition: all 0.15s; }
+.rhos-root .rhos-work-tile:hover .rhos-work-caption {
+  background: color-mix(in srgb, #0a0a0c 82%, transparent);
+  color: var(--color-text);
+  backdrop-filter: blur(3px);
+}
+
+.rhos-root .rhos-gh-row:hover { background: var(--color-neutral-900); }
+
+.rhos-root .rhos-dock-btn { transition: all 0.15s; }
+.rhos-root .rhos-dock-btn:hover {
+  background: var(--color-neutral-900);
+  border-color: var(--color-neutral-800);
+  transform: translateY(-4px);
+  color: var(--color-text);
+}
+
+.rhos-root .rhos-window-header { cursor: grab; }
+.rhos-root .rhos-window-header:active { cursor: grabbing; }

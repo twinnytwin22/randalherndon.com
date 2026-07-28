@@ -28,11 +28,9 @@ const Navbar = () => {
   }, [pathname, router]);
 
   const ROUTES = [
-    { name: "About", link: "#about" },
-    { name: "Skills", link: "#skills" },
-    { name: "Experience", link: "#experience" },
-    { name: "Portfolio", link: "#portfolio" },
-    { name: "Github", link: "https://github.com/twinnytwin22"},
+    { name: "Home", link: "" },
+    { name: "Portfolio", link: "portfolio" },
+    { name: "Github", link: "https://github.com/twinnytwin22" },
     { name: "Resume", link: "Randal Herndon 2025 - DMM.pdf" },
   ];
 

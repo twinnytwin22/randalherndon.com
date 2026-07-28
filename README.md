@@ -1,36 +1,45 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# randalherndon.com
 
-## Getting Started
+Personal site for Randal Herndon, built with Next.js (App Router) and Tailwind CSS 4.
 
-First, run the development server:
+## What's here
+
+- **`/`** — RH·OS, a desktop-style interactive homepage (`ui/os/RHOS.tsx`). Draggable windows for About, Work, GitHub (live activity via the public GitHub API), Music, Contact, Terminal, and CV, plus a dock and boot animation. Styled with a self-contained design-token stylesheet (`ui/os/rhos.css`) — it does not use Tailwind.
+- **`/portfolio`** — Sanity-backed portfolio listing and project detail pages, wrapped in the shared sidebar chrome defined in `app/(site)/layout.tsx` (nav, dark-mode toggle, social links).
+- **`app/api/contact`** — contact form submission handler, sends mail via SendGrid.
+
+## Getting started
 
 ```bash
+npm install
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open [http://localhost:3000](http://localhost:3000).
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+Copy `.env.example` to `.env.local` and fill in:
 
-[http://localhost:3000/api/hello](http://localhost:3000/api/hello) is an endpoint that uses [Route Handlers](https://beta.nextjs.org/docs/routing/route-handlers). This endpoint can be edited in `app/api/hello/route.ts`.
+- `SANITY_PROJECT_ID` / `SANITY_DATASET` — required for `/portfolio` to fetch content.
+- `SENDGRID_API_KEY` / `FROM_EMAIL` — required for the contact form to send mail.
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+## Scripts
 
-## Learn More
+- `npm run dev` — start the dev server.
+- `npm run build` / `npm run start` — production build and serve.
+- `npm run lint` — ESLint (flat config, `eslint.config.mjs`).
 
-To learn more about Next.js, take a look at the following resources:
+## Structure
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+```
+app/            Routes (App Router)
+  (site)/       Route group for pages that use the sidebar chrome (Navbar, dark mode, socials)
+ui/
+  os/           RH·OS homepage
+  navigation/   Sidebar nav used by (site) routes
+  buttons/      Shared buttons (dark mode toggle)
+  misc/         Small shared components (logo)
+lib/
+  providers/    App-wide providers (theme, motion) and the Sanity client
+```
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+Sanity Studio for content management lives outside this repo (see `.gitignore`'s `/studio` entry) and is deployed separately.

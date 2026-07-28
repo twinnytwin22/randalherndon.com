@@ -6,16 +6,15 @@ sgMail.setApiKey(process.env.SENDGRID_API_KEY as string);
 export async function POST(req: Request) {
   const { subject, email, message, name } = await req.json();
   if (!email) {
-   return new Response( 'error: Email is required' );
-    
+    return NextResponse.json({ success: false, error: 'Email is required' }, { status: 400 });
   }
 
   const msg = {
-    to: email,
-    cc: process.env.FROM_EMAIL as string,
+    to: process.env.FROM_EMAIL as string,
+    replyTo: email,
     from: process.env.FROM_EMAIL as string,
     subject: 'Contact form submission from RandalHerndon.com',
-    text: 'New Message from Randal',
+    text: `New message from ${name} <${email}>: ${message}`,
     html: `
     <!DOCTYPE html>
     <html>
@@ -104,10 +103,9 @@ export async function POST(req: Request) {
 
   try {
     await sgMail.send(msg);
-    console.log('Email sent');
-    new Response('success: true')
+    return NextResponse.json({ success: true });
   } catch (error) {
     console.error(error);
-    new Response('error: Error sending email')
+    return NextResponse.json({ success: false, error: 'Error sending email' }, { status: 500 });
   }
 }

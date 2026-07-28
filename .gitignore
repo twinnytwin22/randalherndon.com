@@ -4,7 +4,11 @@
 /node_modules
 /.pnp
 .pnp.js
-.vscode
+
+# editor
+.vscode/*
+!.vscode/settings.json
+
 # testing
 /coverage
 .history
