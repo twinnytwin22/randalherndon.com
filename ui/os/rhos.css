@@ -40,6 +40,17 @@
 .rhos-root a { color: var(--color-text); }
 .rhos-root a:hover { color: var(--color-neutral-300); }
 .rhos-root ::selection { background: var(--color-neutral-700); }
+.rhos-root .sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
 
 @keyframes rhos-pulse { 0%, 100% { opacity: 1; } 50% { opacity: 0.3; } }
 @keyframes rhos-win-in { from { opacity: 0; transform: scale(0.97) translateY(6px); } to { opacity: 1; transform: none; } }
@@ -98,6 +109,37 @@
 
 .rhos-root .rhos-gh-row:hover { background: var(--color-neutral-900); }
 
+.rhos-root .rhos-topbar-actions {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  padding-left: 12px;
+  border-left: 1px solid var(--color-divider);
+}
+
+.rhos-root .rhos-topbar-btn {
+  height: 30px;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 0 9px;
+  border: 1px solid transparent;
+  border-radius: 8px;
+  background: transparent;
+  color: var(--color-neutral-400);
+  font: inherit;
+  cursor: pointer;
+  transition: background 0.15s, border-color 0.15s, color 0.15s;
+}
+
+.rhos-root .rhos-topbar-btn svg { font-size: 15px; }
+.rhos-root .rhos-topbar-btn:hover,
+.rhos-root .rhos-topbar-btn.is-open {
+  background: var(--color-neutral-900);
+  border-color: var(--color-neutral-800);
+  color: var(--color-neutral-200);
+}
+
 .rhos-root .rhos-dock-btn { transition: all 0.15s; }
 .rhos-root .rhos-dock-btn:hover {
   background: var(--color-neutral-900);
@@ -108,3 +150,11 @@
 
 .rhos-root .rhos-window-header { cursor: grab; }
 .rhos-root .rhos-window-header:active { cursor: grabbing; }
+
+@media (max-width: 720px) {
+  .rhos-root .rhos-github-ticker { display: none !important; }
+  .rhos-root .rhos-topbar-status { gap: 7px !important; }
+  .rhos-root .rhos-topbar-actions { padding-left: 0; border-left: 0; }
+  .rhos-root .rhos-topbar-btn { width: 30px; padding: 0; justify-content: center; }
+  .rhos-root .rhos-topbar-btn span { display: none; }
+}

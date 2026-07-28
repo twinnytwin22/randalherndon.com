@@ -7,6 +7,7 @@ import {
   PiChatCircleText,
   PiDownloadSimple,
   PiGithubLogo,
+  PiLinkedinLogo,
   PiMusicNotesSimple,
   PiReadCvLogo,
   PiTerminalWindow,
@@ -104,9 +105,7 @@ type TermLine = { text: string; color: string };
 const DOCK_ITEMS: { id: WinId; Icon: React.ComponentType; label: string }[] = [
   { id: "about", Icon: PiUser, label: "About" },
   { id: "work", Icon: PiBriefcase, label: "Work" },
-  { id: "github", Icon: PiGithubLogo, label: "GitHub" },
   { id: "music", Icon: PiVinylRecord, label: "Music" },
-  { id: "terminal", Icon: PiTerminalWindow, label: "Terminal" },
   { id: "cv", Icon: PiReadCvLogo, label: "CV" },
   { id: "contact", Icon: PiChatCircleText, label: "Contact" },
 ];
@@ -288,7 +287,7 @@ export default function RHOS({ bootIntro = true }: { bootIntro?: boolean }) {
         id,
         title: meta[id],
         x: isMobile ? 8 : w.x,
-        y: isMobile ? 44 : w.y,
+        y: isMobile ? 54 : w.y,
         w: isMobile ? window.innerWidth - 16 : w.w,
         z: w.z,
         focus: () => {
@@ -392,7 +391,7 @@ export default function RHOS({ bootIntro = true }: { bootIntro?: boolean }) {
           top: 0,
           left: 0,
           right: 0,
-          height: 32,
+          height: 46,
           display: "flex",
           alignItems: "center",
           justifyContent: "space-between",
@@ -410,17 +409,37 @@ export default function RHOS({ bootIntro = true }: { bootIntro?: boolean }) {
             RH·OS v2.0
           </span>
         </div>
-        <div style={{ display: "flex", alignItems: "center", gap: 18, color: "var(--color-neutral-500)", fontFamily: "ui-monospace, Menlo, monospace", fontSize: 11 }}>
+        <div className="rhos-topbar-status" style={{ display: "flex", alignItems: "center", gap: 12, color: "var(--color-neutral-500)", fontFamily: "ui-monospace, Menlo, monospace", fontSize: 11 }}>
           {!!nowPlaying && (
             <span style={{ display: "flex", alignItems: "center", gap: 7, overflow: "hidden", whiteSpace: "nowrap", color: "var(--color-neutral-300)" }}>
               <PiMusicNotesSimple style={{ fontSize: 13, animation: "rhos-pulse 2s ease-in-out infinite" }} />
               {nowPlaying.title + " — " + nowPlaying.artist}
             </span>
           )}
-          <span style={{ display: "flex", alignItems: "center", gap: 7, overflow: "hidden", whiteSpace: "nowrap" }}>
+          <span className="rhos-github-ticker" style={{ display: "flex", alignItems: "center", gap: 7, overflow: "hidden", whiteSpace: "nowrap" }}>
             <span style={{ width: 6, height: 6, borderRadius: 999, background: "#7ee29b", animation: "rhos-pulse 2.4s ease-in-out infinite", flexShrink: 0 }} />
             {ghTicker}
           </span>
+          <div className="rhos-topbar-actions">
+            <button
+              type="button"
+              onClick={() => openWin("github")}
+              className={`rhos-topbar-btn${wins.github.open ? " is-open" : ""}`}
+              aria-label="Open GitHub activity"
+            >
+              <PiGithubLogo />
+              <span>GitHub</span>
+            </button>
+            <button
+              type="button"
+              onClick={() => openWin("terminal")}
+              className={`rhos-topbar-btn${wins.terminal.open ? " is-open" : ""}`}
+              aria-label="Open terminal"
+            >
+              <PiTerminalWindow />
+              <span>Terminal</span>
+            </button>
+          </div>
           <span style={{ color: "var(--color-neutral-300)" }}>{phxTime} PHX</span>
         </div>
       </div>
@@ -493,11 +512,26 @@ export default function RHOS({ bootIntro = true }: { bootIntro?: boolean }) {
                     <a href="/cv" target="_blank" rel="noreferrer" className="btn btn-secondary" style={{ fontSize: 12 }}>
                       Resume
                     </a>
-                    <button onClick={() => openWin("contact")} className="btn btn-secondary" style={{ fontSize: 12, cursor: "pointer" }}>
-                      Contact
+                    <button
+                      onClick={() => openWin("contact")}
+                      aria-label="Contact"
+                      title="Contact"
+                      className="btn btn-secondary"
+                      style={{ fontSize: 14, cursor: "pointer" }}
+                    >
+                      <PiChatCircleText />
+                      <span className="sr-only">Contact</span>
                     </button>
-                    <a href="https://www.linkedin.com/in/randalherndon/" target="_blank" rel="noreferrer" className="btn btn-secondary" style={{ fontSize: 12 }}>
-                      LinkedIn
+                    <a
+                      href="https://www.linkedin.com/in/randalherndon/"
+                      target="_blank"
+                      rel="noreferrer"
+                      aria-label="LinkedIn"
+                      title="LinkedIn"
+                      className="btn btn-secondary"
+                      style={{ fontSize: 14 }}
+                    >
+                      <PiLinkedinLogo />
                     </a>
                   </div>
                 </div>
