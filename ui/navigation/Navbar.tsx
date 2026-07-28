@@ -31,7 +31,7 @@ const Navbar = () => {
     { name: "Home", link: "" },
     { name: "Portfolio", link: "portfolio" },
     { name: "Github", link: "https://github.com/twinnytwin22" },
-    { name: "Resume", link: "Randal Herndon 2025 - DMM.pdf" },
+    { name: "Resume", link: "cv" },
   ];
 
   return (

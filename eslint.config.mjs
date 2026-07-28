@@ -7,6 +7,9 @@ export default defineConfig([
     ".next/**",
     "out/**",
     "build/**",
+    "studio/dist/**",
+    "studio/node_modules/**",
+    "studio/.sanity/**",
     "next-env.d.ts",
   ]),
 ]);

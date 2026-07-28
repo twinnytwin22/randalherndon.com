@@ -490,7 +490,7 @@ export default function RHOS({ bootIntro = true }: { bootIntro?: boolean }) {
                     .
                   </p>
                   <div style={{ display: "flex", gap: 8 }}>
-                    <a href="/Randal-Herndon-Resume-2025.pdf" target="_blank" rel="noreferrer" className="btn btn-secondary" style={{ fontSize: 12 }}>
+                    <a href="/cv" target="_blank" rel="noreferrer" className="btn btn-secondary" style={{ fontSize: 12 }}>
                       Resume
                     </a>
                     <button onClick={() => openWin("contact")} className="btn btn-secondary" style={{ fontSize: 12, cursor: "pointer" }}>
@@ -673,14 +673,14 @@ export default function RHOS({ bootIntro = true }: { bootIntro?: boolean }) {
             {w.id === "cv" && (
               <div style={{ display: "flex", flexDirection: "column", height: "100%" }}>
                 <div style={{ display: "flex", gap: 8, padding: "10px 14px", borderBottom: "1px solid var(--color-divider)", alignItems: "center" }}>
-                  <a href="/Randal-Herndon-Resume-2025.pdf" download="Randal-Herndon-Resume.pdf" className="btn btn-secondary" style={{ fontSize: 12, whiteSpace: "nowrap" }}>
-                    <PiDownloadSimple /> Download PDF
+                  <a href="/cv" target="_blank" rel="noreferrer" className="btn btn-secondary" style={{ fontSize: 12, whiteSpace: "nowrap" }}>
+                    <PiDownloadSimple /> Print / save PDF
                   </a>
-                  <a href="/Randal-Herndon-Resume-2025.pdf" target="_blank" rel="noreferrer" className="btn btn-ghost" style={{ fontSize: 12, whiteSpace: "nowrap" }}>
+                  <a href="/cv" target="_blank" rel="noreferrer" className="btn btn-ghost" style={{ fontSize: 12, whiteSpace: "nowrap" }}>
                     Open full screen
                   </a>
                 </div>
-                <iframe src="/Randal-Herndon-Resume-2025.pdf#toolbar=0&navpanes=0" style={{ width: "100%", height: 460, border: 0, background: "#1a1a1e" }} title="Resume" />
+                <iframe src="/cv" style={{ width: "100%", height: 460, border: 0, background: "#1a1a1e" }} title="Resume" />
               </div>
             )}
 

@@ -1,0 +1,108 @@
+import {DocumentTextIcon} from '@sanity/icons/DocumentText'
+import {defineArrayMember, defineField, defineType} from 'sanity'
+
+export const resume = defineType({
+  name: 'resume',
+  title: 'Resume',
+  type: 'document',
+  icon: DocumentTextIcon,
+  groups: [
+    {name: 'identity', title: 'Identity'},
+    {name: 'summary', title: 'Summary & Expertise'},
+    {name: 'experience', title: 'Experience'},
+    {name: 'education', title: 'Education & Tools'},
+  ],
+  fields: [
+    defineField({
+      name: 'name',
+      title: 'Name',
+      type: 'string',
+      group: 'identity',
+      validation: (rule) => rule.required(),
+    }),
+    defineField({
+      name: 'headline',
+      title: 'Professional Headline',
+      type: 'string',
+      group: 'identity',
+      validation: (rule) => rule.required(),
+    }),
+    defineField({
+      name: 'location',
+      title: 'Location',
+      type: 'string',
+      group: 'identity',
+    }),
+    defineField({
+      name: 'phone',
+      title: 'Phone',
+      type: 'string',
+      group: 'identity',
+    }),
+    defineField({
+      name: 'email',
+      title: 'Email',
+      type: 'string',
+      group: 'identity',
+      validation: (rule) => rule.email(),
+    }),
+    defineField({
+      name: 'linkedinUrl',
+      title: 'LinkedIn URL',
+      type: 'url',
+      group: 'identity',
+      validation: (rule) => rule.uri({scheme: ['http', 'https']}),
+    }),
+    defineField({
+      name: 'websiteUrl',
+      title: 'Website URL',
+      type: 'url',
+      group: 'identity',
+      validation: (rule) => rule.uri({scheme: ['http', 'https']}),
+    }),
+    defineField({
+      name: 'summary',
+      title: 'Professional Summary',
+      type: 'text',
+      rows: 7,
+      group: 'summary',
+      validation: (rule) => rule.required(),
+    }),
+    defineField({
+      name: 'coreExpertise',
+      title: 'Core Expertise',
+      type: 'array',
+      group: 'summary',
+      of: [defineArrayMember({type: 'string'})],
+      options: {layout: 'tags'},
+      validation: (rule) => rule.unique(),
+    }),
+    defineField({
+      name: 'experience',
+      title: 'Professional Experience',
+      type: 'array',
+      group: 'experience',
+      of: [defineArrayMember({type: 'resumeExperience'})],
+      validation: (rule) => rule.required().min(1),
+    }),
+    defineField({
+      name: 'education',
+      title: 'Education',
+      type: 'array',
+      group: 'education',
+      of: [defineArrayMember({type: 'resumeEducation'})],
+    }),
+    defineField({
+      name: 'platforms',
+      title: 'Platforms & Tools',
+      type: 'array',
+      group: 'education',
+      of: [defineArrayMember({type: 'string'})],
+      options: {layout: 'tags'},
+      validation: (rule) => rule.unique(),
+    }),
+  ],
+  preview: {
+    select: {title: 'name', subtitle: 'headline'},
+  },
+})
