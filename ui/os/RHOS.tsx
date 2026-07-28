@@ -371,7 +371,6 @@ export default function RHOS({
     ...p,
     hasLogo: !!p.logo,
     noLogo: !p.logo,
-    logoBg: p.logo ? `url('${p.logo}')` : "",
     stackLine: p.stack.slice(0, 3).join(" · "),
     openDetail: () => {
       setSelectedProject(p);
@@ -611,9 +610,19 @@ export default function RHOS({
                       }}
                     >
                       {p.hasLogo && (
-                        <div
-                          className="lighten"
-                          style={{ position: "absolute", inset: 0, backgroundImage: p.logoBg, backgroundSize: "60%", backgroundRepeat: "no-repeat", backgroundPosition: "center" }}
+                        <img
+                          src={p.logo}
+                          alt={`${p.title} logo`}
+                          style={{
+                            position: "absolute",
+                            inset: "16%",
+                            width: "68%",
+                            height: "68%",
+                            objectFit: "contain",
+                            objectPosition: "center",
+                            opacity: 1,
+                            filter: "none",
+                          }}
                         />
                       )}
                       {p.noLogo && (
@@ -701,17 +710,18 @@ export default function RHOS({
                     }}
                   >
                     {selectedProject.logo ? (
-                      <div
-                        className="lighten"
+                      <img
+                        src={selectedProject.logo}
+                        alt={`${selectedProject.title} logo`}
                         style={{
                           position: "absolute",
-                          width: 56,
-                          height: 56,
-                          borderRadius: 14,
-                          backgroundImage: `url('${selectedProject.logo}')`,
-                          backgroundSize: "60%",
-                          backgroundRepeat: "no-repeat",
-                          backgroundPosition: "center",
+                          inset: 8,
+                          width: 40,
+                          height: 40,
+                          objectFit: "contain",
+                          objectPosition: "center",
+                          opacity: 1,
+                          filter: "none",
                         }}
                       />
                     ) : (
