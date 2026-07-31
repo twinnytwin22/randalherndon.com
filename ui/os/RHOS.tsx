@@ -518,7 +518,7 @@ export default function RHOS({
           <div
             className="rhos-window-body"
             style={{
-              overflow: "auto",
+              overflow: w.id === "cv" ? "hidden" : "auto",
               userSelect: "text",
               minHeight: 0,
               height: w.id === "cv" ? "min(560px, calc(78vh - 42px))" : undefined,
@@ -801,7 +801,7 @@ export default function RHOS({
             )}
 
             {w.id === "cv" && (
-              <div className="rhos-cv-screen" style={{ display: "flex", flexDirection: "column", height: "100%" }}>
+              <div className="rhos-cv-screen" style={{ display: "flex", flexDirection: "column", width: "100%", height: "100%", minHeight: 0 }}>
                 <div className="rhos-cv-actions" style={{ display: "flex", gap: 8, padding: "10px 14px", borderBottom: "1px solid var(--color-divider)", alignItems: "center" }}>
                   <a href="/cv" target="_blank" rel="noreferrer" className="btn btn-secondary" style={{ fontSize: 12, whiteSpace: "nowrap" }}>
                     <PiDownloadSimple /> Print / save PDF
@@ -812,7 +812,7 @@ export default function RHOS({
                 </div>
                 <iframe
                   src="/cv?embedded=1"
-                  style={{ width: "100%", height: "100%", minHeight: 0, border: 0, background: "#f6f2e9", display: "block" }}
+                  style={{ flex: "1 1 auto", width: "100%", height: "auto", minHeight: 0, border: 0, background: "#f6f2e9", display: "block" }}
                   title="Resume"
                 />
               </div>
