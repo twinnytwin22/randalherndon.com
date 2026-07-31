@@ -518,10 +518,8 @@ export default function RHOS({
           <div
             className="rhos-window-body"
             style={{
-              overflow: w.id === "cv" ? "hidden" : "auto",
+              overflow: "auto",
               userSelect: "text",
-              minHeight: 0,
-              height: w.id === "cv" ? "min(560px, calc(78vh - 42px))" : undefined,
             }}
           >
             {w.id === "about" && (
@@ -810,11 +808,7 @@ export default function RHOS({
                     Open full screen
                   </a>
                 </div>
-                <iframe
-                  src="/cv?embedded=1"
-                  style={{ flex: "1 1 auto", width: "100%", height: "auto", minHeight: 0, border: 0, background: "#f6f2e9", display: "block" }}
-                  title="Resume"
-                />
+                <iframe src="/cv" style={{ width: "100%", height: 460, border: 0, background: "#1a1a1e" }} title="Resume" />
               </div>
             )}
 

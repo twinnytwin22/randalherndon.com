@@ -65,13 +65,7 @@ function ExperienceGroup({
   )
 }
 
-export default async function ResumePage({
-  searchParams,
-}: {
-  searchParams: Promise<{embedded?: string}>
-}) {
-  const {embedded} = await searchParams
-  const isEmbedded = embedded === '1'
+export default async function ResumePage() {
   const resume = await getResume()
 
   if (!resume) {
@@ -91,10 +85,8 @@ export default async function ResumePage({
   )
 
   return (
-    <main
-      className={`${styles.canvas} ${isEmbedded ? styles.embeddedCanvas : ''}`}
-    >
-      <div className={styles.toolbar} aria-hidden={isEmbedded || undefined}>
+    <main className={styles.canvas}>
+      <div className={styles.toolbar}>
         <Link href="/">← RH·OS</Link>
         <span>Direct PDF · Live from Sanity</span>
         <PrintResumeButton className={styles.downloadButton} />

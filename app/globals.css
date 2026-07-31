@@ -21,7 +21,6 @@ html {
 }
 
 body {
-  width: calc(100% / var(--app-scale));
   min-height: calc(100dvh / var(--app-scale));
   min-width: 320px;
   margin: 0;
@@ -38,7 +37,6 @@ iframe {
 
 @media print {
   body {
-    width: auto;
     min-height: 0;
     zoom: 1;
   }

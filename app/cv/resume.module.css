@@ -4,7 +4,7 @@
   --paper: #f6f2e9;
   --accent: #ef5b2a;
   min-height: 100vh;
-  padding: 28px 0 0;
+  padding: 28px;
   color: var(--ink);
   background:
     radial-gradient(circle at 15% 10%, rgba(239, 91, 42, 0.14), transparent 30%),
@@ -13,9 +13,7 @@
 }
 
 .toolbar {
-  width: 100%;
-  box-sizing: border-box;
-  padding: 0 28px;
+  width: min(1120px, 100%);
   margin: 0 auto 14px;
   display: flex;
   align-items: center;
@@ -54,11 +52,10 @@
 }
 
 .resume {
-  width: 100%;
+  width: min(8.5in, 100%);
   box-sizing: border-box;
   margin: 0 auto;
-  padding-block: 0.55in;
-  padding-inline: max(0.55in, calc((100% - 1120px) / 2 + 0.55in));
+  padding: 0.55in;
   background:
     linear-gradient(rgba(18, 21, 26, 0.035) 1px, transparent 1px),
     var(--paper);
@@ -66,36 +63,6 @@
   box-shadow: 0 30px 80px rgba(0, 0, 0, 0.35);
   print-color-adjust: exact;
   -webkit-print-color-adjust: exact;
-}
-
-.embeddedCanvas {
-  min-height: 100%;
-  padding: 0;
-  background: var(--paper);
-}
-
-.embeddedCanvas .toolbar {
-  display: none;
-}
-
-.embeddedCanvas .resume {
-  width: 100%;
-  min-height: 100vh;
-  box-shadow: none;
-}
-
-:global(html):has(.embeddedCanvas) {
-  min-width: 0;
-  overflow-x: hidden;
-  background: var(--paper);
-}
-
-:global(body):has(.embeddedCanvas) {
-  width: 100%;
-  min-width: 0;
-  min-height: 100%;
-  background: var(--paper);
-  zoom: 1;
 }
 
 .header {
@@ -348,31 +315,12 @@
     padding: 28px 22px;
   }
 
-  .embeddedCanvas .resume {
-    padding: 28px 22px;
-  }
-
   .header {
     grid-template-columns: 1fr;
   }
 
-  .identity h1 {
-    font-size: 44px;
-    line-height: 0.92;
-    letter-spacing: -0.04em;
-  }
-
-  .headline {
-    font-size: 16px;
-    line-height: 1.35;
-  }
-
   .contact {
     grid-column: auto;
-  }
-
-  .contact a {
-    overflow-wrap: anywhere;
   }
 
   .monogram {
