@@ -329,7 +329,7 @@ export function ResumePdf({resume}: {resume: Resume}) {
       <Page size="LETTER" style={styles.page}>
         <View style={styles.header}>
           <View style={styles.headerIdentity}>
-            <Text style={styles.eyebrow}>Curriculum vitae / 2026</Text>
+            <Text style={styles.eyebrow}>Resume / 2026</Text>
             <Text style={styles.name}>{resume.name}</Text>
             <Text style={styles.headline}>{resume.headline}</Text>
           </View>

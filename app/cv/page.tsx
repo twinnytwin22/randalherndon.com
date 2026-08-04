@@ -95,7 +95,7 @@ export default async function ResumePage() {
       <article className={styles.resume}>
         <header className={styles.header}>
           <div className={styles.identity}>
-            <span className={styles.eyebrow}>Curriculum vitae / 2026</span>
+            <span className={styles.eyebrow}>Resume / 2026</span>
             <h1>{resume.name}</h1>
             <p className={styles.headline}>{resume.headline}</p>
           </div>
