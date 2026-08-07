@@ -5,6 +5,7 @@ import {
   PiArrowUpRight,
   PiBriefcase,
   PiChatCircleText,
+  PiCoffee,
   PiDownloadSimple,
   PiGithubLogo,
   PiLinkedinLogo,
@@ -14,6 +15,7 @@ import {
   PiUser,
   PiVinylRecord,
 } from "react-icons/pi";
+import SupportLink from "../buttons/SupportLink";
 import "./rhos.css";
 
 // Paste a Spotify playlist share URL here to mount the embed in the Music window.
@@ -941,6 +943,31 @@ export default function RHOS({
             <span style={{ fontSize: 9, letterSpacing: "0.08em", textTransform: "uppercase", fontFamily: "ui-monospace, Menlo, monospace", color: d.labelColor }}>{d.label}</span>
           </button>
         ))}
+        <SupportLink
+          className="rhos-dock-btn"
+          aria-label="Buy me a coffee"
+          title="Buy me a coffee"
+          style={{
+            width: 58,
+            height: 54,
+            borderRadius: 12,
+            border: "1px solid transparent",
+            background: "transparent",
+            color: "var(--color-neutral-300)",
+            fontSize: 20,
+            display: "flex",
+            flexDirection: "column",
+            alignItems: "center",
+            justifyContent: "center",
+            gap: 4,
+            textDecoration: "none",
+          }}
+        >
+          <PiCoffee />
+          <span style={{ fontSize: 9, letterSpacing: "0.08em", textTransform: "uppercase", fontFamily: "ui-monospace, Menlo, monospace" }}>
+            Support
+          </span>
+        </SupportLink>
       </div>
 
       {booting && (

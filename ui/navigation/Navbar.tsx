@@ -4,6 +4,7 @@ import { useRouter, usePathname } from "next/navigation";
 import { m, AnimatePresence } from "framer-motion";
 import { RHLogo } from "../misc/RHLogo";
 import { IoMenu, IoClose } from "react-icons/io5";
+import SupportLink from "../buttons/SupportLink";
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -74,6 +75,9 @@ const Navbar = () => {
                       {route.name}
                     </a>
                   ))}
+                  <SupportLink className="hover:scale-105 transition-transform">
+                    Buy me a coffee
+                  </SupportLink>
                 </nav>
               </m.nav>
             </aside>
