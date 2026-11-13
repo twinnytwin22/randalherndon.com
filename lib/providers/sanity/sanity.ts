@@ -21,14 +21,6 @@ export const client = createClient({
 
 export default isPreviewMode;
 
-export const getPortfolio = async ({projectId}: {projectId?: string | null}) => {
-  const query = projectId
-    ? "*[_type == 'portfolio' && _id == $projectId][0]"
-    : "*[_type == 'portfolio']";
-  const res = await client.fetch(query, projectId ? { projectId } : {});
-  return res;
-};
-
 const builder = createImageUrlBuilder(client);
 
 export function imageBuilder(source: unknown) {

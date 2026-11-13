@@ -1,5 +1,12 @@
+<<<<<<< Updated upstream
 import { getAboutMe, type AboutMe } from "@/lib/providers/sanity/about-me";
 import { getPortfolio, imageBuilder } from "@/lib/providers/sanity/sanity";
+=======
+import { getAboutMe } from "@/lib/providers/sanity/about-me";
+import { imageBuilder } from "@/lib/providers/sanity/sanity";
+import { getSiteProfile } from "@/lib/providers/sanity/site-settings";
+import { getProjects } from "@/lib/portfolio";
+>>>>>>> Stashed changes
 import RHOSClient from "@/ui/os/RHOSClient";
 
 export const revalidate = 60;
@@ -17,6 +24,7 @@ type PortfolioRecord = {
 };
 
 export default async function Home() {
+<<<<<<< Updated upstream
   let records: PortfolioRecord[] = [];
   let about: AboutMe | null = null;
 
@@ -27,6 +35,13 @@ export default async function Home() {
 
   if (portfolioResult.status === "fulfilled") records = portfolioResult.value;
   if (aboutResult.status === "fulfilled") about = aboutResult.value;
+=======
+  const [projects, about, profile] = await Promise.all([
+    getProjects().catch(() => []),
+    getAboutMe().catch(() => null),
+    getSiteProfile(), // never rejects; falls back to lib/site.ts
+  ]);
+>>>>>>> Stashed changes
 
   const projects = records.map((project) => ({
     id: project._id,
@@ -48,5 +63,5 @@ export default async function Home() {
       }
     : null;
 
-  return <RHOSClient projects={projects} about={aboutContent} />;
+  return <RHOSClient projects={projects} about={aboutContent} profile={profile} />;
 }

@@ -25,10 +25,35 @@ export const siteSettings = defineType({
       validation: (rule) => rule.required(),
     }),
     defineField({
+      name: 'headline',
+      title: 'Headline',
+      description: 'Positioning line used in metadata, the share image, and RH·OS fallbacks.',
+      type: 'string',
+    }),
+    defineField({
+      name: 'tagline',
+      title: 'Tagline',
+      description: 'Short pitch, e.g. "Built like a developer. Wired like a marketer."',
+      type: 'string',
+    }),
+    defineField({
       name: 'description',
       title: 'Site Description',
+      description: 'Meta description for search results and link previews (~155 characters).',
       type: 'text',
       rows: 3,
+      validation: (rule) => rule.max(170),
+    }),
+    defineField({
+      name: 'location',
+      title: 'Location',
+      type: 'string',
+    }),
+    defineField({
+      name: 'email',
+      title: 'Public Email',
+      type: 'string',
+      validation: (rule) => rule.email(),
     }),
     defineField({
       name: 'logo',

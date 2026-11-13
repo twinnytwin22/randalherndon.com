@@ -1,6 +1,7 @@
 import type { AnchorHTMLAttributes, ReactNode } from "react";
+import { LINKS } from "@/lib/site";
 
-export const SUPPORT_URL = "https://buymeacoffee.com/randalhernp";
+export const SUPPORT_URL = LINKS.support;
 
 type SupportLinkProps = Omit<AnchorHTMLAttributes<HTMLAnchorElement>, "href"> & {
   children?: ReactNode;

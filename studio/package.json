@@ -6,9 +6,10 @@
     "dev": "sanity dev",
     "start": "sanity start",
     "build": "sanity build",
-    "backfill:resume": "sanity exec scripts/backfill-resume.mjs --with-user-token",
+    "backfill:resume": "sanity exec scripts/backfill-resume.mjs --with-user-token --",
     "deploy": "sanity deploy",
-    "typecheck": "tsc --noEmit"
+    "typecheck": "tsc --noEmit",
+    "align:positioning": "sanity exec scripts/align-positioning.mjs --with-user-token --"
   },
   "dependencies": {
     "@sanity/color-input": "^6.0.20",

@@ -16,6 +16,11 @@ import {
   PiVinylRecord,
 } from "react-icons/pi";
 import SupportLink from "../buttons/SupportLink";
+<<<<<<< Updated upstream
+=======
+import { monogram, type PortfolioProject } from "@/lib/portfolio-shared";
+import { GITHUB_USERNAME, LINKS, PROFILE, type SiteProfile } from "@/lib/site";
+>>>>>>> Stashed changes
 import "./rhos.css";
 
 // Paste a Spotify playlist share URL here to mount the embed in the Music window.
@@ -112,10 +117,12 @@ export default function RHOS({
   bootIntro = true,
   projects = [],
   about,
+  profile = PROFILE,
 }: {
   bootIntro?: boolean;
   projects?: PortfolioProject[];
   about?: AboutContent | null;
+  profile?: SiteProfile;
 }) {
   const initialViewport = useMemo(() => getAppViewport(), []);
   const cx = Math.max(60, (initialViewport.width - 560) / 2);
@@ -176,7 +183,7 @@ export default function RHOS({
       npT = setInterval(poll, 30000);
     }
 
-    fetch("https://api.github.com/users/twinnytwin22/events/public")
+    fetch(`https://api.github.com/users/${GITHUB_USERNAME}/events/public`)
       .then((r) => (r.ok ? r.json() : []))
       .then((ev) => setGh((ev || []).slice(0, 6)))
       .catch(() => {});
@@ -224,13 +231,13 @@ export default function RHOS({
         setTermLines([]);
         return;
       } else if (c === "sudo hire") {
-        push("access granted. inbox: randal.herndon@gmail.com", "#7ee29b");
+        push("access granted. inbox: " + profile.email, "#7ee29b");
       } else if (c) {
         push("command not found: " + c + " — try 'help'", "#e0655f");
       }
       setTermLines((lines) => [...lines, { text: "rh@os:~$ " + cmd, color: "var(--color-neutral-600)" }, ...out]);
     },
-    [openWin]
+    [openWin, profile.email]
   );
 
   const onDragMove = useCallback((e: React.MouseEvent) => {
@@ -329,7 +336,7 @@ export default function RHOS({
 
   const portfolioWork: Project[] | null = projects.length
     ? projects.map((project) => ({
-        slug: project.id,
+        slug: project.slug || project.id,
         title: project.title,
         monogram:
           project.title
@@ -342,8 +349,8 @@ export default function RHOS({
         logo: project.logoUrl,
         tileBg: project.tileColor || "linear-gradient(135deg, #1a1a1f, #26262c)",
         stack: project.tags,
-        role: "Selected work",
-        year: "",
+        role: project.role || "",
+        year: project.year ? String(project.year) : "",
         url: project.url,
         blurb: project.description,
         images: project.imageUrls,
@@ -540,11 +547,11 @@ export default function RHOS({
                   <div className="rhos-about-meta" style={{ fontSize: 12, color: "var(--color-neutral-500)", fontFamily: "ui-monospace, Menlo, monospace", marginBottom: 12 }}>
                     {about?.headlines?.length
                       ? about.headlines.join(" · ")
-                      : "product developer · phoenix, az"}
+                      : profile.headline}
                   </div>
                   <p className="rhos-about-bio" style={{ fontSize: 13, lineHeight: 1.6, color: "var(--color-neutral-300)", margin: "0 0 14px" }}>
                     {about?.biography ||
-                      "15 years building web products and the systems behind them — museum-scale launches, ticketing APIs wired to live dashboards, and products that produce measurable results."}
+                      profile.tagline}
                   </p>
                   <div className="rhos-about-actions" style={{ display: "flex", gap: 8 }}>
                     <a href="/cv" target="_blank" rel="noreferrer" className="btn btn-secondary" style={{ fontSize: 12 }}>
@@ -561,7 +568,7 @@ export default function RHOS({
                       <span className="sr-only">Contact</span>
                     </button>
                     <a
-                      href="https://www.linkedin.com/in/randalherndon/"
+                      href={LINKS.linkedin}
                       target="_blank"
                       rel="noreferrer"
                       aria-label="LinkedIn"
@@ -764,8 +771,8 @@ export default function RHOS({
                   </div>
                 ))}
                 <div className="rhos-github-footer" style={{ display: "flex", alignItems: "center", justifyContent: "space-between", padding: "6px 8px" }}>
-                  <span style={{ color: "var(--color-neutral-600)", fontSize: 11 }}>live · api.github.com/users/twinnytwin22</span>
-                  <a href="https://github.com/twinnytwin22" target="_blank" rel="noreferrer" className="btn btn-ghost" style={{ fontSize: 11 }}>
+                  <span style={{ color: "var(--color-neutral-600)", fontSize: 11 }}>live · api.github.com/users/{GITHUB_USERNAME}</span>
+                  <a href={LINKS.github} target="_blank" rel="noreferrer" className="btn btn-ghost" style={{ fontSize: 11 }}>
                     <PiGithubLogo /> View profile <PiArrowUpRight />
                   </a>
                 </div>
@@ -817,7 +824,7 @@ export default function RHOS({
             {w.id === "contact" && (
               <form className="rhos-contact-screen" onSubmit={handleContactSubmit} style={{ padding: 22, display: "flex", flexDirection: "column", gap: 14 }}>
                 <p className="rhos-contact-direct" style={{ fontSize: 12, color: "var(--color-neutral-500)", margin: 0 }}>
-                  or email me directly at <a href="mailto:randal.herndon@gmail.com">randal.herndon@gmail.com</a>
+                  or email me directly at <a href={`mailto:${profile.email}`}>{profile.email}</a>
                 </p>
                 <div className="field">
                   <label htmlFor="rhos-contact-name">Name</label>
@@ -864,9 +871,6 @@ export default function RHOS({
                   <button type="submit" disabled={contactStatus === "sending"} className="btn btn-primary" style={{ fontSize: 13 }}>
                     {contactStatus === "sending" ? "Sending…" : "Send message"}
                   </button>
-                  <a href="https://calendly.com/djtwinnytwin/1on1" target="_blank" rel="noreferrer" className="btn btn-ghost" style={{ fontSize: 13 }}>
-                    Schedule a meeting
-                  </a>
                 </div>
                 {contactStatus === "success" && <p style={{ fontSize: 12, color: "#7ee29b", margin: 0 }}>Message sent — thanks!</p>}
                 {contactStatus === "error" && <p style={{ fontSize: 12, color: "#e0655f", margin: 0 }}>Something went wrong — try the email link above.</p>}

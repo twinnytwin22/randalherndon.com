@@ -14,6 +14,26 @@ export const portfolio = defineType({
       validation: (rule) => rule.required(),
     }),
     defineField({
+      name: 'slug',
+      title: 'Slug',
+      description: 'URL segment for /portfolio/<slug>. Generate from the title.',
+      type: 'slug',
+      options: {source: 'title', maxLength: 64},
+      validation: (rule) => rule.required(),
+    }),
+    defineField({
+      name: 'role',
+      title: 'Your Role',
+      description: 'e.g. "Product lead & developer". Shown under the project title.',
+      type: 'string',
+    }),
+    defineField({
+      name: 'year',
+      title: 'Year',
+      type: 'number',
+      validation: (rule) => rule.integer().min(2000).max(2100),
+    }),
+    defineField({
       name: 'description',
       title: 'Description',
       type: 'text',

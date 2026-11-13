@@ -177,5 +177,16 @@ const resume = {
   ],
 }
 
+// This seed holds the original (2025) "Digital Marketing & Web Experience Leader"
+// resume. The live resume has since been edited in Studio; running this would
+// overwrite it wholesale. Require an explicit flag.
+if (!process.argv.includes('--force')) {
+  console.error(
+    'Refusing to overwrite the live resume with the original seed content.\n' +
+      'Edit the resume in Studio instead, or re-run with --force if you really mean it.',
+  )
+  process.exit(1)
+}
+
 const result = await client.createOrReplace(resume)
 console.log(`Published ${result._id} at revision ${result._rev}`)

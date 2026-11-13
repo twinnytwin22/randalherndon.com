@@ -7,9 +7,14 @@ import styles from './resume.module.css'
 export const revalidate = 60
 
 export const metadata: Metadata = {
+<<<<<<< Updated upstream
   title: 'Randal Herndon — Digital Marketing & Web Experience Leader',
+=======
+  title: {absolute: 'Resume — Randal Herndon, Digital Product Manager'},
+  alternates: {canonical: '/cv'},
+>>>>>>> Stashed changes
   description:
-    'Resume of Randal Herndon, a digital marketing, marketing technology, and web experience leader in Phoenix, Arizona.',
+    'Resume of Randal Herndon, Digital Product Manager for web platforms, MarTech and growth systems in Phoenix, Arizona.',
 }
 
 function formatMonthYear(value?: string) {
@@ -95,7 +100,7 @@ export default async function ResumePage() {
       <article className={styles.resume}>
         <header className={styles.header}>
           <div className={styles.identity}>
-            <span className={styles.eyebrow}>Resume / 2026</span>
+            <span className={styles.eyebrow}>Resume / {new Date().getFullYear()}</span>
             <h1>{resume.name}</h1>
             <p className={styles.headline}>{resume.headline}</p>
           </div>
@@ -167,7 +172,7 @@ export default async function ResumePage() {
 
         <footer className={styles.footer}>
           <span>Randal Herndon</span>
-          <span>Digital systems with measurable outcomes.</span>
+          <span>Built like a developer. Wired like a marketer.</span>
         </footer>
       </article>
     </main>
