@@ -7,12 +7,8 @@ import styles from './resume.module.css'
 export const revalidate = 60
 
 export const metadata: Metadata = {
-<<<<<<< Updated upstream
-  title: 'Randal Herndon — Digital Marketing & Web Experience Leader',
-=======
   title: {absolute: 'Resume — Randal Herndon, Digital Product Manager'},
   alternates: {canonical: '/cv'},
->>>>>>> Stashed changes
   description:
     'Resume of Randal Herndon, Digital Product Manager for web platforms, MarTech and growth systems in Phoenix, Arizona.',
 }
@@ -93,7 +89,7 @@ export default async function ResumePage() {
     <main className={styles.canvas}>
       <div className={styles.toolbar}>
         <Link href="/">← RH·OS</Link>
-        <span>Direct PDF · Live from Sanity</span>
+        <span>Resume</span>
         <PrintResumeButton className={styles.downloadButton} />
       </div>
 

@@ -15,12 +15,10 @@ import {
   PiUser,
   PiVinylRecord,
 } from "react-icons/pi";
+import Link from "next/link";
 import SupportLink from "../buttons/SupportLink";
-<<<<<<< Updated upstream
-=======
 import { monogram, type PortfolioProject } from "@/lib/portfolio-shared";
 import { GITHUB_USERNAME, LINKS, PROFILE, type SiteProfile } from "@/lib/site";
->>>>>>> Stashed changes
 import "./rhos.css";
 
 // Paste a Spotify playlist share URL here to mount the embed in the Music window.
@@ -42,16 +40,7 @@ type Project = {
   images: string[];
 };
 
-export type PortfolioProject = {
-  id: string;
-  title: string;
-  description: string;
-  url: string;
-  tags: string[];
-  tileColor?: string;
-  logoUrl: string;
-  imageUrls: string[];
-};
+export type { PortfolioProject };
 
 export type AboutContent = {
   introText: string;
@@ -83,6 +72,8 @@ function getAppViewport() {
   return {
     width: window.innerWidth / scale,
     height: window.innerHeight / scale,
+    // Unscaled width, so the JS breakpoint matches the CSS `max-width: 1023px` media query.
+    rawWidth: window.innerWidth,
     scale,
   };
 }
@@ -133,7 +124,7 @@ export default function RHOS({
   const [viewport, setViewport] = useState(initialViewport);
   const zTopRef = useRef(100);
   const [nowPlaying, setNowPlaying] = useState<{ title: string; artist: string; isPlaying: boolean } | null>(null);
-  const isAppViewport = viewport.width < 1024;
+  const isAppViewport = viewport.rawWidth < 1024;
   const [selectedProject, setSelectedProject] = useState<Project | null>(null);
   const [projectImageIndex, setProjectImageIndex] = useState(0);
   const [termLines, setTermLines] = useState<TermLine[]>([
@@ -220,8 +211,8 @@ export default function RHOS({
       const push = (text: string, color?: string) => out.push({ text, color: color || "var(--color-neutral-300)" });
       const c = cmd.trim().toLowerCase();
       if (c === "help") {
-        push("commands: about · work · music · github · cv · contact · clear", "var(--color-neutral-500)");
-      } else if (c === "about" || c === "work" || c === "music" || c === "github" || c === "contact") {
+        push("commands: about · work · github · cv · contact · clear", "var(--color-neutral-500)");
+      } else if (c === "about" || c === "work" || c === "github" || c === "contact") {
         openWin(c as WinId);
         push("opening " + c + "…", "var(--color-neutral-500)");
       } else if (c === "resume" || c === "cv") {
@@ -338,14 +329,7 @@ export default function RHOS({
     ? projects.map((project) => ({
         slug: project.slug || project.id,
         title: project.title,
-        monogram:
-          project.title
-            .split(/\s+/)
-            .filter(Boolean)
-            .slice(0, 2)
-            .map((word) => word[0])
-            .join("")
-            .toUpperCase() || "•",
+        monogram: monogram(project.title),
         logo: project.logoUrl,
         tileBg: project.tileColor || "linear-gradient(135deg, #1a1a1f, #26262c)",
         stack: project.tags,
@@ -401,7 +385,7 @@ export default function RHOS({
       onMouseMove={onDragMove}
       onMouseUp={onDragEnd}
     >
-      <div style={{ position: "absolute", inset: 0, display: "flex", alignItems: "center", justifyContent: "center", pointerEvents: "none" }}>
+      <div className="rhos-watermark" aria-hidden="true" style={{ position: "absolute", inset: 0, display: "flex", alignItems: "center", justifyContent: "center", pointerEvents: "none" }}>
         <div
           style={{
             fontFamily: "owners, var(--font-heading), sans-serif",
@@ -422,6 +406,7 @@ export default function RHOS({
       </div>
 
       <div
+        className="rhos-topbar"
         style={{
           position: "absolute",
           top: 0,
@@ -554,9 +539,9 @@ export default function RHOS({
                       profile.tagline}
                   </p>
                   <div className="rhos-about-actions" style={{ display: "flex", gap: 8 }}>
-                    <a href="/cv" target="_blank" rel="noreferrer" className="btn btn-secondary" style={{ fontSize: 12 }}>
+                    <button type="button" onClick={() => openWin("cv")} className="btn btn-secondary" style={{ fontSize: 12, cursor: "pointer" }}>
                       Resume
-                    </a>
+                    </button>
                     <button
                       onClick={() => openWin("contact")}
                       aria-label="Contact"
@@ -585,8 +570,11 @@ export default function RHOS({
 
             {w.id === "work" && (
               <div className="rhos-work-screen" style={{ padding: 18 }}>
-                <div className="rhos-screen-kicker" style={{ fontSize: 11, color: "var(--color-neutral-600)", fontFamily: "ui-monospace, Menlo, monospace", marginBottom: 14 }}>
-                  selected web work
+                <div className="rhos-screen-kicker" style={{ display: "flex", justifyContent: "space-between", alignItems: "center", fontSize: 11, color: "var(--color-neutral-600)", fontFamily: "ui-monospace, Menlo, monospace", marginBottom: 14 }}>
+                  <span>selected web work</span>
+                  <Link href="/portfolio" className="btn btn-ghost" style={{ fontSize: 11 }}>
+                    view as page <PiArrowUpRight />
+                  </Link>
                 </div>
                 <div className="rhos-work-grid" style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(96px, 1fr))", gap: 14 }}>
                   {webWork && webWork.map((p) => (
@@ -753,6 +741,9 @@ export default function RHOS({
                       View site <PiArrowUpRight />
                     </a>
                   )}
+                  <Link href={`/portfolio/${selectedProject.slug}`} className="btn btn-secondary" style={{ fontSize: 13, whiteSpace: "nowrap" }}>
+                    Open page
+                  </Link>
                   <button onClick={backToWork} className="btn btn-ghost" style={{ fontSize: 13, whiteSpace: "nowrap", cursor: "pointer" }}>
                     ← All work
                   </button>
@@ -810,8 +801,8 @@ export default function RHOS({
             {w.id === "cv" && (
               <div className="rhos-cv-screen" style={{ display: "flex", flexDirection: "column", width: "100%", height: "100%", minHeight: 0 }}>
                 <div className="rhos-cv-actions" style={{ display: "flex", gap: 8, padding: "10px 14px", borderBottom: "1px solid var(--color-divider)", alignItems: "center" }}>
-                  <a href="/cv" target="_blank" rel="noreferrer" className="btn btn-secondary" style={{ fontSize: 12, whiteSpace: "nowrap" }}>
-                    <PiDownloadSimple /> Print / save PDF
+                  <a href="/api/cv" download="Randal-Herndon-Resume.pdf" className="btn btn-secondary" style={{ fontSize: 12, whiteSpace: "nowrap" }}>
+                    <PiDownloadSimple /> Download PDF
                   </a>
                   <a href="/cv" target="_blank" rel="noreferrer" className="btn btn-ghost" style={{ fontSize: 12, whiteSpace: "nowrap" }}>
                     Open full screen
@@ -984,7 +975,7 @@ export default function RHOS({
               <span style={{ color: "#7ee29b" }}>✓</span> RH·OS kernel loaded
             </div>
             <div>
-              <span style={{ color: "#7ee29b" }}>✓</span> connecting github, spotify…
+              <span style={{ color: "#7ee29b" }}>✓</span> connecting github…
             </div>
             <div style={{ color: "var(--color-neutral-600)" }}>
               ▸ mounting portfolio… <span style={{ animation: "rhos-pulse 1s infinite" }}>█</span>

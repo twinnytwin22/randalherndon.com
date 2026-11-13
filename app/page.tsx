@@ -1,58 +1,17 @@
-<<<<<<< Updated upstream
-import { getAboutMe, type AboutMe } from "@/lib/providers/sanity/about-me";
-import { getPortfolio, imageBuilder } from "@/lib/providers/sanity/sanity";
-=======
 import { getAboutMe } from "@/lib/providers/sanity/about-me";
 import { imageBuilder } from "@/lib/providers/sanity/sanity";
 import { getSiteProfile } from "@/lib/providers/sanity/site-settings";
 import { getProjects } from "@/lib/portfolio";
->>>>>>> Stashed changes
 import RHOSClient from "@/ui/os/RHOSClient";
 
 export const revalidate = 60;
 
-type SanityImage = { asset?: { _ref?: string } };
-type PortfolioRecord = {
-  _id: string;
-  title?: string;
-  description?: string;
-  link?: string;
-  tags?: string[];
-  previewBGColor?: { hex?: string };
-  logoImage?: SanityImage;
-  images?: SanityImage[];
-};
-
 export default async function Home() {
-<<<<<<< Updated upstream
-  let records: PortfolioRecord[] = [];
-  let about: AboutMe | null = null;
-
-  const [portfolioResult, aboutResult] = await Promise.allSettled([
-    getPortfolio({ projectId: null }) as Promise<PortfolioRecord[]>,
-    getAboutMe(),
-  ]);
-
-  if (portfolioResult.status === "fulfilled") records = portfolioResult.value;
-  if (aboutResult.status === "fulfilled") about = aboutResult.value;
-=======
   const [projects, about, profile] = await Promise.all([
     getProjects().catch(() => []),
     getAboutMe().catch(() => null),
     getSiteProfile(), // never rejects; falls back to lib/site.ts
   ]);
->>>>>>> Stashed changes
-
-  const projects = records.map((project) => ({
-    id: project._id,
-    title: project.title || "Untitled project",
-    description: project.description || "",
-    url: project.link || "",
-    tags: Array.isArray(project.tags) ? project.tags : [],
-    tileColor: project.previewBGColor?.hex,
-    logoUrl: imageBuilder(project.logoImage),
-    imageUrls: (project.images || []).map(imageBuilder).filter(Boolean),
-  }));
 
   const aboutContent = about
     ? {
