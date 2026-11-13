@@ -158,16 +158,17 @@
     background: #101012 !important;
   }
 
-  .rhos-root > .rhos-topbar {
+  .rhos-root .rhos-watermark {
     display: none !important;
   }
 
+  /* App screens sit between the top bar (46px) and the fixed dock. */
   .rhos-root .rhos-app-screen {
-    inset: 0 !important;
+    inset: 46px 0 0 0 !important;
     width: 100% !important;
-    height: 100dvh !important;
-    max-height: 100dvh !important;
-    min-height: 100dvh !important;
+    height: calc(100dvh - 46px) !important;
+    max-height: calc(100dvh - 46px) !important;
+    min-height: calc(100dvh - 46px) !important;
     border: 0 !important;
     border-radius: 0 !important;
     background: #101012 !important;
@@ -186,8 +187,8 @@
   }
 
   .rhos-root .rhos-app-screen .rhos-window-header {
-    min-height: calc(58px + env(safe-area-inset-top));
-    padding: calc(10px + env(safe-area-inset-top)) 16px 10px !important;
+    min-height: 52px;
+    padding: 8px 16px !important;
     border-radius: 0 !important;
     cursor: default;
     background: color-mix(in srgb, #17171a 96%, transparent);
@@ -221,8 +222,8 @@
     top: 50%;
     width: 10px;
     height: 10px;
-    background: var(--color-neutral-300);
-    border: solid currentColor;
+    background: transparent;
+    border: solid var(--color-neutral-300);
     border-width: 0 0 1.5px 1.5px;
   }
 
