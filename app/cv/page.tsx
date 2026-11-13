@@ -7,7 +7,9 @@ import styles from './resume.module.css'
 export const revalidate = 60
 
 export const metadata: Metadata = {
-  title: 'Randal Herndon — Digital Marketing & Web Experience Leader',
+  // TODO(Phase 2): align with the chosen positioning / resume headline.
+  title: {absolute: 'Randal Herndon — Resume'},
+  alternates: {canonical: '/cv'},
   description:
     'Resume of Randal Herndon, a digital marketing, marketing technology, and web experience leader in Phoenix, Arizona.',
 }
@@ -88,7 +90,7 @@ export default async function ResumePage() {
     <main className={styles.canvas}>
       <div className={styles.toolbar}>
         <Link href="/">← RH·OS</Link>
-        <span>Direct PDF · Live from Sanity</span>
+        <span>Resume</span>
         <PrintResumeButton className={styles.downloadButton} />
       </div>
 
